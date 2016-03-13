@@ -1,22 +1,50 @@
-/* app css stylesheet */
-body {
-  padding-top: 80px;
+// Primary colors
+$primary-gray: #757575;
+$blue-50: #E3F2FD;
+$blue-100: #BBDEFB;
+$blue-500: #2196F3;
+$blue-700: #1976D2;
+$blue-900: #0D47A1;
+// Typography
+p{
+  color: $blue-500;
+  padding: 0px;
 }
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+.glyphicon{
+  color: $blue-100;
+}
+.glyphicon:hover{
+  color: $blue-500;
+}
+
+body {
+  background: white;
+  padding-top: 80px;
+  font-weight: 300;
+}
+// Navbar
+.navbar-inverse{
+  background: $blue-500;
+  border-color: $blue-500;
+}
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover{
+  color: $blue-100;
+}
+.navbar-inverse .navbar-brand{
+  color: white;
+}
+.navbar-inverse .navbar-nav>li>a{
+  color: $blue-50;
 }
 .items{
-  padding: 5px;
+  padding: 10px;
 }
-p{
-  color: #757575;  
+.items:hover{
+  background: $blue-50;
 }
+
 .border-btm{
-  //padding: 5px 0px;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid $blue-50;
 }
 .padding-bottom-20{
   padding-bottom: 20px;
@@ -40,7 +68,7 @@ p{
   display: block;
   width: 100%;
   border: none;
-  border-bottom: 1px solid #757575;
+  border-bottom: 1px solid $blue-500;
 }
 .paper-input input:focus {
   outline: none;
@@ -48,7 +76,7 @@ p{
 /* LABEL ======================================= */
 
 .paper-input label {
-  color: #999;
+  color: $blue-500;
   font-size: 18px;    
   font-weight: normal;
   position: absolute;
