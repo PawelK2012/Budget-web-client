@@ -1,0 +1,38 @@
+{
+  "name": "starter-pack",
+  "version": "1.0.0",
+  "description": "A starter project for AngularJS",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.6",
+    "bower": "^1.7.7",
+    "http-server": "^0.6.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.12.37",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.7",
+    "karma-junit-reporter": "^0.2.2",
+    "protractor": "^2.5.1",
+    "shelljs": "^0.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular-seed.git"
+  },
+  "keywords": [
+    "angularjs",
+    "starter",
+    "app"
+  ],
+  "author": "Pawel Kaim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angular/angular-seed/issues"
+  },
+  "homepage": "https://github.com/angular/angular-seed#readme"
+}
