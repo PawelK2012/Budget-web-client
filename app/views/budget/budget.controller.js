@@ -25,15 +25,24 @@
     function BudgetCtrl(authenticationService, budgetService) {
 
         var vm = this;
-        //vm.currentBudgets = currentUser.budgets;
+        //vm.currentBudgets = budgetService.getAllBudgets();
         vm.createBudget = function(budgetTitle) {
-
             budgetService.setNewBudget(budgetTitle);
+            // Clear input
             vm.budgetTitle = '';
         }
-        vm.edit = function(i) {
-            budgetService.deleteBudget(i);
+        
+        vm.edit = function() {
+            // TO DO
+        }
 
+        vm.delete = function(key){
+            budgetService.deleteBudget(key);
+        }
+
+        vm.allBudgets = function(){
+            vm.currentBudgets = budgetService.getAllBudgets();
+            console.log(vm.currentBudgets)
         }
 
     };

@@ -1,7 +1,7 @@
-# budget-app
+# Budget-App
 Budget app - an app that helps you manage your monthly budget on the go. 
 
-This project use AngularJS with Firebase to authenticate users and store data on the back-end. 
+This project relays on AngularJS & Firebase. We use Firebase to authenticate users and store data on the back-end. 
 
 
 TO DO: 

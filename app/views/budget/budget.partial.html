@@ -13,13 +13,13 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 padding-bottom-20 padding-top-30 ">
-                    <p>Current items: </p>
+                    <p ng-click="vm.allBudgets()">Current items: </p>
                 </div>
             </div>
             <div class="row">
                 <div ng-repeat="(key, value) in currentUser.budgets" ng-attr-class="{{!$last && 'col-xs-12 border-btm items' || 'col-xs-12 items'}}">
                     <p class="pull-left">{{$index + 1}}. <a href="#/viewbudget/{{key}}">{{value.title}}</a>{{key}}</p>
-                    <span class="glyphicon glyphicon-trash pull-right" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-trash pull-right" data-ng-click="vm.delete(key)" aria-hidden="true"></span>
                 </div>
             </div>
         </div>
