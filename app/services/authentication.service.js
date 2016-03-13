@@ -4,7 +4,6 @@
     angular
         .module('myApp')
         .factory('authenticationService', authenticationService);
-    //Do we really need a $rootScope?
     function authenticationService($rootScope, $firebase, $firebaseAuth, $firebaseObject, $location) {
 
         var ref = new Firebase('https://budget-db-app.firebaseio.com/');

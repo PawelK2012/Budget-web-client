@@ -44,11 +44,7 @@
         }
 
         function deleteBudget(key) {
-            getAllBudgets();
-            console.log(allBudgets.length)
-            allBudgets.$remove(key);
-            console.log(allBudgets.length)
-
+           //TO DO 
         }
 
     }
