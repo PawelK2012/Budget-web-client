@@ -13,8 +13,6 @@
                 var userRef = new Firebase(ref + 'users/' + authUser.uid);
                 //$firebaseObject - a service  helping to retrive information from DB
                 var userObj = $firebaseObject(userRef);
-                //an adding userObject to $rootScope
-                // $rootScope.currentUser = userObj;
                 $rootScope.currentUser = userObj;
             } else {
                 $rootScope.currentUser = '';
@@ -34,7 +32,6 @@
                 email: email,
                 password: pass
             }).then(function(regUser) {
-                console.log(regUser);
                 $location.path('/budget');
             }).catch(function(error) {
                 console.log(error.message)

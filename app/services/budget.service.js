@@ -6,17 +6,12 @@
         .factory('budgetService', budgetService);
 
     function budgetService($rootScope, $firebase, $firebaseArray) {
-
         var FIREBASE_URL = new Firebase('https://budget-db-app.firebaseio.com/');
+        // TO FIX: Issue with $rootScope not available on frist load
+        var ref = new Firebase(FIREBASE_URL + '/users/' + $rootScope.currentUser.$id + '/budgets');
         var budgetsobj = [];
-        var allBudgets = [];
-        /// This should be attached to the factory and passed to budgetService
-        /// Needs to be refactored 
-        function getDBRef() {
-            var ref = new Firebase(FIREBASE_URL + '/users/' + $rootScope.currentUser.$id + '/budgets');
-            return budgetsobj = $firebaseArray(ref);
-        }
-
+        budgetsobj = $firebaseArray(ref);
+        var allBudgets = [];    
 
         var service = {
             setNewBudget: setNewBudget,
@@ -27,24 +22,19 @@
         return service;
 
         function setNewBudget(budgetTitle) {
-            getDBRef();
             budgetsobj.$add({
                 from: $rootScope.currentUser.firstname,
-                //content: budgetDescription || 'Default description',
                 title: budgetTitle,
-                //dateFrom: dateFrom,
-                //dateTo: dateTo,
                 timestamp: Firebase.ServerValue.TIMESTAMP
             });
-            //budget = '';
         }
 
         function getAllBudgets() {
-            allBudgets = $rootScope.currentUser.budgets;
+            return allBudgets = $rootScope.currentUser.budgets;
         }
 
         function deleteBudget(key) {
-           //TO DO 
+            budgetsobj.$remove(key);
         }
 
     }
