@@ -5,7 +5,7 @@ This project relays on AngularJS & Firebase. We use Firebase to authenticate use
 
 
 TO DO:
-- [ ] fix $rootScope isse in budgetservice
+- [ ] <h4>fix $rootScope isse in budgetservice</h4>
 - [x] set up git
 - [x] set up sass
 - [ ] clean up package.json and add required dependencies
