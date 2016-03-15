@@ -25,6 +25,7 @@
     function BudgetCtrl(authenticationService, budgetService) {
 
         var vm = this;
+        vm.budgets = budgetService.getAllBudgets();
         vm.createBudget = function(budgetTitle) {
             budgetService.setNewBudget(budgetTitle);
             // Clear input
