@@ -38,11 +38,6 @@
         vm.delete = function(key) {
             budgetService.deleteBudget(key);
         }
-
-        vm.allBudgets = function() {
-            vm.currentBudgets = budgetService.getAllBudgets();
-        }
-
     };
 
 
