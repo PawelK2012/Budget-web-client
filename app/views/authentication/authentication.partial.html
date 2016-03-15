@@ -2,8 +2,8 @@
     <div class="row" ng-show="!vm.logMe && !vm.regMe">
         <div class="col-md-5 col-md-offset-4">
             <h1 class="text-center">budget-app</h1>
-            <button type="button" class="btn btn-default btn-lg" data-ng-click="vm.logMe = true">Login</button>
-            <button type="button" class="btn btn-default btn-lg" data-ng-click="vm.regMe = true">Register</button>
+            <button ng-show="!currentUser" type="button" class="btn btn-default btn-lg" data-ng-click="vm.logMe = true">Login</button>
+            <button ng-show="!currentUser" type="button" class="btn btn-default btn-lg" data-ng-click="vm.regMe = true">Register</button>
             <a href="#" data-ng-click="vm.logOut()">logout</a> 
         </div>
     </div>

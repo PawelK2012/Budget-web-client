@@ -4,7 +4,7 @@
     angular.module('myApp.viewbudget', ['ngRoute', 'firebase'])
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/viewbudget', {
+        $routeProvider.when('/viewbudget/:itemId', {
             restrict: 'E',
             templateUrl: 'views/budget/viewbudget.partial.html',
             controller: 'ViewbudgetCtrl',
@@ -25,6 +25,9 @@
     function ViewbudgetCtrl($routeParams, authenticationService, budgetService) {
 
         var vm = this;
+        vm.allBudgets = budgetService.getAllBudgets();
+        vm.budgetId = $routeParams.itemId;
+        vm.budget = vm.allBudgets[vm.budgetId];
         vm.createBudget = function(budgetTitle) {
             console.log("gggg")
         }
