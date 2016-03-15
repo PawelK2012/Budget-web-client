@@ -11,7 +11,7 @@
         var ref = new Firebase(FIREBASE_URL + '/users/' + $rootScope.currentUser.$id + '/budgets');
         var budgetsobj = [];
         budgetsobj = $firebaseArray(ref);
-        var allBudgets = [];    
+        var allBudgets = [];
 
         var service = {
             setNewBudget: setNewBudget,
@@ -30,7 +30,9 @@
         }
 
         function getAllBudgets() {
-            return allBudgets = $rootScope.currentUser.budgets;
+            // Download the data from a Firebase reference into a (pseudo read-only) array
+            // all server changes are applied in realtime
+            return allBudgets = $firebaseArray(ref);
         }
 
         function deleteBudget(key) {
