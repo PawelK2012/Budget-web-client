@@ -9,10 +9,10 @@ TO DO:
 - [ ] create directive for nav menu
 - [ ] create user page
 - [ ] allow users to edit budget
-- [ ] allow users to view budget
+- [x] allow users to view budget
 - [x] set up git
 - [x] set up sass
-- [ ] clean up package.json and add required dependencies
+- [x] clean up package.json and add required dependencies
 - [ ] home page design
 - [ ] budget page design
 - [ ] view budget design
