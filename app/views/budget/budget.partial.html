@@ -2,24 +2,25 @@
     <div class="row">
         <div class="col-xs-12">
             <form class="form-horizontal" ng-submit="vm.createBudget(vm.budgetTitle)">
-                    <div class="group paper-input">
-                        <input type="text" data-ng-model="vm.budgetTitle" ng-required="isRequired">
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Type to create new budget</label>
-                    </div>
+                <div class="group paper-input">
+                    <input type="text" data-ng-model="vm.budgetTitle" ng-required="isRequired">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Type to create new budget</label>
+                </div>
             </form>
-            </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 padding-bottom-20">
-                    <p ng-click="vm.allBudgets()">Current items: </p>
-                </div>
-            </div>
-            <div class="row">
-                <div ng-repeat="(key, value) in currentUser.budgets" ng-attr-class="{{!$last && 'col-xs-12 border-btm items' || 'col-xs-12 items'}}">
-                    <p class="pull-left">{{$index + 1}}. <a href="#/viewbudget/{{key}}">{{value.title}}</a>{{key}}</p>
-                    <span class="glyphicon glyphicon-trash pull-right" data-ng-click="vm.delete($index)" aria-hidden="true"></span>
-                </div>
-            </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 padding-bottom-20">
+            <p ng-click="vm.allBudgets()">Current items: </p>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-repeat="(key, value) in currentUser.budgets" ng-attr-class="{{!$last && 'col-xs-12 border-btm items' || 'col-xs-12 items'}}">
+            <p class="pull-left">{{$index + 1}}. <a href="#/viewbudget/{{key}}">{{value.title | uppercase}}</a></p>
+            <span class="glyphicon glyphicon-trash pull-right" data-ng-click="vm.delete($index)" aria-hidden="true"></span>
+        </div>
+    </div>
+</div>
+

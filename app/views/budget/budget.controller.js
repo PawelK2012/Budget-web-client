@@ -34,11 +34,11 @@
             // TO DO
         }
 
-        vm.delete = function(key){
+        vm.delete = function(key) {
             budgetService.deleteBudget(key);
         }
 
-        vm.allBudgets = function(){
+        vm.allBudgets = function() {
             vm.currentBudgets = budgetService.getAllBudgets();
         }
 
