@@ -20,25 +20,12 @@
 
     .controller('BudgetCtrl', BudgetCtrl);
 
-    BudgetCtrl.$inject = ['$location','authenticationService', 'budgetService']
+    BudgetCtrl.$inject = ['budgetService']
 
-    function BudgetCtrl($location, authenticationService, budgetService) {
+    function BudgetCtrl(budgetService) {
 
         var vm = this;
-        vm.search = true;
         vm.budgets = budgetService.getAllBudgets();
-        vm.createBudget = function(budgetTitle) {
-            budgetService.setNewBudget(budgetTitle);
-            vm.budgets = budgetService.getAllBudgets();
-            console.log(budgetTitle)
-            // Clear input
-            vm.budgetTitle = '';
-            $location.path('/editbudget/'+ 0);
-        }
-        vm.edit = function() {
-            // TO DO
-        }
-
         vm.delete = function(key) {
             budgetService.deleteBudget(key);
         }
