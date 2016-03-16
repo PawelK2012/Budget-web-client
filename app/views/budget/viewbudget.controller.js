@@ -27,10 +27,6 @@
         var vm = this;
         vm.allBudgets = budgetService.getAllBudgets();
         vm.budgetId = $routeParams.itemId;
-        vm.createBudget = function(budgetTitle) {
-            console.log("gggg")
-        }
-
     };
 
 

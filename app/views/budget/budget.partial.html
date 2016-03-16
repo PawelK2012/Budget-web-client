@@ -1,7 +1,7 @@
 <div class="container budget">
     <div class="row">
-        <div class="col-xs-12">
-            <form class="form-horizontal" ng-submit="vm.createBudget(vm.budgetTitle)">
+        <div ng-show="vm.search" class="col-xs-12">
+            <form class="form-horizontal">
                 <div class="group paper-input">
                     <input type="text" data-ng-model="query">
                     <span class="highlight"></span>
@@ -10,10 +10,21 @@
                 </div>
             </form>
         </div>
+        <div ng-show="!vm.search" class="col-xs-12">
+            <form class="form-horizontal" ng-submit="vm.createBudget(vm.budgetTitle)">
+                <div class="group paper-input">
+                    <input type="text" data-ng-model="vm.budgetTitle">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Type to create new budget...</label>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="row">
         <div class="col-xs-12 padding-bottom-20">
-            <p ng-click="vm.allBudgets()">Current items: </p>
+            <button type="button" class="btn btn-primary pull-right" ng-show="vm.search" data-ng-click="vm.search = false">Create budget</button>
+            <button type="button" class="btn btn-primary pull-right" ng-show="!vm.search" data-ng-click="vm.search = true">Back to search</button>
         </div>
     </div>
     <div class="row">
@@ -23,4 +34,3 @@
         </div>
     </div>
 </div>
-

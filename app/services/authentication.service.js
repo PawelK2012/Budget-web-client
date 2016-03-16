@@ -11,7 +11,7 @@
         auth.$onAuth(function(authUser) {
             if (authUser) {
                 var userRef = new Firebase(ref + 'users/' + authUser.uid);
-                //$firebaseObject - a service  helping to retrive information from DB
+                //$firebaseObject - save data as firebaseObject
                 var userObj = $firebaseObject(userRef);
                 $rootScope.currentUser = userObj;
             } else {
