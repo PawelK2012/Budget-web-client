@@ -1,16 +1,14 @@
 {
-    "name": "starter-pack",
+    "name": "Budget-App",
     "version": "1.0.0",
-    "description": "A starter project for AngularJS",
+    "description": "Budget app - an app that helps you manage your monthly budget on the go.",
     "main": "index.js",
     "dependencies": {
         "bootstrap-sass": "^3.3.6",
         "bower": "^1.7.7",
         "gulp": "^3.9.1",
         "gulp-sass": "^2.2.0",
-        "http-server": "^0.6.1",
-        "protractor": "^2.5.1",
-        "shelljs": "^0.2.6"
+        "http-server": "^0.6.1"
     },
     "devDependencies": {},
     "scripts": {

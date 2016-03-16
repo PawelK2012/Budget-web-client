@@ -11,6 +11,9 @@
         var ref = new Firebase(FIREBASE_URL + '/users/' + $rootScope.currentUser.$id + '/budgets');
         var budgetsobj = [];
         budgetsobj = $firebaseArray(ref);
+        // TO DO: Do I need allBudgets[]? budgetsobj should be enough
+        // to store and watch data in reall time
+        // consider refactoring getAllBudgets()
         var allBudgets = [];
 
         var service = {

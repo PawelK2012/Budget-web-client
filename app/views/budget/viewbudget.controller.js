@@ -20,9 +20,9 @@
 
     .controller('ViewbudgetCtrl', ViewbudgetCtrl);
 
-    ViewbudgetCtrl.$inject = ['$routeParams', 'authenticationService', 'budgetService']
+    ViewbudgetCtrl.$inject = ['$routeParams', 'budgetService']
 
-    function ViewbudgetCtrl($routeParams, authenticationService, budgetService) {
+    function ViewbudgetCtrl($routeParams, budgetService) {
 
         var vm = this;
         vm.allBudgets = budgetService.getAllBudgets();

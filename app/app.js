@@ -5,7 +5,8 @@ angular.module('myApp', [
   'firebase',
   'myApp.authentication',
   'myApp.budget',
-  'myApp.viewbudget'
+  'myApp.viewbudget',
+  'myApp.editbudget'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/authentication'});
