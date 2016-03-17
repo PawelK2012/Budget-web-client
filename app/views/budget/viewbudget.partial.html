@@ -9,4 +9,18 @@
                 <p><strong> Current: </strong> {{vm.allBudgets[vm.budgetId].currentBalance}}€</p>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <h3>Extra expenses: </h3>
+                <div ng-repeat="(key, value) in vm.allBudgets[vm.budgetId].expenses">
+                    <p>{{key+1}}. <strong> Name: </strong> {{value.name}}<strong> Category: </strong>{{value.category}} <strong> Cost: </strong> {{value.cost}}</p>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <h3>Monthly expenses: </h3>
+                <div ng-repeat="(key, value) in vm.allBudgets[vm.budgetId].monthlyExpenses">
+                    <p>{{key+1}}. <strong> Name: </strong> {{value.name}}<strong> Category: </strong>{{value.category}} <strong> Cost: </strong> {{value.cost}}</p>
+                </div>
+            </div>
+        </div>
     </div>

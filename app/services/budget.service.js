@@ -24,7 +24,7 @@
 
         return service;
 
-        function setNewBudget(budgetTitle, startDate, endDate, startingBudget) {
+        function setNewBudget(budgetTitle, startDate, endDate, startingBudget, expenses, monthlyExpenses) {
             budgetsobj.$add({
                 from: $rootScope.currentUser.firstname,
                 title: budgetTitle,
@@ -33,6 +33,8 @@
                 firstDayBalance: startingBudget,
                 lastDayBalance: 0,
                 currentBalance: startingBudget,
+                expenses: expenses,
+                monthlyExpenses: monthlyExpenses,
                 timestamp: Firebase.ServerValue.TIMESTAMP
             });
         }
