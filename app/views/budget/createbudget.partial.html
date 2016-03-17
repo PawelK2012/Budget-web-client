@@ -46,7 +46,6 @@
             <div class="pull-left">
                 <a class="btn btn-primary" ng-click="vm.extraExpense = true; vm.monthlyExpense = false">Add expense</a>
                 <a class="btn btn-primary" ng-click="vm.monthlyExpense = true; vm.extraExpense = false">Plan this month expenses</a>
-                <a ng-click="vm.calculateTotalExpenses()">Calculate expense</a>
             </div>
         </div>
     </div>
@@ -55,7 +54,6 @@
     <div class="row">
         <div class="col-xs-12">
             <p>Add expense</p>
-            <p>{{vm}}</p>
         </div>
     </div>
     <div class="row">
@@ -119,7 +117,7 @@
                 </div>
             </div>
         </div>
-         <div class="col-xs-4">
+        <div class="col-xs-4">
             <div class="pull-left">
                 <div class="group paper-input">
                     <input type="number" data-ng-model="vm.monthlyExpenseCost">
