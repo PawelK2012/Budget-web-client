@@ -6,10 +6,12 @@ This project relays on AngularJS & Firebase. We use Firebase to authenticate use
 
 TO DO:
 - [ ] <strong>fix $rootScope issue in budgetservice</strong>
-- [ ] <strong>investigate budget structure</strong>
+- [x] <strong>investigate budget structure</strong>
+- [ ] <strong>create different SASS modules for views, widgets & directives</strong>
 - [ ] create directive for nav menu
 - [ ] create user page
 - [ ] allow users to edit budget
+- [ ] allow users to create budget
 - [ ] allow users to edit their profile
 - [x] allow users to view budget
 - [x] set up git

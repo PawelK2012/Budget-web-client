@@ -28,8 +28,8 @@
             budgetsobj.$add({
                 from: $rootScope.currentUser.firstname,
                 title: budgetTitle,
-                budgetStartDate: startDate,
-                budgetEndDate: endDate,
+                budgetStartDate: startDate.toDateString(),
+                budgetEndDate: endDate.toDateString(),
                 firstDayBalance: startingBudget,
                 lastDayBalance: 0,
                 currentBalance: startingBudget,

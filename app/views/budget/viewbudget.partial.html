@@ -3,8 +3,10 @@
         <div class="row">
             <div class="col-xs-12 padding-bottom-20">
                 <h1>{{vm.allBudgets[vm.budgetId].title}}</h1>
-                <h2>Start balance: {{vm.allBudgets[vm.budgetId].firstDayBalance}}</h2>
-                <h3>Current: {{vm.allBudgets[vm.budgetId].currentBalance}}</h3>
+                <p> <strong>Start date: </strong> {{vm.allBudgets[vm.budgetId].budgetStartDate}}</p>
+                <p><strong> End date: </strong> {{vm.allBudgets[vm.budgetId].budgetEndDate}}</p>
+                <p><strong> Start balance: </strong> {{vm.allBudgets[vm.budgetId].firstDayBalance}}€</p>
+                <p><strong> Current: </strong> {{vm.allBudgets[vm.budgetId].currentBalance}}€</p>
             </div>
         </div>
     </div>
