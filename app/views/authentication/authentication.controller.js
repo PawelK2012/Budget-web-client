@@ -26,9 +26,5 @@
         vm.register = function(name, email, pass) {
             authenticationService.getRegister(name, email, pass);
         }
-        vm.logOut = function() {
-            authenticationService.getLogout();
-        }
-
     };
 })();

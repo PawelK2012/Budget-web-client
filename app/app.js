@@ -6,7 +6,9 @@ angular.module('myApp', [
   'myApp.authentication',
   'myApp.budget',
   'myApp.viewbudget',
-  'myApp.createbudget'
+  'myApp.createbudget',
+  'myApp.navMenu',
+  'myApp.user'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/authentication'});
