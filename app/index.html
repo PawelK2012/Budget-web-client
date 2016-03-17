@@ -19,30 +19,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#/authentication">Budget-App</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li ng-show="!currentUser"><a href="#/authentication">Login</a></li>
-                    <li ng-show="currentUser"><a href="#/budget">All budgets</a></li>
-                    <li ng-show="currentUser"><a href="#/createbudget">Create</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right" ng-show="currentUser">
-                    <li><a href="#" data-ng-click="vm.logOut()">Hi {{currentUser.firstname}} - logout</a></li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </nav>
+    <header>
+        <nav-menu current-user="currentUser" />
+    </header>
     <div ng-view></div>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
