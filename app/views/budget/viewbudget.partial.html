@@ -3,8 +3,26 @@
         <div class="row">
             <div class="col-xs-12 padding-bottom-20">
                 <h1>{{vm.allBudgets[vm.budgetId].title}}</h1>
-                <h2>Start balance: {{vm.allBudgets[vm.budgetId].firstDayBalance}}</h2>
-                <h3>Current: {{vm.allBudgets[vm.budgetId].currentBalance}}</h3>
+                <p> <strong>Start date: </strong> {{vm.allBudgets[vm.budgetId].budgetStartDate}}</p>
+                <p><strong> End date: </strong> {{vm.allBudgets[vm.budgetId].budgetEndDate}}</p>
+                <p><strong> Start balance: </strong> {{vm.allBudgets[vm.budgetId].firstDayBalance}}€</p>
+                <p><strong> Current: </strong> {{vm.allBudgets[vm.budgetId].currentBalance}}€</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <h3>Extra expenses: </h3>
+                <div ng-repeat="(key, value) in vm.allBudgets[vm.budgetId].expenses">
+                    <p>{{key+1}}. <strong> Name: </strong> {{value.name}}<strong> Category: </strong>{{value.category}} <strong> Cost: </strong> {{value.cost}}</p>
+                </div>
+                <h5 class="pull-right padding-top-10"><u>Total this month:</u> <strong>{{vm.allBudgets[vm.budgetId].totalExpenses}}€</strong></h5>
+            </div>
+            <div class="col-xs-6">
+                <h3>Monthly expenses: </h3>
+                <div ng-repeat="(key, value) in vm.allBudgets[vm.budgetId].monthlyExpenses">
+                    <p>{{key+1}}. <strong> Name: </strong> {{value.name}}<strong> Category: </strong>{{value.category}} <strong> Cost: </strong> {{value.cost}}</p>
+                </div>
+                <h5 class="pull-right padding-top-10"><u>Planed expenses this month:</u> <strong>{{vm.allBudgets[vm.budgetId].totalMonthlyExpenses}}€</strong></h5>
             </div>
         </div>
     </div>
