@@ -15,10 +15,18 @@
                 <li ng-show="$root.currentUser"><a href="#/budget">All budgets</a></li>
                 <li ng-show="$root.currentUser"><a href="#/createbudget">Create</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right" ng-show="$root.currentUser">
-                <li><a href="#" data-ng-click="vm.logOut()">Hi {{$root.currentUser.firstname}} - logout</a></li>
-            </ul>
+            <div class="dropdown nav navbar-nav navbar-right">
+                <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                 Hi {{$root.currentUser.firstname}}
+                 <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Profile</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#" data-ng-click="vm.logOut()">Logout</a></li>
+                </ul>
+            </div>
         </div>
         <!--/.nav-collapse -->
     </div>
-</nav> 
+</nav>

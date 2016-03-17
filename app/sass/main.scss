@@ -36,6 +36,19 @@ body {
 .navbar-inverse .navbar-nav>li>a{
   color: $blue-50;
 }
+.navbar-nav>a {
+    color: $blue-50;
+    text-decoration: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    float: right;
+}
+.navbar-nav>a:hover {
+    color: white;
+}
+.navbar-right .dropdown-menu{
+  margin-top: -15px;
+}
 .items{
   padding: 10px;
 }
