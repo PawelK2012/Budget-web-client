@@ -1,3 +1,4 @@
+@import 'app/sass/colors.scss';
     .group {
         position: relative;
         margin-bottom: 45px;
@@ -9,7 +10,7 @@
         display: block;
         width: 100%;
         border: none;
-        //border-bottom: 1px solid $blue-500;
+        border-bottom: 1px solid $blue-500;
     }
     
     .paper-input input:focus {
@@ -17,7 +18,7 @@
     }
     
     .paper-input label {
-        //color: $blue-500;
+        color: $blue-500;
         font-size: 18px;
         font-weight: normal;
         position: absolute;

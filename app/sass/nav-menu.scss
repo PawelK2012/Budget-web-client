@@ -1,20 +1,21 @@
-nav-menu { 
-    .navbar-inverse {     
-        // background: $blue-500;
-        // border-color: $blue-500;
+@import 'app/sass/colors.scss';
+nav-menu {
+    .navbar-inverse {
+        background: $blue-500;
+        border-color: $blue-500;
     }
     .navbar-inverse .navbar-brand:focus,
-    .navbar-inverse .navbar-brand:hover {  
-        // color: $blue-100;
+    .navbar-inverse .navbar-brand:hover {
+        color: $blue-100;
     }
     .navbar-inverse .navbar-brand {
         color: white;
     }
     .navbar-inverse .navbar-nav>li>a {
-        // color: $blue-50;
+        color: $blue-50;
     }
-    .navbar-nav>a {     
-        // color: $blue-50;
+    .navbar-nav>a {
+        color: $blue-50;
         text-decoration: none;
         padding-top: 15px;
         padding-bottom: 15px;
@@ -26,7 +27,7 @@ nav-menu {
     .navbar-right .dropdown-menu {
         margin-top: -15px;
     }
-    .red{
+    .red {
         color: red;
     }
 }
