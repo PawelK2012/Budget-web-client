@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="myApp" class="budget-app">
 
 <head>
     <meta charset="utf-8">
@@ -9,7 +9,7 @@
     <title>Budget-App</title>
     <!-- Bootstrap -->
     <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.min.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,9 +18,9 @@
     <![endif]-->
 </head>
 
-<body class="budget-app">
+<body>
     <header>
-        <nav-menu current-user="currentUser" />
+        <nav-menu current-user="currentUser"/>
     </header>
     <div ng-view class="padding-top-80"></div>
     <script src="bower_components/angular/angular.js"></script>

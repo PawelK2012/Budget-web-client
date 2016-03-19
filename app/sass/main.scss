@@ -1,10 +1,12 @@
-// Utils
-@import 'app/sass/colors.scss';
-@import 'app/sass/utils.scss';
-@import 'app/sass/paper-input.scss';
-// Views
-@import 'app/sass/budget.scss';
-@import 'app/sass/nav-menu.scss';
-body {
-    font-weight: 300;
+.budget-app {
+    // Utils
+    @import 'app/sass/colors.scss';
+    @import 'app/sass/utils.scss';
+    @import 'app/sass/paper-input.scss';
+    // Views
+    @import 'app/sass/budget.scss';
+    @import 'app/sass/nav-menu.scss';
+    body {
+        font-weight: 300;     
+    }
 }
