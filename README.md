@@ -8,8 +8,8 @@ TO DO:
 - [ ] <strong>fix $rootScope issue in budgetservice</strong>
 - [x] <strong>investigate budget structure</strong>
 - [x] <strong>create different SASS modules for views, widgets & directives</strong>
-- [ ] improve importing sass modules
-- [ ] fix gulp sass output 
+- [x] improve importing sass modules
+- [x] fix gulp sass output 
 - [x] create directive for nav menu
 - [ ] create user page
 - [ ] allow users to update profile

@@ -27,7 +27,13 @@ nav-menu {
     .navbar-right .dropdown-menu {
         margin-top: -15px;
     }
-    .red {
-        color: red;
+    .navbar-inverse .navbar-toggle {
+        border-color: $blue-500;
+    }
+    .navbar-inverse .navbar-toggle:hover {
+        background: $blue-500;
+    }
+    .navbar-inverse .navbar-collapse{
+        border-color: $blue-700; 
     }
 }
