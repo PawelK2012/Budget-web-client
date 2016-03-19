@@ -22,5 +22,18 @@
             <h4 class="pull-right padding-top-10">Planed expenses this month: <span class="label label-danger">{{vm.allBudgets[vm.budgetId].totalMonthlyExpenses | currency:"€ "}}</span></h4>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xs-12 padding-bottom-30 padding-top-20">
+            <div class="pull-left">
+                <a class="btn btn-primary" ng-click="vm.extraExpense = true; vm.monthlyExpense = false">Add expense</a>
+                <a class="btn btn-primary" ng-click="vm.monthlyExpense = true; vm.extraExpense = false">Plan this month expenses</a>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="vm.extraExpense">
+        <div class="col-xs-12">
+            <add-expense current-user="currentUser"/>
+        </div>
+    </div>
 </div>
-<nav-menu/>
+
