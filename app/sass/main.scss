@@ -7,6 +7,8 @@
     @import 'app/sass/budget.scss';
     @import 'app/sass/nav-menu.scss';
     body {
+        background: $blue-50;
+        color: $blue-900;
         font-weight: 300;     
     }
 }
