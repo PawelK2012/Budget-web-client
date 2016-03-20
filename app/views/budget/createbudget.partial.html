@@ -38,14 +38,14 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-primary pull-right" ng-click="vm.createBudget(vm.budgetTitle, vm.startDate, vm.endDate, vm.startingBudget)">Create</button>
+    <button type="button" class="btn btn-blue-900 pull-right" ng-click="vm.createBudget(vm.budgetTitle, vm.startDate, vm.endDate, vm.startingBudget)">Create</button>
 </div>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 padding-bottom-30">
             <div class="pull-left">
-                <a class="btn btn-primary" ng-click="vm.extraExpense = true; vm.monthlyExpense = false">Add expense</a>
-                <a class="btn btn-primary" ng-click="vm.monthlyExpense = true; vm.extraExpense = false">Plan this month expenses</a>
+                <a class="btn btn-blue-900" ng-click="vm.extraExpense = true; vm.monthlyExpense = false">Add expense</a>
+                <a class="btn btn-blue-900" ng-click="vm.monthlyExpense = true; vm.extraExpense = false">Plan this month expenses</a>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
             <add-expense extra-expense="vm.extraExpense" expense-name="vm.expenseName" expense-category="vm.expenseCategory" expense-cost="vm.expenseCost" />
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-primary pull-right" ng-click="vm.createExpense(vm.expenseName, vm.expenseCategory, vm.expenseCost)">Add expense</button>
+            <button type="button" class="btn btn-blue-900 pull-right" ng-click="vm.createExpense(vm.expenseName, vm.expenseCategory, vm.expenseCost)">Add expense</button>
         </div>
     </div>
 </div>
@@ -66,7 +66,7 @@
             <add-expense extra-expense="vm.extraExpense" expense-name="vm.monthlyExpenseName" expense-category="vm.monthlyExpenseCategory" expense-cost="vm.monthlyExpenseCost" />
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-primary pull-right" ng-click="vm.createMonthlyExpense(vm.monthlyExpenseName, vm.monthlyExpenseCategory, vm.monthlyExpenseCost)">Create monthly expense</button>
+            <button type="button" class="btn btn-blue-900 pull-right" ng-click="vm.createMonthlyExpense(vm.monthlyExpenseName, vm.monthlyExpenseCategory, vm.monthlyExpenseCost)">Create monthly expense</button>
         </div>
     </div>
 </div>

@@ -18,6 +18,7 @@
 
         var service = {
             setNewBudget: setNewBudget,
+            updateBudget: updateBudget,
             getAllBudgets: getAllBudgets,
             deleteBudget: deleteBudget
         };
@@ -41,6 +42,14 @@
             }).then(function(ref) {
                 var id = ref.key();
                 $location.path('/viewbudget/' + budgetsobj.$indexFor(id));
+            });
+        }
+
+        function updateBudget(id, budgetTitle) {
+            budgetsobj[id].$save({
+               title: budgetTitle 
+            }).then(function(ref) {
+                ref.key() === list[id].$id; // true
             });
         }
 
