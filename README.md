@@ -37,9 +37,9 @@ We have preconfigured the project with a simple development web server. The simp
 
  <code> npm start  </code>
 
-#Compile SASS files with Gulp
+#Compile SASS with Gulp
 
-Inside project directory run command <code> gulp </code>. This will run Gulp task to watch all SASS files and concat them into one CSS file.
+Inside project directory run command <code> gulp </code>. This will run Gulp task to watch all SASS and concat them into one CSS file.
 
  <code> gulp </code>
 

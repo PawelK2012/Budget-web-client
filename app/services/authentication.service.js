@@ -59,7 +59,7 @@
                 });
                 getLogin(email, pass);
             }).catch(function(error) {
-                console.log(error.message);
+                $rootScope.errorMsg = error.message;
             });
         }
     }
