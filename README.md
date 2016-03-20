@@ -54,7 +54,7 @@ You can update the Angular dependencies by running:
  <code> bower update  </code>
 
 
-TO DO:
+#TO DO:
 - [ ] <strong>fix $rootScope issue in budgetservice</strong>
 - [x] <strong>investigate budget structure</strong>
 - [x] <strong>create different SASS modules for views, widgets & directives</strong>

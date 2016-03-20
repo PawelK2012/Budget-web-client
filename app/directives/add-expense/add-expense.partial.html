@@ -1,7 +1,8 @@
 <div class="container extra-expense">
     <div class="row">
         <div class="col-xs-12 padding-bottom-10">
-            <p>Add expense</p>
+            <p ng-show="vm.extraExpense">Add expense</p>
+            <p ng-show="!vm.extraExpense">Add monthly expense</p>
         </div>
     </div>
     <div class="row">

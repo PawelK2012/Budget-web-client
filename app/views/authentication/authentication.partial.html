@@ -1,14 +1,12 @@
 <div class="container authentication">
     <div class="row" ng-show="!vm.logMe && !vm.regMe">
         <div class="col-xs-12">
-            <h2 class="text-center">#Angular-Firebase-Authentication</h2>
-            <p class="text-center">An example app of AngularFire Firebase authentication</p>
-        </div>
-    </div>
-    <div class="row" ng-show="!vm.logMe && !vm.regMe">
-        <div class="col-xs-12 col-sm-offset-5">
-            <button ng-show="!currentUser" type="button" class="btn btn-default btn-lg" data-ng-click="vm.logMe = true">Login</button>
-            <button ng-show="!currentUser" type="button" class="btn btn-default btn-lg" data-ng-click="vm.regMe = true">Register</button>
+            <h1 class="text-center">Budget-App</h1>
+            <p class="text-center">Managing budget made easy!</p>
+            <div class="center-block text-center">
+                <button ng-show="!currentUser" type="button" class="btn btn-default btn-lg" data-ng-click="vm.logMe = true">Login</button>
+                <button ng-show="!currentUser" type="button" class="btn btn-default btn-lg" data-ng-click="vm.regMe = true">Register</button>
+            </div>
         </div>
     </div>
     <div class="row" ng-show="vm.logMe">
