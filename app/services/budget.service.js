@@ -5,7 +5,7 @@
         .module('myApp')
         .factory('budgetService', budgetService);
 
-    function budgetService($rootScope, $firebase, $firebaseArray) {
+    function budgetService($rootScope, $firebase, $firebaseArray, $location) {
         var FIREBASE_URL = new Firebase('https://budget-db-app.firebaseio.com/');
         // TO FIX: Issue with $rootScope not available on frist load
         var ref = new Firebase(FIREBASE_URL + '/users/' + $rootScope.currentUser.$id + '/budgets');
@@ -18,6 +18,7 @@
 
         var service = {
             setNewBudget: setNewBudget,
+            updateBudget: updateBudget,
             getAllBudgets: getAllBudgets,
             deleteBudget: deleteBudget
         };
@@ -38,6 +39,17 @@
                 lastDayBalance: 0,
                 currentBalance: startingBudget - totalExpenses - totalMonthlyExpenses,
                 timestamp: Firebase.ServerValue.TIMESTAMP
+            }).then(function(ref) {
+                var id = ref.key();
+                $location.path('/viewbudget/' + budgetsobj.$indexFor(id));
+            });
+        }
+
+        function updateBudget(id, budgetTitle) {
+            budgetsobj[id].$save({
+               title: budgetTitle 
+            }).then(function(ref) {
+                ref.key() === list[id].$id; // true
             });
         }
 

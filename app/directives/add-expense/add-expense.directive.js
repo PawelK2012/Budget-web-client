@@ -11,6 +11,7 @@
             controllerAs: 'vm',
             bindToController: true,
             scope: {
+                extraExpense: '=extraExpense',
                 expenseName: '=expenseName',
                 expenseCategory: '=expenseCategory',
                 expenseCost: '=expenseCost'

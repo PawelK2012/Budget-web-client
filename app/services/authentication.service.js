@@ -34,7 +34,7 @@
             }).then(function(regUser) {
                 $location.path('/budget');
             }).catch(function(error) {
-                console.log(error.message)
+                $rootScope.errorMsg = error.message;
             });
         }
 
@@ -59,7 +59,7 @@
                 });
                 getLogin(email, pass);
             }).catch(function(error) {
-                console.log(error.message);
+                $rootScope.errorMsg = error.message;
             });
         }
     }
