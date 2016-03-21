@@ -28,8 +28,11 @@
         vm.allBudgets = budgetService.getAllBudgets();
         vm.budgetId = $routeParams.itemId;
 
-        vm.updateBudgetTitle = function(id, title){
-          budgetService.updateBudgetTitle(id, title);
+        vm.updateBudgetTitle = function(id, title) {
+            budgetService.updateBudgetTitle(id, title);
+        }
+        vm.addExpense = function(id, expenseName, expenseCategory, expenseCost) {
+            budgetService.addExpense(id,expenseName, expenseCategory, expenseCost)
         }
     };
 

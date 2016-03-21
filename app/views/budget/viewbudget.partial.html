@@ -41,20 +41,16 @@
             </div>
         </div>
     </div>
-    <div class="row" ng-show="vm.extraExpense">
+    <div class="row extra-expense" ng-show="vm.extraExpense">
         <div class="col-xs-12">
-            <add-expense current-user="currentUser" />
+            <add-expense extra-expense="vm.extraExpense" expense-name="vm.expenseName" expense-category="vm.expenseCategory" expense-cost="vm.expenseCost" />
+        </div>
+        <div class="col-xs-12 btn-container">
+            <button type="button" class="btn btn-blue-900" ng-click="vm.monthlyExpense = true; vm.extraExpense = false; vm.addExpense(vm.budgetId, vm.expenseName, vm.expenseCategory, vm.expenseCost)">Add expense</button>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="group paper-input">
-                <input type="text" data-ng-model="vm.budgetTitle">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Update Title</label>
-            </div>
-            <button type="button" class="btn btn-blue-900 pull-right" ng-click="vm.updateBudget(vm.budgetId, vm.budgetTitle)">Update</button>
-        </div>
-    </div>
+
+
 </div>
+
+
