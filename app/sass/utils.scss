@@ -38,7 +38,13 @@
 .margin-top-10 {
     margin-top: 10px;
 }
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
 
+.margin-top-20 {
+    margin-top: 20px;
+}
 .btn-blue-900 {
     color: #fff;
     background-color: $blue-900;
@@ -51,4 +57,7 @@
     border-color: $blue-500;
     will-change: box-shadow;
     transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+}
+.edit-input-container{
+    width: 50%;
 }

@@ -15,12 +15,15 @@
         // to store and watch data in reall time
         // consider refactoring getAllBudgets()
         var allBudgets = [];
+        var totalExpenses = 0;
 
         var service = {
             setNewBudget: setNewBudget,
-            updateBudget: updateBudget,
+            updateBudgetTitle: updateBudgetTitle,
+            addExpense: addExpense,
             getAllBudgets: getAllBudgets,
-            deleteBudget: deleteBudget
+            deleteBudget: deleteBudget,
+            calculateTotalExpenses: calculateTotalExpenses
         };
 
         return service;
@@ -45,11 +48,32 @@
             });
         }
 
-        function updateBudget(id, budgetTitle) {
-            budgetsobj[id].$save({
-               title: budgetTitle 
-            }).then(function(ref) {
-                ref.key() === list[id].$id; // true
+        function updateBudgetTitle(id, budgetTitle) {
+            var udpdatedBudget = budgetsobj[id];
+            udpdatedBudget.title = budgetTitle;
+            budgetsobj.$save(udpdatedBudget).then(function(ref) {
+                // Do something
+            });
+        }
+
+        function addExpense(id, expenseName, expenseCategory, expenseCost) {
+            // Get budget by id
+            var udpdatedBudget = budgetsobj[id];
+            // Get expensess []
+            var expensesArray = udpdatedBudget.expenses;           
+            var expense = {
+                name: expenseName,
+                category: expenseCategory,
+                cost: expenseCost
+            };
+            expensesArray.push(expense);
+            calculateTotalExpenses(expensesArray);
+            // Edit values
+            udpdatedBudget.totalExpenses = totalExpenses;
+            udpdatedBudget.expenses = expensesArray;
+            // Save updated budget
+            budgetsobj.$save(udpdatedBudget).then(function(ref) {
+                // Do something
             });
         }
 
@@ -61,6 +85,15 @@
 
         function deleteBudget(key) {
             budgetsobj.$remove(key);
+        }
+
+        function calculateTotalExpenses(expensesArray) {
+            totalExpenses = 0;
+            for (var i = 0; i < expensesArray.length; i++) {
+                var expense = expensesArray[i].cost;
+                totalExpenses = totalExpenses + expense;
+            }
+            return totalExpenses;
         }
 
     }
