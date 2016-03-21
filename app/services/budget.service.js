@@ -18,7 +18,7 @@
 
         var service = {
             setNewBudget: setNewBudget,
-            updateBudget: updateBudget,
+            updateBudgetTitle: updateBudgetTitle,
             getAllBudgets: getAllBudgets,
             deleteBudget: deleteBudget
         };
@@ -45,11 +45,11 @@
             });
         }
 
-        function updateBudget(id, budgetTitle) {
-            budgetsobj[id].$save({
-               title: budgetTitle 
-            }).then(function(ref) {
-                ref.key() === list[id].$id; // true
+        function updateBudgetTitle(id, budgetTitle) {
+            var udpdatedBudget = budgetsobj[id];
+            udpdatedBudget.title = budgetTitle;
+            budgetsobj.$save(udpdatedBudget).then(function(ref) {
+                // Do something
             });
         }
 
