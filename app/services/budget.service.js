@@ -23,6 +23,7 @@
             addExpense: addExpense,
             getAllBudgets: getAllBudgets,
             deleteBudget: deleteBudget,
+            deleteExpense: deleteExpense,
             calculateTotalExpenses: calculateTotalExpenses
         };
 
@@ -85,6 +86,18 @@
 
         function deleteBudget(key) {
             budgetsobj.$remove(key);
+        }
+
+        function deleteExpense(key, budgetId) {
+            var budget = budgetsobj[budgetId];
+            var tmpExpenses = budgetsobj[budgetId].expenses;
+            tmpExpenses.splice(key, 1);
+            budget.expenses = tmpExpenses;
+            // Save updated budget
+            budgetsobj.$save(budget).then(function(ref) {
+                // Do something
+            });
+      
         }
 
         function calculateTotalExpenses(expensesArray) {

@@ -19,9 +19,9 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-6">
-            <h3>Extra expenses: </h3>
-            <div ng-repeat="(key, value) in vm.allBudgets[vm.budgetId].expenses">
-                <p>{{key+1}}. Name: <strong> {{value.name}}</strong> Category: <strong>{{value.category}} </strong> Cost: <span class="label label-info">{{value.cost | currency:"€ " }}</span></p>
+            <h3>Extra expenses: </h3> 
+            <div ng-repeat="(key, value) in vm.allBudgets[vm.budgetId].expenses"> 
+                <p>{{key+1}}. Name: <strong> {{value.name}}</strong> Category: <strong>{{value.category}} </strong> Cost: <span class="label label-info">{{value.cost | currency:"€ " }}</span><span class="glyphicon glyphicon-trash" data-ng-click="vm.deleteExpense(key)" aria-hidden="true"></span></p>
             </div>
             <h4 class="pull-right padding-top-10">Total this month: <span class="label label-danger">{{vm.allBudgets[vm.budgetId].totalExpenses | currency:"€ "}}</span></h4>
         </div>
@@ -49,8 +49,6 @@
             <button type="button" class="btn btn-blue-900" ng-click="vm.monthlyExpense = true; vm.extraExpense = false; vm.addExpense(vm.budgetId, vm.expenseName, vm.expenseCategory, vm.expenseCost)">Add expense</button>
         </div>
     </div>
-
-
 </div>
 
 
