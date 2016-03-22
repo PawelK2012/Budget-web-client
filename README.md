@@ -27,9 +27,13 @@ Clone the Budget-App repository using git:
  <code>cd budget  </code>
 
 <h3>#Install Dependencies</h3>
-We have preconfigured npm to automatically run bower so we can simply do:
+We have preconfigured npm to automatically run npm and bower so we can simply do:
 
  <code> npm install </code>
+
+and then 
+
+<code> bower install </code>
 
 <h3>#Run the Application</h3>
 
