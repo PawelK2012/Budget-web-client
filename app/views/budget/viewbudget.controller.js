@@ -34,6 +34,9 @@
         vm.addExpense = function(id, expenseName, expenseCategory, expenseCost) {
             budgetService.addExpense(id,expenseName, expenseCategory, expenseCost)
         }
+        vm.deleteExpense = function(key) {
+            budgetService.deleteExpense(key, vm.budgetId);
+        }
     };
 
 
