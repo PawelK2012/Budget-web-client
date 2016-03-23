@@ -21,6 +21,7 @@
             setNewBudget: setNewBudget,
             updateBudgetTitle: updateBudgetTitle,
             addExpense: addExpense,
+            addMonthlyExpense: addMonthlyExpense,
             getAllBudgets: getAllBudgets,
             deleteBudget: deleteBudget,
             deleteExpense: deleteExpense,
@@ -61,7 +62,11 @@
             // Get budget by id
             var udpdatedBudget = budgetsobj[id];
             // Get expensess []
-            var expensesArray = udpdatedBudget.expenses;           
+            var expensesArray = udpdatedBudget.expenses;
+            // We need to check if epxenses[] exist in updadeBudget 
+            if (!expensesArray) {
+                expensesArray = [];
+            }
             var expense = {
                 name: expenseName,
                 category: expenseCategory,
@@ -78,6 +83,31 @@
             });
         }
 
+        function addMonthlyExpense(id, expenseName, expenseCategory, expenseCost) {
+            // Get budget by id
+            var udpdatedBudget = budgetsobj[id];
+            // Get expensess []
+            var expensesArray = udpdatedBudget.monthlyExpenses;
+            // We need to check if monthlyExpenses[] exist in updadeBudget 
+            if (!expensesArray) {
+                expensesArray = [];
+            }
+            var expense = {
+                name: expenseName,
+                category: expenseCategory,
+                cost: expenseCost
+            };
+            expensesArray.push(expense);
+            calculateTotalExpenses(expensesArray);
+            // Edit values
+            udpdatedBudget.totalMonthlyExpenses = totalExpenses;
+            udpdatedBudget.monthlyExpenses = expensesArray;
+            // Save updated budget
+            budgetsobj.$save(udpdatedBudget).then(function(ref) {
+                // Do something
+            });
+        }
+
         function getAllBudgets() {
             // Download the data from a Firebase reference into a (pseudo read-only) array
             // all server changes are applied in realtime
@@ -88,15 +118,27 @@
             budgetsobj.$remove(key);
         }
 
-        function deleteExpense(key, budgetId) {
+        function deleteExpense(key, expenseType, budgetId) {
             var budget = budgetsobj[budgetId];
-            var tmpExpenses = budgetsobj[budgetId].expenses;
-            tmpExpenses.splice(key, 1);
-            var total = calculateTotalExpenses(tmpExpenses);
-            budget.expenses = tmpExpenses;
-            budget.totalExpenses = total;
-            // Save updated budget
-            budgetsobj.$save(budget);      
+            // We need to check what type of expense to be deleted
+            if (expenseType === "monthly") {
+
+                var tmpExpenses = budgetsobj[budgetId].monthlyExpenses;
+                tmpExpenses.splice(key, 1);
+                var total = calculateTotalExpenses(tmpExpenses);
+                budget.monthlyExpenses = tmpExpenses;
+                budget.totalMonthlyExpenses = total;
+
+            } else if (expenseType === "extra") {
+
+                var tmpExpenses = budgetsobj[budgetId].expenses;
+                tmpExpenses.splice(key, 1);
+                var total = calculateTotalExpenses(tmpExpenses);
+                budget.expenses = tmpExpenses;
+                budget.totalExpenses = total;
+
+            }
+            budgetsobj.$save(budget);
         }
 
         function calculateTotalExpenses(expensesArray) {

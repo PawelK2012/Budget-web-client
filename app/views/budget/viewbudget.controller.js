@@ -32,10 +32,19 @@
             budgetService.updateBudgetTitle(id, title);
         }
         vm.addExpense = function(id, expenseName, expenseCategory, expenseCost) {
-            budgetService.addExpense(id,expenseName, expenseCategory, expenseCost)
+            budgetService.addExpense(id,expenseName, expenseCategory, expenseCost);
+            vm.expenseName = '';
+            vm.expenseCategory = '';
+            vm.expenseCost = '';
         }
-        vm.deleteExpense = function(key) {
-            budgetService.deleteExpense(key, vm.budgetId);
+        vm.addMonthlyExpense = function(id, expenseName, expenseCategory, expenseCost) {
+            budgetService.addMonthlyExpense(id,expenseName, expenseCategory, expenseCost);
+            vm.monthlyExpenseName = '';
+            vm.monthlyExpenseCategory = '';
+            vm.monthlyExpenseCost = '';
+        }
+        vm.deleteExpense = function(key, expenseType) {
+            budgetService.deleteExpense(key, expenseType, vm.budgetId);
         }
     };
 
