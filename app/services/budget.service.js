@@ -92,12 +92,11 @@
             var budget = budgetsobj[budgetId];
             var tmpExpenses = budgetsobj[budgetId].expenses;
             tmpExpenses.splice(key, 1);
+            var total = calculateTotalExpenses(tmpExpenses);
             budget.expenses = tmpExpenses;
+            budget.totalExpenses = total;
             // Save updated budget
-            budgetsobj.$save(budget).then(function(ref) {
-                // Do something
-            });
-      
+            budgetsobj.$save(budget);      
         }
 
         function calculateTotalExpenses(expensesArray) {
