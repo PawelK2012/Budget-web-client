@@ -57,22 +57,48 @@
             });
         }
 
-        function addExpense(id, expenseName, expenseCategory, expenseCost) {
+        function addExpense(id, expenseName, expenseCategory, expenseCost, expenseType) {
             // Get budget by id
             var udpdatedBudget = budgetsobj[id];
-            // Get expensess []
-            var expensesArray = udpdatedBudget.expenses;           
-            var expense = {
-                name: expenseName,
-                category: expenseCategory,
-                cost: expenseCost
-            };
-            expensesArray.push(expense);
-            calculateTotalExpenses(expensesArray);
-            // Edit values
-            udpdatedBudget.totalExpenses = totalExpenses;
-            udpdatedBudget.expenses = expensesArray;
-            // Save updated budget
+            // We need to check what type of expense to be added
+            if (expenseType === "monthly") {
+
+                var expensesArray = udpdatedBudget.monthlyExpenses;
+                // Check if monthlyExpenses[] exist in updadeBudget 
+                if (!expensesArray) {
+                    expensesArray = [];
+                }
+                var expense = {
+                    name: expenseName,
+                    category: expenseCategory,
+                    cost: expenseCost
+                };
+                expensesArray.push(expense);
+                calculateTotalExpenses(expensesArray);
+                // Edit values
+                udpdatedBudget.totalMonthlyExpenses = totalExpenses;
+                udpdatedBudget.monthlyExpenses = expensesArray;
+
+            } else if (expenseType === "extra") {
+
+                var expensesArray = udpdatedBudget.expenses;
+                // Check if epxenses[] exist in updadeBudget 
+                if (!expensesArray) {
+                    expensesArray = [];
+                }
+                var expense = {
+                    name: expenseName,
+                    category: expenseCategory,
+                    cost: expenseCost
+                };
+                expensesArray.push(expense);
+                calculateTotalExpenses(expensesArray);
+                // Edit values
+                udpdatedBudget.totalExpenses = totalExpenses;
+                udpdatedBudget.expenses = expensesArray;
+
+            }
+
             budgetsobj.$save(udpdatedBudget).then(function(ref) {
                 // Do something
             });
@@ -88,16 +114,27 @@
             budgetsobj.$remove(key);
         }
 
-        function deleteExpense(key, budgetId) {
+        function deleteExpense(key, expenseType, budgetId) {
             var budget = budgetsobj[budgetId];
-            var tmpExpenses = budgetsobj[budgetId].expenses;
-            tmpExpenses.splice(key, 1);
-            budget.expenses = tmpExpenses;
-            // Save updated budget
-            budgetsobj.$save(budget).then(function(ref) {
-                // Do something
-            });
-      
+            // We need to check what type of expense to be deleted
+            if (expenseType === "monthly") {
+
+                var tmpExpenses = budgetsobj[budgetId].monthlyExpenses;
+                tmpExpenses.splice(key, 1);
+                var total = calculateTotalExpenses(tmpExpenses);
+                budget.monthlyExpenses = tmpExpenses;
+                budget.totalMonthlyExpenses = total;
+
+            } else if (expenseType === "extra") {
+
+                var tmpExpenses = budgetsobj[budgetId].expenses;
+                tmpExpenses.splice(key, 1);
+                var total = calculateTotalExpenses(tmpExpenses);
+                budget.expenses = tmpExpenses;
+                budget.totalExpenses = total;
+
+            }
+            budgetsobj.$save(budget);
         }
 
         function calculateTotalExpenses(expensesArray) {
