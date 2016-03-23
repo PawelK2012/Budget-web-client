@@ -62,7 +62,7 @@
             </form>
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="expensesForm.$invalid" data-ng-click="vm.addExpense(vm.budgetId, vm.expenseName, vm.expenseCategory, vm.expenseCost)">Add expense</button>
+            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="expensesForm.$invalid" data-ng-click="vm.expenseType = 'extra'; vm.addExpense(vm.budgetId, vm.expenseName, vm.expenseCategory, vm.expenseCost, vm.expenseType)">Add expense</button>
         </div>
     </div>
     <div class="row monthly-expense" ng-show="vm.monthlyExpense">
@@ -72,7 +72,7 @@
             </form>
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="monthlyExpensesForm.$invalid" data-ng-click="vm.addMonthlyExpense(vm.budgetId, vm.monthlyExpenseName, vm.monthlyExpenseCategory, vm.monthlyExpenseCost)">Create monthly expense</button>
+            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="monthlyExpensesForm.$invalid" data-ng-click="vm.expenseType = 'monthly'; vm.addExpense(vm.budgetId, vm.monthlyExpenseName, vm.monthlyExpenseCategory, vm.monthlyExpenseCost, vm.expenseType)">Create monthly expense</button>
         </div>
     </div>
 </div>

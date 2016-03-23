@@ -11,16 +11,23 @@
             </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 padding-bottom-20">
+    <div class="row padding-bottom-20">
+        <div class="col-xs-12">
             <p class="pull-left">Available budgets: <span class="badge">{{vm.budgets.length}}</span></p>
             <a class="btn btn-blue-900 pull-right" href="#/createbudget">Create budget</a>
         </div>
+        <div class="col-xs-12">
+            <label>
+                <input type="radio" ng-model="direction" name="direction" checked> ascending
+            </label>
+            <label>
+                <input type="radio" ng-model="direction" name="direction" value="reverse"> descending
+            </label>
+        </div>
     </div>
     <div class="row">
-        <div ng-repeat="(key, value) in vm.budgets | filter: query" ng-attr-class="{{!$last && 'row border-btm items' || 'row items'}}">
+        <div ng-repeat="(key, value) in vm.budgets | filter: query | orderBy: whyIamHere:direction" ng-attr-class="{{!$last && 'row border-btm items' || 'row items'}}">
             <div class="pull-left col-xs-12">
-           
                 <h4 class="pull-left">{{$index + 1}}. <a href="#/viewbudget/{{key}}">{{value.title}}</a></h4>
                 <span class="glyphicon glyphicon-trash pull-right padding-top-25" data-ng-click="vm.delete($index)" aria-hidden="true"></span>
             </div>

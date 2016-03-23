@@ -31,17 +31,11 @@
         vm.updateBudgetTitle = function(id, title) {
             budgetService.updateBudgetTitle(id, title);
         }
-        vm.addExpense = function(id, expenseName, expenseCategory, expenseCost) {
-            budgetService.addExpense(id,expenseName, expenseCategory, expenseCost);
+        vm.addExpense = function(id, expenseName, expenseCategory, expenseCost, expenseType) {
+            budgetService.addExpense(id,expenseName, expenseCategory, expenseCost, expenseType);
             vm.expenseName = '';
             vm.expenseCategory = '';
             vm.expenseCost = '';
-        }
-        vm.addMonthlyExpense = function(id, expenseName, expenseCategory, expenseCost) {
-            budgetService.addMonthlyExpense(id,expenseName, expenseCategory, expenseCost);
-            vm.monthlyExpenseName = '';
-            vm.monthlyExpenseCategory = '';
-            vm.monthlyExpenseCost = '';
         }
         vm.deleteExpense = function(key, expenseType) {
             budgetService.deleteExpense(key, expenseType, vm.budgetId);
