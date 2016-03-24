@@ -16,6 +16,7 @@
         // consider refactoring getAllBudgets()
         var allBudgets = [];
         var totalExpenses = 0;
+        var currentBalance = 0;
 
         var service = {
             setNewBudget: setNewBudget,
@@ -24,7 +25,8 @@
             getAllBudgets: getAllBudgets,
             deleteBudget: deleteBudget,
             deleteExpense: deleteExpense,
-            calculateTotalExpenses: calculateTotalExpenses
+            calculateTotalExpenses: calculateTotalExpenses,
+            calculateCurrentBalance: calculateCurrentBalance
         };
 
         return service;
@@ -60,6 +62,9 @@
         function addExpense(id, expenseName, expenseCategory, expenseCost, expenseType) {
             // Get budget by id
             var udpdatedBudget = budgetsobj[id];
+            var staBudget = udpdatedBudget.firstDayBalance;
+            var totalMonExpe = udpdatedBudget.totalMonthlyExpenses;
+            var totalExpe = udpdatedBudget.totalExpenses;
             // We need to check what type of expense to be added
             if (expenseType === "monthly") {
 
@@ -75,13 +80,16 @@
                 };
                 expensesArray.push(expense);
                 calculateTotalExpenses(expensesArray);
+                calculateCurrentBalance(staBudget, totalExpe, totalMonExpe);
                 // Edit values
                 udpdatedBudget.totalMonthlyExpenses = totalExpenses;
                 udpdatedBudget.monthlyExpenses = expensesArray;
+                udpdatedBudget.currentBalance = currentBalance;
 
             } else if (expenseType === "extra") {
 
                 var expensesArray = udpdatedBudget.expenses;
+
                 // Check if epxenses[] exist in updadeBudget 
                 if (!expensesArray) {
                     expensesArray = [];
@@ -93,9 +101,11 @@
                 };
                 expensesArray.push(expense);
                 calculateTotalExpenses(expensesArray);
+                calculateCurrentBalance(staBudget, totalExpenses, totalMonExpe);
                 // Edit values
                 udpdatedBudget.totalExpenses = totalExpenses;
                 udpdatedBudget.expenses = expensesArray;
+                udpdatedBudget.currentBalance = currentBalance;
 
             }
 
@@ -144,6 +154,12 @@
                 totalExpenses = totalExpenses + expense;
             }
             return totalExpenses;
+        }
+
+        function calculateCurrentBalance(staBudget, totalExpenses, totalMonExpe ){
+            var expenses = totalExpenses + totalMonExpe;
+            currentBalance = staBudget - expenses;
+            return currentBalance;
         }
 
     }
