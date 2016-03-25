@@ -126,22 +126,28 @@
 
         function deleteExpense(key, expenseType, budgetId) {
             var budget = budgetsobj[budgetId];
+            var currentBalance  = budget.currentBalance;
+
             // We need to check what type of expense to be deleted
             if (expenseType === "monthly") {
 
                 var tmpExpenses = budgetsobj[budgetId].monthlyExpenses;
+                var monthlyExpenseCost = budgetsobj[budgetId].monthlyExpenses[key].cost;
                 tmpExpenses.splice(key, 1);
                 var total = calculateTotalExpenses(tmpExpenses);
                 budget.monthlyExpenses = tmpExpenses;
                 budget.totalMonthlyExpenses = total;
+                budget.currentBalance = currentBalance + monthlyExpenseCost;
 
             } else if (expenseType === "extra") {
 
                 var tmpExpenses = budgetsobj[budgetId].expenses;
+                var expenseCost = budgetsobj[budgetId].expenses[key].cost;
                 tmpExpenses.splice(key, 1);
                 var total = calculateTotalExpenses(tmpExpenses);
                 budget.expenses = tmpExpenses;
                 budget.totalExpenses = total;
+                budget.currentBalance = currentBalance + expenseCost;
 
             }
             budgetsobj.$save(budget);
