@@ -3,15 +3,18 @@ Budget app - an app that helps you manage your monthly budget on the go.
 
 This project relays on AngularJS & Firebase. We use Firebase to authenticate users and store data on the back-end. 
 
+You can view live example <a href="http://pawelkaim.com/d/budget/">here</a>.
+
 #Project features: 
 
 - register user with Firebase
 - login user
 - log-out
-- create budget
-- view budget details
+- create, read, update & delete budget
 - add expenses
 - add monthly expenses
+- calculate monthly and extra expenses
+- calculate total & current ballance
 - angular form validation
 
 #Getting Started
@@ -59,24 +62,7 @@ You can update the Angular dependencies by running:
 
 
 #TO DO:
-- [ ] <strong>fix $rootScope issue in budgetservice</strong>
-- [x] <strong>investigate budget structure</strong>
-- [x] <strong>create different SASS modules for views, widgets & directives</strong>
-- [x] improve importing sass modules
-- [x] fix gulp sass output 
-- [x] create directive for nav menu
-- [ ] create user page
-- [ ] allow users to update profile
-- [ ] allow users to edit budget
-- [ ] allow users to create budget
-- [x] allow users to view budget
-- [x] set up git
-- [x] set up sass
-- [x] add form validation for login and register forms
-- [x] clean up package.json and add required dependencies
-- [ ] home page design
-- [ ] budget page design
-- [ ] view budget design
-- [ ] profile page design
-- [ ] wireframes
-- [x] delete budget
+- [ ] <strong> add some data visualisation to view budget </strong>
+- [ ] <strong>fix current issue with bootstrap-sass </strong>
+- [ ] add fire base do dependencies
+
