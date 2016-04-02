@@ -1,9 +1,10 @@
 <div class="container budget">
+<form name="createBudgetForm">
     <div class="row">
         <div class="col-xs-12">
             <h1 class="padding-bottom-20"> Create budget</h1>
             <div class="group paper-input">
-                <input type="text" data-ng-model="vm.budgetTitle">
+                <input type="text" data-ng-model="vm.budgetTitle" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Title</label>
@@ -13,7 +14,7 @@
     <div class="row">
         <div class="col-xs-6">
             <div class="group paper-input">
-                <input type="date" data-ng-model="vm.startDate">
+                <input type="date" data-ng-model="vm.startDate" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Start date</label>
@@ -21,7 +22,7 @@
         </div>
         <div class="col-xs-6">
             <div class="group paper-input">
-                <input type="date" data-ng-model="vm.endDate">
+                <input type="date" data-ng-model="vm.endDate" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>End date</label>
@@ -31,14 +32,15 @@
     <div class="row">
         <div class="col-xs-6">
             <div class="group paper-input">
-                <input type="number" data-ng-model="vm.startingBudget">
+                <input type="number" data-ng-model="vm.startingBudget" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Starting budget</label>
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-blue-900 pull-right" ng-click="vm.createBudget(vm.budgetTitle, vm.startDate, vm.endDate, vm.startingBudget)">Create</button>
+    </form>
+    <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="createBudgetForm.$invalid" ng-click="vm.createBudget(vm.budgetTitle, vm.startDate, vm.endDate, vm.startingBudget)">Create</button>
 </div>
 <div class="container">
     <div class="row">
@@ -75,20 +77,24 @@
 <div class="container extra-expense" ng-show="vm.extraExpense">
     <div class="row">
         <div class="col-xs-12">
+        <form name="createExpenseForm">
             <add-expense extra-expense="vm.extraExpense" expense-name="vm.expenseName" expense-category="vm.expenseCategory" expense-cost="vm.expenseCost" />
+            </form>
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-blue-900 pull-right" ng-click="vm.createExpense(vm.expenseName, vm.expenseCategory, vm.expenseCost)">Add expense</button>
+            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="createExpenseForm.$invalid" ng-click="vm.createExpense(vm.expenseName, vm.expenseCategory, vm.expenseCost)">Add expense</button>
         </div>
     </div>
 </div>
 <div class="container monthly-expense" ng-show="vm.monthlyExpense">
     <div class="row">
         <div class="col-xs-12">
+        <form name="createExtraExpenseForm">
             <add-expense extra-expense="vm.extraExpense" expense-name="vm.monthlyExpenseName" expense-category="vm.monthlyExpenseCategory" expense-cost="vm.monthlyExpenseCost" />
+            </form>
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-blue-900 pull-right" ng-click="vm.createMonthlyExpense(vm.monthlyExpenseName, vm.monthlyExpenseCategory, vm.monthlyExpenseCost)">Create monthly expense</button>
+            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="createExtraExpenseForm.$invalid" ng-click="vm.createMonthlyExpense(vm.monthlyExpenseName, vm.monthlyExpenseCategory, vm.monthlyExpenseCost)">Create monthly expense</button>
         </div>
     </div>
 </div>
