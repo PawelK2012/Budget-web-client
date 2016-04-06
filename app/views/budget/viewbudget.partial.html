@@ -13,7 +13,7 @@
                 </form>
                 <a data-ng-click="vm.editTitle = false">Cancel</a>
             </div>
-            <ul class="list-inline">
+            <ul class="list-inline padding-top-20">
                 <li>Start date: <span class="label label-info">{{vm.allBudgets[vm.budgetId].budgetStartDate}}</span></li>
                 <li>End date: <span class="label label-info">{{vm.allBudgets[vm.budgetId].budgetEndDate}}</span></li>
                 <li>Start balance: <span class="label label-success"> {{vm.allBudgets[vm.budgetId].firstDayBalance | currency:"€ "}}</span></li>
@@ -31,7 +31,7 @@
                     <span class="glyphicon glyphicon-trash" data-ng-click="vm.expenseType = 'extra'; vm.deleteExpense(key, vm.expenseType)" aria-hidden="true"></span>
                 </li>
             </ul>
-            <h4 class="pull-right padding-top-10">Total this month: <span class="label label-danger">{{vm.allBudgets[vm.budgetId].totalExpenses | currency:"€ "}}</span></h4>
+            <h4 class="padding-top-10">Total this month: <span class="label label-danger">{{vm.allBudgets[vm.budgetId].totalExpenses | currency:"€ "}}</span></h4>
         </div>
         <div class="col-xs-122 col-sm-4">
             <h3>Monthly expenses: </h3>
@@ -41,7 +41,7 @@
                     <span class="glyphicon glyphicon-trash" data-ng-click="vm.expenseType = 'monthly'; vm.deleteExpense(key, vm.expenseType)" aria-hidden="true"></span>
                 </li>
             </ul>
-            <h4 class="pull-right padding-top-10">Planed expenses this month: <span class="label label-danger">{{vm.allBudgets[vm.budgetId].totalMonthlyExpenses | currency:"€ "}}</span></h4>
+            <h4 class="padding-top-10">Planed expenses this month: <span class="label label-danger">{{vm.allBudgets[vm.budgetId].totalMonthlyExpenses | currency:"€ "}}</span></h4>
         </div>
         <div class="col-xs-12 col-sm-4">
           <div google-chart chart="chartObject" ></div>

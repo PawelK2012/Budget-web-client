@@ -26,8 +26,9 @@
 
         var vm = this;
         vm.allBudgets = budgetService.getAllBudgets();
+        vm.currentBudget = vm.allBudgets[0];
         vm.budgetId = $routeParams.itemId;
-        vm.currentBudget = vm.allBudgets[vm.budgetId];
+        
         vm.updateBudgetTitle = function(id, title) {
             budgetService.updateBudgetTitle(id, title);
         }
@@ -40,7 +41,7 @@
         vm.deleteExpense = function(key, expenseType) {
             budgetService.deleteExpense(key, expenseType, vm.budgetId);
         }
-
+        /// TO DO: Move chart to separate directive/service
         $scope.chartObject = {};
 
         $scope.chartObject.type = "PieChart";
@@ -81,10 +82,10 @@
         };
 
         $scope.chartObject.options = {
-            title: 'Monthly expenses',
+            title: 'Total expenses: ',
             titleTextStyle: { color: '#01579B', fontSize: 24 },
             backgroundColor: '#E1F5FE',
-            chartArea: { left: 0, top: 40, width: '100%', height: '75%' }
+            chartArea: { left: 0, top: 62, width: '100%', height: '100%' }
         };
 
     };
