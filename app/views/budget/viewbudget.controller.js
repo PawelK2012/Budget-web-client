@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('myApp.viewbudget', ['ngRoute', 'firebase'])
+    angular.module('myApp.viewbudget', ['ngRoute', 'firebase', 'googlechart'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/viewbudget/:itemId', {
@@ -20,19 +20,20 @@
 
     .controller('ViewbudgetCtrl', ViewbudgetCtrl);
 
-    ViewbudgetCtrl.$inject = ['$routeParams', 'budgetService']
+    ViewbudgetCtrl.$inject = ['$routeParams', '$scope', 'budgetService']
 
-    function ViewbudgetCtrl($routeParams, budgetService) {
+    function ViewbudgetCtrl($routeParams, $scope, budgetService) {
 
         var vm = this;
         vm.allBudgets = budgetService.getAllBudgets();
+        vm.currentBudget = vm.allBudgets[0];
         vm.budgetId = $routeParams.itemId;
-        vm.currentBudget = vm.allBudgets[vm.budgetId];
+        
         vm.updateBudgetTitle = function(id, title) {
             budgetService.updateBudgetTitle(id, title);
         }
         vm.addExpense = function(id, expenseName, expenseCategory, expenseCost, expenseType) {
-            budgetService.addExpense(id,expenseName, expenseCategory, expenseCost, expenseType);
+            budgetService.addExpense(id, expenseName, expenseCategory, expenseCost, expenseType);
             vm.expenseName = '';
             vm.expenseCategory = '';
             vm.expenseCost = '';
@@ -40,6 +41,53 @@
         vm.deleteExpense = function(key, expenseType) {
             budgetService.deleteExpense(key, expenseType, vm.budgetId);
         }
+        /// TO DO: Move chart to separate directive/service
+        $scope.chartObject = {};
+
+        $scope.chartObject.type = "PieChart";
+
+        $scope.onions = [
+            { v: "Onions" },
+            { v: 20 },
+        ];
+
+        $scope.chartObject.data = {
+            "cols": [
+                { id: "t", label: "Topping", type: "string" },
+                { id: "s", label: "Slices", type: "number" }
+            ],
+            "rows": [{
+                    c: [
+                        { v: "Mushrooms" },
+                        { v: 20 },
+                    ]
+                },
+                { c: $scope.onions }, {
+                    c: [
+                        { v: "Olives" },
+                        { v: 20 }
+                    ]
+                }, {
+                    c: [
+                        { v: "Zucchini" },
+                        { v: 20 },
+                    ]
+                }, {
+                    c: [
+                        { v: "Pepperoni" },
+                        { v: 20 },
+                    ]
+                }
+            ]
+        };
+
+        $scope.chartObject.options = {
+            title: 'Total expenses: ',
+            titleTextStyle: { color: '#01579B', fontSize: 24 },
+            backgroundColor: '#E1F5FE',
+            chartArea: { left: 0, top: 62, width: '100%', height: '100%' }
+        };
+
     };
 
 

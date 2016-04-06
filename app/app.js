@@ -3,6 +3,7 @@
 angular.module('myApp', [
   'ngRoute',
   'firebase',
+  'googlechart',
   'myApp.authentication',
   'myApp.budget',
   'myApp.viewbudget',
