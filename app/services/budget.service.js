@@ -5,7 +5,7 @@
         .module('myApp')
         .factory('budgetService', budgetService);
 
-    function budgetService($rootScope, $firebase, $firebaseArray, $location) {
+    function budgetService($rootScope, $firebase, $firebaseArray, $firebaseObject, $location) {
         var FIREBASE_URL = new Firebase('https://budget-db-app.firebaseio.com/');
         // TO FIX: Issue with $rootScope not available on frist load
         var ref = new Firebase(FIREBASE_URL + '/users/' + $rootScope.currentUser.$id + '/budgets');
@@ -23,6 +23,7 @@
             updateBudgetTitle: updateBudgetTitle,
             addExpense: addExpense,
             getAllBudgets: getAllBudgets,
+            getBudgetById: getBudgetById,
             deleteBudget: deleteBudget,
             deleteExpense: deleteExpense,
             calculateTotalExpenses: calculateTotalExpenses,
@@ -118,6 +119,10 @@
             // Download the data from a Firebase reference into a (pseudo read-only) array
             // all server changes are applied in realtime
             return allBudgets = $firebaseArray(ref);
+        }
+
+        function getBudgetById (){
+           // TO DO
         }
 
         function deleteBudget(key) {
