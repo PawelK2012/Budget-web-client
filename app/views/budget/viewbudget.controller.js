@@ -25,10 +25,13 @@
     function ViewbudgetCtrl($routeParams, $scope, budgetService) {
 
         var vm = this;
-        vm.allBudgets = budgetService.getAllBudgets();
-        vm.currentBudget = vm.allBudgets[0];
         vm.budgetId = $routeParams.itemId;
-        
+        vm.allBudgets = []; 
+        vm.allBudgets = budgetService.getAllBudgets();
+
+        vm.currentBudget = vm.allBudgets[$routeParams.itemId];
+
+
         vm.updateBudgetTitle = function(id, title) {
             budgetService.updateBudgetTitle(id, title);
         }
@@ -39,9 +42,9 @@
             vm.expenseCost = '';
         }
         vm.deleteExpense = function(key, expenseType) {
-            budgetService.deleteExpense(key, expenseType, vm.budgetId);
-        }
-        /// TO DO: Move chart to separate directive/service
+                budgetService.deleteExpense(key, expenseType, vm.budgetId);
+            }
+            // TO DO: Move chart to separate directive/service
         $scope.chartObject = {};
 
         $scope.chartObject.type = "PieChart";
@@ -58,7 +61,7 @@
             ],
             "rows": [{
                     c: [
-                        { v: "Mushrooms" },
+                        { v: "Cucumebrs"},
                         { v: 20 },
                     ]
                 },
@@ -80,7 +83,7 @@
                 }
             ]
         };
-
+        // Chart styles
         $scope.chartObject.options = {
             title: 'Total expenses: ',
             titleTextStyle: { color: '#01579B', fontSize: 24 },
