@@ -1,23 +1,23 @@
 <div class="container budget">
     <div class="row">
         <div class="col-xs-12 padding-bottom-20">
-            <h1 ng-show="!vm.editTitle" ng-mouseover="vm.editTitleIcon = true" ng-mouseleave="vm.editTitleIcon = false">{{vm.allBudgets[vm.budgetId].title}}<img class="svg-icon" ng-show="vm.editTitleIcon" data-ng-click="vm.editTitle = true" src="icons/pencil.svg"/></h1>
+            <h1 ng-show="!vm.editTitle" ng-mouseover="vm.editTitleIcon = true" ng-mouseleave="vm.editTitleIcon = false">{{vm.currentBudget.title}}<img class="svg-icon" ng-show="vm.editTitleIcon" data-ng-click="vm.editTitle = true" src="icons/pencil.svg"/></h1>
             <div class="edit-input-container margin-bottom-10" ng-show="vm.editTitle">
                 <form class="margin-top-20" ng-submit="vm.updateBudgetTitle(vm.budgetId, vm.budgetTitle); vm.editTitle = false">
                     <div class="group-no-margin paper-input">
                         <input type="text" data-ng-model="vm.budgetTitle" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>{{vm.allBudgets[vm.budgetId].title}}</label>
+                        <label>{{vm.currentBudget.title}}</label>
                     </div>
                 </form>
                 <a data-ng-click="vm.editTitle = false">Cancel</a>
             </div>
             <ul class="list-inline padding-top-20">
-                <li>Start date: <span class="label label-info">{{vm.allBudgets[vm.budgetId].budgetStartDate}}</span></li>
-                <li>End date: <span class="label label-info">{{vm.allBudgets[vm.budgetId].budgetEndDate}}</span></li>
-                <li>Start balance: <span class="label label-success"> {{vm.allBudgets[vm.budgetId].firstDayBalance | currency:"€ "}}</span></li>
-                <li>Current ballance: <span class="label label-warning label-big">{{vm.allBudgets[vm.budgetId].currentBalance | currency:"€ "}}</span></li>
+                <li>Start date: <span class="label label-info">{{vm.currentBudget.budgetStartDate}}</span></li>
+                <li>End date: <span class="label label-info">{{vm.currentBudget.budgetEndDate}}</span></li>
+                <li>Start balance: <span class="label label-success"> {{vm.currentBudget.firstDayBalance | currency:"€ "}}</span></li>
+                <li>Current ballance: <span class="label label-warning label-big">{{vm.currentBudget.currentBalance | currency:"€ "}}</span></li>
             </ul>
         </div>
          
@@ -26,22 +26,22 @@
         <div class="col-xs-12 col-sm-4">
             <h3>Extra expenses: </h3>
             <ul class="list-unstyled">
-                <li class="padding-bottom-10" ng-repeat="(key, value) in vm.allBudgets[vm.budgetId].expenses">
+                <li class="padding-bottom-10" ng-repeat="(key, value) in vm.currentBudget.expenses">
                     {{key+1}}. Name: <strong> {{value.name}}</strong> Category: <strong>{{value.category}} </strong> Cost: <span class="label label-info">{{value.cost | currency:"€ " }}</span>
                     <span class="glyphicon glyphicon-trash" data-ng-click="vm.expenseType = 'extra'; vm.deleteExpense(key, vm.expenseType)" aria-hidden="true"></span>
                 </li>
             </ul>
-            <h4 class="padding-top-10">Total this month: <span class="label label-danger">{{vm.allBudgets[vm.budgetId].totalExpenses | currency:"€ "}}</span></h4>
+            <h4 class="padding-top-10">Total this month: <span class="label label-danger">{{vm.currentBudget.totalExpenses | currency:"€ "}}</span></h4>
         </div>
         <div class="col-xs-12 col-sm-4">
             <h3>Monthly expenses: </h3>
             <ul class="list-unstyled">
-                <li class="padding-bottom-10" ng-repeat="(key, value) in vm.allBudgets[vm.budgetId].monthlyExpenses">
+                <li class="padding-bottom-10" ng-repeat="(key, value) in vm.currentBudget.monthlyExpenses">
                     {{key+1}}. Name: <strong> {{value.name}}</strong> Category: <strong>{{value.category}} </strong> Cost: <span class="label label-info">{{value.cost | currency:"€ "}}</span>
                     <span class="glyphicon glyphicon-trash" data-ng-click="vm.expenseType = 'monthly'; vm.deleteExpense(key, vm.expenseType)" aria-hidden="true"></span>
                 </li>
             </ul>
-            <h4 class="padding-top-10">Planed expenses this month: <span class="label label-danger">{{vm.allBudgets[vm.budgetId].totalMonthlyExpenses | currency:"€ "}}</span></h4>
+            <h4 class="padding-top-10">Planed expenses this month: <span class="label label-danger">{{vm.currentBudget.totalMonthlyExpenses | currency:"€ "}}</span></h4>
         </div>
         <div class="col-xs-12 col-sm-4">
           <div google-chart chart="chartObject" ></div>
