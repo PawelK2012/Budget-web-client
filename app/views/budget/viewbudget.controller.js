@@ -26,10 +26,10 @@
 
         var vm = this;
         vm.budgetId = $routeParams.itemId;
-        vm.allBudgets = []; 
-        vm.allBudgets = budgetService.getAllBudgets();
+        // vm.allBudgets = []; 
+        // vm.allBudgets = budgetService.getAllBudgets();
 
-        vm.currentBudget = vm.allBudgets[$routeParams.itemId];
+        vm.currentBudget = budgetService.getBudgetById(vm.budgetId);
 
 
         vm.updateBudgetTitle = function(id, title) {
@@ -43,8 +43,8 @@
         }
         vm.deleteExpense = function(key, expenseType) {
                 budgetService.deleteExpense(key, expenseType, vm.budgetId);
-            }
-            // TO DO: Move chart to separate directive/service
+        }
+        // TO DO: Move chart to separate directive/service
         $scope.chartObject = {};
 
         $scope.chartObject.type = "PieChart";

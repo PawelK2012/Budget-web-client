@@ -29,6 +29,9 @@
         vm.delete = function(key) {
             budgetService.deleteBudget(key);
         }
+        vm.getBudgetById = function(id){
+            budgetService.getBudgetById(id);
+        }
     };
 
 
