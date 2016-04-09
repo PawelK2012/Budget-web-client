@@ -12,6 +12,9 @@
         var budgetsArray = [];
         budgetsArray = $firebaseArray(ref);
         var budgetObject = $firebaseObject(ref);
+        // TO DO: Do I need allBudgets[]? budgetsArray should be enough
+        // to store and watch data in reall time
+        // consider refactoring getAllBudgets()
         var allBudgets = [];
         var totalExpenses = 0;
         var currentBalance = 0;
@@ -119,9 +122,8 @@
             return allBudgets = $firebaseArray(ref);
         }
 
-        function getBudgetById(id) {
-            // Returns $FirebaseObject 
-            return budgetObject[id];
+        function getBudgetById (id){
+           return budgetObject[id];
         }
 
         function deleteBudget(key) {
@@ -130,7 +132,7 @@
 
         function deleteExpense(key, expenseType, budgetId) {
             var budget = budgetsArray[budgetId];
-            var currentBalance = budget.currentBalance;
+            var currentBalance  = budget.currentBalance;
 
             // We need to check what type of expense to be deleted
             if (expenseType === "monthly") {
@@ -166,7 +168,7 @@
             return totalExpenses;
         }
 
-        function calculateCurrentBalance(staBudget, totalExpenses, totalMonExpe) {
+        function calculateCurrentBalance(staBudget, totalExpenses, totalMonExpe ){
             var expenses = totalExpenses + totalMonExpe;
             currentBalance = staBudget - expenses;
             return currentBalance;
