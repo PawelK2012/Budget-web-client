@@ -9,12 +9,12 @@
         var FIREBASE_URL = new Firebase('https://budget-db-app.firebaseio.com/');
         // TO FIX: Issue with $rootScope not available on frist load
         var ref = new Firebase(FIREBASE_URL + '/users/' + $rootScope.currentUser.$id + '/budgets');
-        var budgetsArray = [];
-        budgetsArray = $firebaseArray(ref);
-        var budgetObject = $firebaseObject(ref);
+        var budgetsArray = $firebaseArray(ref);
+        var budgetsObject = $firebaseObject(ref);
         var allBudgets = [];
         var totalExpenses = 0;
         var currentBalance = 0;
+        var currentBudget = {};
 
         var service = {
             setNewBudget: setNewBudget,
@@ -119,9 +119,9 @@
             return allBudgets = $firebaseArray(ref);
         }
 
-        function getBudgetById(id) {
-            // Returns $FirebaseObject 
-            return budgetObject[id];
+        function getBudgetById (id){
+           // Retursn firebaseObject of selected budget
+           return currentBudget = budgetsObject[id];
         }
 
         function deleteBudget(key) {
@@ -130,7 +130,7 @@
 
         function deleteExpense(key, expenseType, budgetId) {
             var budget = budgetsArray[budgetId];
-            var currentBalance = budget.currentBalance;
+            var currentBalance  = budget.currentBalance;
 
             // We need to check what type of expense to be deleted
             if (expenseType === "monthly") {
@@ -166,7 +166,7 @@
             return totalExpenses;
         }
 
-        function calculateCurrentBalance(staBudget, totalExpenses, totalMonExpe) {
+        function calculateCurrentBalance(staBudget, totalExpenses, totalMonExpe ){
             var expenses = totalExpenses + totalMonExpe;
             currentBalance = staBudget - expenses;
             return currentBalance;

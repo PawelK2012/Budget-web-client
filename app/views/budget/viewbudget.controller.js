@@ -26,7 +26,12 @@
 
         var vm = this;
         vm.budgetId = $routeParams.itemId;
-        vm.currentBudget = budgetService.getBudgetById(vm.budgetId);
+        vm.allBudgets = []; 
+        vm.allBudgets = budgetService.getAllBudgets();
+
+        vm.currentBudget = vm.allBudgets[$routeParams.itemId];
+
+
         vm.updateBudgetTitle = function(id, title) {
             budgetService.updateBudgetTitle(id, title);
         }
@@ -56,7 +61,7 @@
             ],
             "rows": [{
                     c: [
-                        { v: "Cucumebrs" },
+                        { v: "Cucumebrs"},
                         { v: 20 },
                     ]
                 },
