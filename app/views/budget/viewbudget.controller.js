@@ -26,11 +26,7 @@
 
         var vm = this;
         vm.budgetId = $routeParams.itemId;
-        vm.allBudgets = []; 
-        vm.allBudgets = budgetService.getAllBudgets();
-
-        vm.currentBudget = vm.allBudgets[$routeParams.itemId];
-
+        vm.currentBudget = budgetService.getBudgetByKey(vm.budgetId);
 
         vm.updateBudgetTitle = function(id, title) {
             budgetService.updateBudgetTitle(id, title);
@@ -47,11 +43,11 @@
             // TO DO: Move chart to separate directive/service
         $scope.chartObject = {};
 
-        $scope.chartObject.type = "PieChart";
+        $scope.chartObject.type = "ColumnChart";
 
         $scope.onions = [
             { v: "Onions" },
-            { v: 20 },
+            { v: 3 },
         ];
 
         $scope.chartObject.data = {
@@ -61,24 +57,24 @@
             ],
             "rows": [{
                     c: [
-                        { v: "Cucumebrs"},
-                        { v: 20 },
+                        { v: "Mushrooms" },
+                        { v: 3 },
                     ]
                 },
                 { c: $scope.onions }, {
                     c: [
                         { v: "Olives" },
-                        { v: 20 }
+                        { v: 31 }
                     ]
                 }, {
                     c: [
                         { v: "Zucchini" },
-                        { v: 20 },
+                        { v: 1 },
                     ]
                 }, {
                     c: [
                         { v: "Pepperoni" },
-                        { v: 20 },
+                        { v: 2 },
                     ]
                 }
             ]
