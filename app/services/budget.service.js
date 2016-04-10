@@ -9,14 +9,12 @@
         var FIREBASE_URL = new Firebase('https://budget-db-app.firebaseio.com/');
         // TO FIX: Issue with $rootScope not available on frist load
         var ref = new Firebase(FIREBASE_URL + '/users/' + $rootScope.currentUser.$id + '/budgets');
-        var budgetsobj = [];
-        budgetsobj = $firebaseArray(ref);
-        // TO DO: Do I need allBudgets[]? budgetsobj should be enough
-        // to store and watch data in reall time
-        // consider refactoring getAllBudgets()
+        var budgetsArray = $firebaseArray(ref);
+        var budgetsObject = $firebaseObject(ref);
         var allBudgets = [];
         var totalExpenses = 0;
         var currentBalance = 0;
+        var currentBudget = {};
 
         var service = {
             setNewBudget: setNewBudget,
@@ -33,7 +31,7 @@
         return service;
 
         function setNewBudget(budgetTitle, startDate, endDate, startingBudget, expenses, monthlyExpenses, totalExpenses, totalMonthlyExpenses) {
-            budgetsobj.$add({
+            budgetsArray.$add({
                 from: $rootScope.currentUser.firstname,
                 title: budgetTitle,
                 budgetStartDate: startDate.toDateString(),
@@ -48,21 +46,21 @@
                 timestamp: Firebase.ServerValue.TIMESTAMP
             }).then(function(ref) {
                 var id = ref.key();
-                $location.path('/viewbudget/' + budgetsobj.$indexFor(id));
+                $location.path('/viewbudget/' + budgetsArray.$indexFor(id));
             });
         }
 
         function updateBudgetTitle(id, budgetTitle) {
-            var udpdatedBudget = budgetsobj[id];
+            var udpdatedBudget = budgetsArray[id];
             udpdatedBudget.title = budgetTitle;
-            budgetsobj.$save(udpdatedBudget).then(function(ref) {
+            budgetsArray.$save(udpdatedBudget).then(function(ref) {
                 // Do something
             });
         }
 
         function addExpense(id, expenseName, expenseCategory, expenseCost, expenseType) {
             // Get budget by id
-            var udpdatedBudget = budgetsobj[id];
+            var udpdatedBudget = budgetsArray[id];
             var staBudget = udpdatedBudget.firstDayBalance;
             var totalMonExpe = udpdatedBudget.totalMonthlyExpenses;
             var totalExpe = udpdatedBudget.totalExpenses;
@@ -110,7 +108,7 @@
 
             }
 
-            budgetsobj.$save(udpdatedBudget).then(function(ref) {
+            budgetsArray.$save(udpdatedBudget).then(function(ref) {
                 // Do something
             });
         }
@@ -121,23 +119,24 @@
             return allBudgets = $firebaseArray(ref);
         }
 
-        function getBudgetById (){
-           // TO DO
+        function getBudgetById (id){
+           // Retursn firebaseObject of selected budget
+           return currentBudget = budgetsObject[id];
         }
 
         function deleteBudget(key) {
-            budgetsobj.$remove(key);
+            budgetsArray.$remove(key);
         }
 
         function deleteExpense(key, expenseType, budgetId) {
-            var budget = budgetsobj[budgetId];
+            var budget = budgetsArray[budgetId];
             var currentBalance  = budget.currentBalance;
 
             // We need to check what type of expense to be deleted
             if (expenseType === "monthly") {
 
-                var tmpExpenses = budgetsobj[budgetId].monthlyExpenses;
-                var monthlyExpenseCost = budgetsobj[budgetId].monthlyExpenses[key].cost;
+                var tmpExpenses = budgetsArray[budgetId].monthlyExpenses;
+                var monthlyExpenseCost = budgetsArray[budgetId].monthlyExpenses[key].cost;
                 tmpExpenses.splice(key, 1);
                 var total = calculateTotalExpenses(tmpExpenses);
                 budget.monthlyExpenses = tmpExpenses;
@@ -146,8 +145,8 @@
 
             } else if (expenseType === "extra") {
 
-                var tmpExpenses = budgetsobj[budgetId].expenses;
-                var expenseCost = budgetsobj[budgetId].expenses[key].cost;
+                var tmpExpenses = budgetsArray[budgetId].expenses;
+                var expenseCost = budgetsArray[budgetId].expenses[key].cost;
                 tmpExpenses.splice(key, 1);
                 var total = calculateTotalExpenses(tmpExpenses);
                 budget.expenses = tmpExpenses;
@@ -155,7 +154,7 @@
                 budget.currentBalance = currentBalance + expenseCost;
 
             }
-            budgetsobj.$save(budget);
+            budgetsArray.$save(budget);
         }
 
         function calculateTotalExpenses(expensesArray) {
