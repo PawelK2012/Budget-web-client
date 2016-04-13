@@ -43,11 +43,11 @@
             // TO DO: Move chart to separate directive/service
         $scope.chartObject = {};
 
-        $scope.chartObject.type = "ColumnChart";
+        $scope.chartObject.type = "PieChart";
 
-        $scope.onions = [
-            { v: "Onions" },
-            { v: 3 },
+        $scope.PieChartCurrentBalance = [
+            { v: "Current founds" },
+            { v: vm.currentBudget.currentBalance },
         ];
 
         $scope.chartObject.data = {
@@ -57,32 +57,23 @@
             ],
             "rows": [{
                     c: [
-                        { v: "Mushrooms" },
-                        { v: 3 },
+                        { v: "Extra expenses" },
+                        { v: vm.currentBudget.totalExpenses },
                     ]
                 },
-                { c: $scope.onions }, {
+                { c: $scope.PieChartCurrentBalance }, {
                     c: [
-                        { v: "Olives" },
-                        { v: 31 }
-                    ]
-                }, {
-                    c: [
-                        { v: "Zucchini" },
-                        { v: 1 },
-                    ]
-                }, {
-                    c: [
-                        { v: "Pepperoni" },
-                        { v: 2 },
+                        { v: "Planed expenses" },
+                        { v: vm.currentBudget.totalMonthlyExpenses },
+
                     ]
                 }
             ]
         };
         // Chart styles
         $scope.chartObject.options = {
-            title: 'Total expenses: ',
-            titleTextStyle: { color: '#01579B', fontSize: 24 },
+            title: 'Start balance: ' + vm.currentBudget.firstDayBalance,
+            titleTextStyle: { color: '#01579B', fontSize: 22 },
             backgroundColor: '#E1F5FE',
             chartArea: { left: 0, top: 62, width: '100%', height: '100%' }
         };
