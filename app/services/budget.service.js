@@ -14,7 +14,8 @@
         var allBudgets = [];
         var totalExpenses = 0;
         var currentBalance = 0;
-        var currentBudget = {};
+        var currentBudgetById = {};
+        var currentBudgetByKey = [];
 
         var service = {
             setNewBudget: setNewBudget,
@@ -22,6 +23,7 @@
             addExpense: addExpense,
             getAllBudgets: getAllBudgets,
             getBudgetById: getBudgetById,
+            getBudgetByKey: getBudgetByKey,
             deleteBudget: deleteBudget,
             deleteExpense: deleteExpense,
             calculateTotalExpenses: calculateTotalExpenses,
@@ -120,8 +122,13 @@
         }
 
         function getBudgetById (id){
-           // Retursn firebaseObject of selected budget
-           return currentBudget = budgetsObject[id];
+           // Returns firebaseObject of selected budget
+           return currentBudgetById = budgetsObject[id];
+        }
+
+        function getBudgetByKey (id){
+           // Returns an single item from $FirebaseArray
+           return currentBudgetByKey = budgetsArray[id];
         }
 
         function deleteBudget(key) {

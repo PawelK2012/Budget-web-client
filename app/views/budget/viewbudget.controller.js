@@ -26,11 +26,7 @@
 
         var vm = this;
         vm.budgetId = $routeParams.itemId;
-        vm.allBudgets = []; 
-        vm.allBudgets = budgetService.getAllBudgets();
-
-        vm.currentBudget = vm.allBudgets[$routeParams.itemId];
-
+        vm.currentBudget = budgetService.getBudgetByKey(vm.budgetId);
 
         vm.updateBudgetTitle = function(id, title) {
             budgetService.updateBudgetTitle(id, title);
@@ -49,9 +45,9 @@
 
         $scope.chartObject.type = "PieChart";
 
-        $scope.onions = [
-            { v: "Onions" },
-            { v: 20 },
+        $scope.PieChartCurrentBalance = [
+            { v: "Current founds" },
+            { v: vm.currentBudget.currentBalance },
         ];
 
         $scope.chartObject.data = {
@@ -61,32 +57,23 @@
             ],
             "rows": [{
                     c: [
-                        { v: "Cucumebrs"},
-                        { v: 20 },
+                        { v: "Extra expenses" },
+                        { v: vm.currentBudget.totalExpenses },
                     ]
                 },
-                { c: $scope.onions }, {
+                { c: $scope.PieChartCurrentBalance }, {
                     c: [
-                        { v: "Olives" },
-                        { v: 20 }
-                    ]
-                }, {
-                    c: [
-                        { v: "Zucchini" },
-                        { v: 20 },
-                    ]
-                }, {
-                    c: [
-                        { v: "Pepperoni" },
-                        { v: 20 },
+                        { v: "Planed expenses" },
+                        { v: vm.currentBudget.totalMonthlyExpenses },
+
                     ]
                 }
             ]
         };
         // Chart styles
         $scope.chartObject.options = {
-            title: 'Total expenses: ',
-            titleTextStyle: { color: '#01579B', fontSize: 24 },
+            title: 'Start balance: ' + vm.currentBudget.firstDayBalance + '€',
+            titleTextStyle: { color: '#01579B', fontSize: 22 },
             backgroundColor: '#E1F5FE',
             chartArea: { left: 0, top: 62, width: '100%', height: '100%' }
         };

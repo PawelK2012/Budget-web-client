@@ -62,7 +62,8 @@ You can update the Angular dependencies by running:
 
 
 #TO DO:
-- [ ] <strong> add some data visualisation to view budget </strong>
-- [ ] <strong>fix current issue with bootstrap-sass </strong>
-- [ ] add fire base do dependencies
+- [ ] <strong> Sorting asc/desc elements in budget view cause removing wrong budget while deleting elements form budgets list </strong>
+- [ ] <strong> Move charts to separate service/directive </strong>
+- [ ] <strong> Fix current issue with bootstrap-sass </strong>
+- [ ] Add fire base do dependencies
 
