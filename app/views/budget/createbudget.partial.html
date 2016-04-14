@@ -46,7 +46,7 @@
     <div class="row">
         <div class="col-xs-12 padding-bottom-30">
             <div class="pull-left">
-                <a class="btn btn-blue-900" ng-click="vm.extraExpense = true; vm.monthlyExpense = false">Add expense</a>
+                <a class="btn btn-blue-900" ng-click="vm.extraExpense = true; vm.monthlyExpense = false">Add extra expense</a>
                 <a class="btn btn-blue-900" ng-click="vm.monthlyExpense = true; vm.extraExpense = false">Plan this month expenses</a>
             </div>
         </div>
@@ -58,7 +58,7 @@
             <ul class="list-inline" ng-repeat="(key, value) in vm.expenses">
                 <li>{{key+1}}. Name: <strong> {{value.name}}</strong></li>
                 <li>Category: <strong>{{value.category}} </strong></li>
-                <li> Cost: <span class="label label-info">{{value.cost | currency:"€ "}}</span></li>
+                <li> Amount: <span class="label label-info">{{value.cost | currency:"€ "}}</span></li>
             </ul>
         </div>
     </div>
@@ -69,7 +69,7 @@
             <ul class="list-inline" ng-repeat="(key, value) in vm.monthlyExpenses">
                 <li>{{key+1}}. Name: <strong> {{value.name}}</strong></li>
                 <li>Category: <strong>{{value.category}} </strong></li>
-                <li> Cost: <span class="label label-info">{{value.cost | currency:"€ "}}</span></li>
+                <li> Amount: <span class="label label-info">{{value.cost | currency:"€ "}}</span></li>
             </ul>
         </div>
     </div>
@@ -82,7 +82,7 @@
             </form>
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="createExpenseForm.$invalid" ng-click="vm.createExpense(vm.expenseName, vm.expenseCategory, vm.expenseCost)">Add expense</button>
+            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="createExpenseForm.$invalid" ng-click="vm.createExpense(vm.expenseName, vm.expenseCategory, vm.expenseCost)">Add extra expense</button>
         </div>
     </div>
 </div>
@@ -94,7 +94,7 @@
             </form>
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="createExtraExpenseForm.$invalid" ng-click="vm.createMonthlyExpense(vm.monthlyExpenseName, vm.monthlyExpenseCategory, vm.monthlyExpenseCost)">Create monthly expense</button>
+            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="createExtraExpenseForm.$invalid" ng-click="vm.createMonthlyExpense(vm.monthlyExpenseName, vm.monthlyExpenseCategory, vm.monthlyExpenseCost)">Addd planed expense</button>
         </div>
     </div>
 </div>

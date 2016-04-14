@@ -72,7 +72,7 @@
         };
         // Chart styles
         $scope.chartObject.options = {
-            title: 'Start balance: ' + vm.currentBudget.firstDayBalance,
+            title: 'Start balance: ' + vm.currentBudget.firstDayBalance + '€',
             titleTextStyle: { color: '#01579B', fontSize: 22 },
             backgroundColor: '#E1F5FE',
             chartArea: { left: 0, top: 62, width: '100%', height: '100%' }
