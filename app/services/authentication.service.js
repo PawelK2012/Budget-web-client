@@ -14,6 +14,7 @@
                 //$firebaseObject - save data as firebaseObject
                 var userObj = $firebaseObject(userRef);
                 $rootScope.currentUser = userObj;
+                $rootScope.message = null;
             } else {
                 $rootScope.currentUser = '';
             };

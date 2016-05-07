@@ -11,7 +11,14 @@ angular.module('myApp', [
   'myApp.navMenu',
   'myApp.user',
   'myApp.addExpense'
-]).
-config(['$routeProvider', function($routeProvider) {
+]).run(['$rootScope', '$location', function($rootScope, $location) {
+  $rootScope.$on('$routeChangeError',
+  function(event, next, previous, error) {
+    if(error === 'AUTH_REQUIRED') {
+      $rootScope.message='Sorry, you must log in to access that page';
+      $location.path('/authentication');
+    }
+  });
+}]).config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/authentication'});
 }]);
