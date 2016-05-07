@@ -19,8 +19,7 @@
                 <li>Start balance: <span class="label label-success"> {{vm.currentBudget.firstDayBalance | currency:"€ "}}</span></li>
                 <li>Current ballance: <span class="label label-warning label-big">{{vm.currentBudget.currentBalance | currency:"€ "}}</span></li>
             </ul>
-        </div>
-         
+        </div>        
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-4">
@@ -31,7 +30,7 @@
                     <span class="glyphicon glyphicon-trash" data-ng-click="vm.expenseType = 'extra'; vm.deleteExpense(key, vm.expenseType)" aria-hidden="true"></span>
                 </li>
             </ul>
-            <h4 class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalExpenses | currency:"€ "}}</span></h4>
+            <h4 data-ng-if="vm.currentBudget.expenses.length > 0" class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalExpenses | currency:"€ "}}</span></h4>
         </div>
         <div class="col-xs-12 col-sm-4">
             <h3>Planed expenses: </h3>
@@ -41,7 +40,7 @@
                     <span class="glyphicon glyphicon-trash" data-ng-click="vm.expenseType = 'monthly'; vm.deleteExpense(key, vm.expenseType)" aria-hidden="true"></span>
                 </li>
             </ul>
-            <h4 class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalMonthlyExpenses | currency:"€ "}}</span></h4>
+            <h4 data-ng-if="vm.currentBudget.monthlyExpenses.length > 0" class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalMonthlyExpenses | currency:"€ "}}</span></h4>
         </div>
         <div class="col-xs-12 col-sm-4 padding-bottom-20">
           <div google-chart chart="chartObject"></div>
