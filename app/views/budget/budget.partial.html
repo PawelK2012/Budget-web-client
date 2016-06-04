@@ -1,38 +1,38 @@
-<div class="container budget">
-    <div class="row">
-        <div class="col-xs-12">
-            <form class="form-horizontal">
-                <div class="group paper-input">
-                    <input type="text" data-ng-model="query">
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    <label>Search...</label>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="row padding-bottom-20">
-        <div class="col-xs-12">
-            <p class="pull-left">Available budgets: <span class="badge">{{vm.budgets.length}}</span></p>
-            <a class="btn btn-blue-900 pull-right" href="#/createbudget">Create budget</a>
-        </div>
-        <div class="col-xs-12">
-            <label>
-                <input type="radio" ng-model="direction" name="direction" checked> ascending
-            </label>
-            <label>
-                <input type="radio" ng-model="direction" name="direction" value="reverse"> descending
-            </label>
-        </div>
-    </div>
-    <div class="row">
-        <div ng-repeat="(key, value) in vm.budgets | filter: query | orderBy: whyIamHere:direction" ng-attr-class="{{!$last && 'row border-btm items' || 'row items'}}">
-            <div class="pull-left col-xs-12">
-                <h4 class="pull-left">{{$index + 1}}. <a href="#/viewbudget/{{key}}">{{value.title}}</a></h4>
-                <span class="glyphicon glyphicon-trash pull-right padding-top-25" data-ng-click="vm.delete($index)" aria-hidden="true"></span>
+<div class="budget">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <form class="form-horizontal">
+                    <div class="group paper-input">
+                        <input type="text" data-ng-model="query">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Search...</label>
+                    </div>
+                </form>
             </div>
-            <div class="pull-left col-xs-12">
-                <span class="padding-left-20"> <strong> Balance: </strong>{{value.currentBalance}}€</span>
+        </div>
+        <div class="row padding-bottom-20">
+            <div class="col-xs-12">
+                <p class="pull-left">Available budgets: <span class="badge">{{vm.budgets.length}}</span></p>
+                <a href="#/createbudget" class="btn btn-blue-900 pull-right">Create budget</a>
+            </div>
+            <div class="col-xs-12">
+                <label>
+                    <input type="radio" ng-model="direction" name="direction" checked> ascending
+                </label>
+                <label>
+                    <input type="radio" ng-model="direction" name="direction" value="reverse"> descending
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 card" ng-repeat="(key, value) in vm.budgets | filter: query | orderBy: whyIamHere:direction">
+                <h4>{{$index + 1}}. <a href="#/viewbudget/{{key}}">{{value.title}}</a></h4>
+                <span> <strong> Balance: </strong>{{value.currentBalance}}€</span>
+                <span class="glyphicon glyphicon-trash pull-right" data-ng-click="vm.delete($index)" aria-hidden="true"></span>
             </div>
         </div>
     </div>

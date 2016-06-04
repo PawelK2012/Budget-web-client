@@ -1,10 +1,10 @@
 @import 'app/sass/colors.scss';
 .budget {
     .glyphicon {
-        color: $blue-300; 
+        color: $blue-50;
     }
     .glyphicon:hover {
-        color: $blue-500;
+        color: $blue-300!important;
     }
     .items {
         padding: 10px;
@@ -14,5 +14,16 @@
     }
     .border-btm {
         border-bottom: 1px solid white;
+    }
+    .card {
+        padding: 10px;
+        margin: 0px 0px 5px 0px;
+        background: white;
+        border-right: 5px solid $blue-50;
+    }
+    .card:hover {
+        .glyphicon {
+            color: $blue-100;
+        }
     }
 }
