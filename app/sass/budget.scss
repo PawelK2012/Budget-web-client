@@ -27,3 +27,18 @@
         }
     }
 }
+
+.view-budget {
+    .glyphicon {
+        visibility: hidden;
+    }
+    .glyphicon:hover {
+        color: $blue-500!important;
+    }
+    li:hover {
+        .glyphicon {
+            visibility: visible;
+            color: $blue-300;
+        }
+    }
+}
