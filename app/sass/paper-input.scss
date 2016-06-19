@@ -16,6 +16,9 @@
         border: none;
         border-bottom: 1px solid $blue-300;
     }
+    input{
+        background:  $blue-50
+    }
     
     .paper-input input:focus {
         outline: none;
