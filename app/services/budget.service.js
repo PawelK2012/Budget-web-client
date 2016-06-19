@@ -7,7 +7,6 @@
 
     function budgetService($rootScope, $firebase, $firebaseArray, $firebaseObject, $location) {
         var FIREBASE_URL = new Firebase('https://budget-db-app.firebaseio.com/');
-        // TO FIX: Issue with $rootScope not available on frist load
         var ref = new Firebase(FIREBASE_URL + '/users/' + $rootScope.currentUser.$id + '/budgets');
         var budgetsArray = $firebaseArray(ref);
         var budgetsObject = $firebaseObject(ref);
@@ -61,7 +60,6 @@
         }
 
         function addExpense(id, expenseName, expenseCategory, expenseCost, expenseType) {
-            // Get budget by id
             var udpdatedBudget = budgetsArray[id];
             var staBudget = udpdatedBudget.firstDayBalance;
             var totalMonExpe = udpdatedBudget.totalMonthlyExpenses;
