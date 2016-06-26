@@ -56,7 +56,8 @@
                     date: Firebase.ServerValue.TIMESTAMP,
                     regUser: regUser.uid,
                     firstname: name,
-                    email: email
+                    email: email,
+                    currency: '€'
                 });
                 getLogin(email, pass);
             }).catch(function(error) {
