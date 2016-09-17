@@ -15,6 +15,7 @@ You can view live example <a href="http://pawelkaim.com/d/budget/">here</a>.
 - add monthly expenses
 - calculate monthly and extra expenses
 - calculate total & current ballance
+- change currency
 - angular form validation
 
 #Getting Started
@@ -65,6 +66,6 @@ You can update the Angular dependencies by running:
 - [ ] <strong> Sorting asc/desc elements in budget view cause removing wrong budget while deleting elements form budgets list </strong>
 - [ ] <strong> Move charts to separate service/directive </strong>
 - [ ] <strong> Fix current issue with bootstrap-sass </strong>
-- [ ] Add fire base do dependencies
+- [ ] Add Firebase do dependencies
 - [ ] Add paper input to login and register forms
 
