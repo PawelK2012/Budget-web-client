@@ -27,7 +27,7 @@
         var vm = this;
         vm.budgetId = $routeParams.itemId;
         vm.currentBudget = budgetService.getBudgetByKey(vm.budgetId);
-        vm.currency = '€';
+        vm.currency = $scope.currentUser.currency.alias;
 
         vm.updateBudgetTitle = function(id, title) {
             budgetService.updateBudgetTitle(id, title);
@@ -73,10 +73,10 @@
         };
         // Chart styles
         $scope.chartObject.options = {
-            title: 'Start balance: ' + vm.currentBudget.firstDayBalance + '€',
-            titleTextStyle: { color: '#01579B', fontSize: 22 },
+            title: 'Start balance: ' + vm.currentBudget.firstDayBalance + " " + vm.currency,
+            titleTextStyle: { color: '#01579B', fontSize: 18 },
             backgroundColor: '#E1F5FE',
-            chartArea: { left: 0, top: 62, width: '100%', height: '100%' }
+            chartArea: { left: 0, top: 32, width: '100%', height: '100%' }
         };
 
     };
