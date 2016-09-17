@@ -3,10 +3,9 @@
         <div class="col-xs-12 padding-bottom-20">
             <h1>Hello {{vm.currentUser.firstname}}!</h1>
             <p>User from {{vm.currentUser.date | date:'MM/dd/yyyy'}}</p>
-            <p>Select currency: 
-            <select data-ng-model="vm.currentUser.currency" data-ng-options="currency for currency in vm.listOfCurrencies" data-ng-change="vm.setCurrency(vm.currentUser.currency)"></select></p>
-            <!-- <select ng-model="myColor" ng-options="color.name for color in colors"></select> -->
-            {{vm.currentUser.currency}}
+                <p class="pull-left">Your currency is <strong>{{vm.currentUser.currency[0].name}}</strong>. Would you like to change it?
+                    <select class="pull-right" name="selectCurrency" id="selectCurrency" data-ng-options="currency.name for currency in vm.listOfCurrencies track by currency.id" data-ng-model="vm.currentUser.currency[0]"></select>
+                </p>
         </div>
     </div>
 </div>

@@ -5,12 +5,11 @@
         .module('myApp')
         .factory('userService', userService);
 
-    function userService($rootScope, $firebase, $firebaseArray, $firebaseObject, $location) {
+    function userService($rootScope, $firebase, $firebaseObject) {
         var ref = new Firebase('https://budget-db-app.firebaseio.com/');
-        var userRef = new Firebase(ref + 'users/' + $rootScope.currentUser.$uid);
+        var userRef = new Firebase(ref + 'users/' + $rootScope.currentUser.$id);
         //$firebaseObject - save data as firebaseObject
         var userObj = $firebaseObject(userRef);
-        //$rootScope.currentUser = userObj;
 
         var service = {
             getListOfCurrencies: getListOfCurrencies,
@@ -20,12 +19,25 @@
         return service;
 
         function getListOfCurrencies() {
-            var currency = ['EURO €', 'USD $', 'POUNDS £', 'PLN zł'];
+            //var currency = ['EURO €', 'USD $', 'POUNDS £', 'PLN Zł'];
+            var currency = [
+                { id: '0', name: 'EURO €' },
+                { id: '1', name: 'USD $' },
+                { id: '2', name: 'POUNDS £' },
+                { id: '3', name: 'PLN Zł' }
+            ];
             return currency;
         }
 
         function setCurrency(newCurrency) {
-            $rootScope.currentUser.currency = newCurrency;
+
+
+            // userObj.$bindTo($rootScope, "data").then(function() {
+            //     console.log($rootScope.data); // { foo: "bar" }
+            //     $rootScope.data.currency = newCurrency; // will be saved to the database
+            //     ref.set({ currency: newCurrency }); // this would update the database and $scope.data
+            // });
+
         }
 
 

@@ -4,6 +4,7 @@
     angular
         .module('myApp')
         .factory('authenticationService', authenticationService);
+
     function authenticationService($rootScope, $firebase, $firebaseAuth, $firebaseObject, $location) {
 
         var ref = new Firebase('https://budget-db-app.firebaseio.com/');
@@ -43,7 +44,7 @@
             return auth.$unauth();
         }
 
-        function getRequireAuth(){
+        function getRequireAuth() {
             return auth.$requireAuth();
         }
 
@@ -57,7 +58,7 @@
                     regUser: regUser.uid,
                     firstname: name,
                     email: email,
-                    currency: '€'
+                    currency:  [ { id: '0', name: 'EURO €' } ]
                 });
                 getLogin(email, pass);
             }).catch(function(error) {
