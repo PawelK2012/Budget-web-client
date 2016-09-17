@@ -58,7 +58,7 @@
                     regUser: regUser.uid,
                     firstname: name,
                     email: email,
-                    currency:  [ { id: '0', name: 'EURO €' } ]
+                    currency: { id: '0', name: 'Euro', alias: '€' }
                 });
                 getLogin(email, pass);
             }).catch(function(error) {

@@ -10,7 +10,6 @@
         var userRef = new Firebase(ref + 'users/' + $rootScope.currentUser.$id);
         //$firebaseObject - save data as firebaseObject
         var userObj = $firebaseObject(userRef);
-
         var service = {
             getListOfCurrencies: getListOfCurrencies,
             setCurrency: setCurrency
@@ -19,27 +18,20 @@
         return service;
 
         function getListOfCurrencies() {
-            //var currency = ['EURO €', 'USD $', 'POUNDS £', 'PLN Zł'];
             var currency = [
-                { id: '0', name: 'EURO €' },
-                { id: '1', name: 'USD $' },
-                { id: '2', name: 'POUNDS £' },
-                { id: '3', name: 'PLN Zł' }
+                { id: '0', name: 'Euro', alias: '€' },
+                { id: '1', name: 'Usd', alias: '$' },
+                { id: '2', name: 'Pound', alias: '£' },
+                { id: '3', name: 'Pln', alias: 'Zł' }
             ];
             return currency;
         }
 
         function setCurrency(newCurrency) {
-
-
-            // userObj.$bindTo($rootScope, "data").then(function() {
-            //     console.log($rootScope.data); // { foo: "bar" }
-            //     $rootScope.data.currency = newCurrency; // will be saved to the database
-            //     ref.set({ currency: newCurrency }); // this would update the database and $scope.data
-            // });
-
+            userObj.currency = { id: newCurrency.id, name: newCurrency.name, alias: newCurrency.alias };
+            userObj.$save().then(function(ref) {}, function(error) {
+                console.log("Error:", error);
+            });
         }
-
-
     }
 })();

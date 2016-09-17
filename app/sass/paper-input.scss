@@ -186,7 +186,7 @@ input {
 }
 
 .paper-input input.ng-invalid.ng-dirty:focus ~ .highlight {
-    -webkit-animation: invalidHighlighter 0.3s ease; 
+    -webkit-animation: invalidHighlighter 0.3s ease;
     -moz-animation: invalidHighlighter 0.3s ease;
     animation: invalidHighlighter 0.3s ease;
 }
@@ -227,15 +227,19 @@ select {
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
-    border: none;
     -webkit-border-radius: 0px;
-border-radius: 0px;
+    border-radius: 0px;
     border-bottom: 1px solid $blue-300;
 }
-option{
+
+.select-no-border{
+    border: none;
+}  
+
+option {
     background-color: red;
 }
 
-select > option{
+select > option {
     background: green;
 }

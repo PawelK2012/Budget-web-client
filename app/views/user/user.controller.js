@@ -20,7 +20,7 @@
 
     .controller('UserCtrl', UserCtrl);
 
-    UserCtrl.$inject = ['$rootScope', 'authenticationService' , 'userService']
+    UserCtrl.$inject = ['$rootScope', 'authenticationService', 'userService']
 
     function UserCtrl($rootScope, authenticationService, userService) {
 
@@ -28,8 +28,8 @@
         vm.currentUser = $rootScope.currentUser;
         vm.listOfCurrencies = userService.getListOfCurrencies();
 
-        vm.setCurrency = function (currency){
-            userService.setCurrency(currency);
+        vm.setCurrency = function(newCurrency) {
+            userService.setCurrency(newCurrency);
         }
 
     };
