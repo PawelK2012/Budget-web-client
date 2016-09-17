@@ -16,38 +16,39 @@
             <ul class="list-inline padding-top-20">
                 <li>Start date: <span class="label label-info">{{vm.currentBudget.budgetStartDate}}</span></li>
                 <li>End date: <span class="label label-info">{{vm.currentBudget.budgetEndDate}}</span></li>
-                <li>Start balance: <span class="label label-success"> {{vm.currentBudget.firstDayBalance | currency: vm.currency }}</span></li>
-                <li>Current ballance: <span class="label label-warning label-big">{{vm.currentBudget.currentBalance | currency: vm.currency }}</span></li>
+                <li>Start balance: <span class="label label-success"> {{vm.currentBudget.firstDayBalance | currency: vm.currency +" "}}</span></li>
+                <li>Current ballance: <span class="label label-warning label-big">{{vm.currentBudget.currentBalance | currency: vm.currency +" "}}</span></li>
             </ul>
-        </div>        
+        </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-4">
-            <h3>Extra expenses:</h3>
+        <div class="col-xs-12 col-sm-4" data-ng-if="vm.currentBudget.expenses">
+            <h4>Extra expenses:</h4>
             <ul class="list-unstyled">
                 <li class="padding-bottom-10" ng-repeat="(key, value) in vm.currentBudget.expenses">
-                    {{key+1}}. Name: <strong> {{value.name}}</strong> Category: <strong>{{value.category}} </strong> Cost: <span class="label label-info">{{value.cost | currency:"€ " }}</span>
+                    {{key+1}}. Name: <strong> {{value.name}}</strong> Category: <strong>{{value.category}} </strong> Cost: <span class="label label-info">{{value.cost | currency: vm.currency+" "}}</span>
                     <span class="glyphicon glyphicon-trash" data-ng-click="vm.expenseType = 'extra'; vm.deleteExpense(key, vm.expenseType)" aria-hidden="true"></span>
                 </li>
             </ul>
-            <h4 data-ng-if="vm.currentBudget.expenses.length > 0" class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalExpenses | currency:"€ "}}</span></h4>
+            <h4 data-ng-if="vm.currentBudget.expenses.length > 0" class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalExpenses | currency: vm.currency+" "}}</span></h4>
         </div>
-        <div class="col-xs-12 col-sm-4">
-            <h3>Planed expenses: </h3>
+        <div class="col-xs-12 col-sm-4" data-ng-if="vm.currentBudget.monthlyExpenses">
+            <h4>Planed expenses: </h4>
             <ul class="list-unstyled">
                 <li class="padding-bottom-10" ng-repeat="(key, value) in vm.currentBudget.monthlyExpenses">
-                    {{key+1}}. Name: <strong> {{value.name}}</strong> Category: <strong>{{value.category}} </strong> Cost: <span class="label label-info">{{value.cost | currency:"€ "}}</span>
+                    {{key+1}}. Name: <strong> {{value.name}}</strong> Category: <strong>{{value.category}} </strong> Cost: <span class="label label-info">{{value.cost | currency: vm.currency+" "}}</span>
                     <span class="glyphicon glyphicon-trash" data-ng-click="vm.expenseType = 'monthly'; vm.deleteExpense(key, vm.expenseType)" aria-hidden="true"></span>
                 </li>
             </ul>
-            <h4 data-ng-if="vm.currentBudget.monthlyExpenses.length > 0" class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalMonthlyExpenses | currency:"€ "}}</span></h4>
+            <h4 data-ng-if="vm.currentBudget.monthlyExpenses.length > 0" class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalMonthlyExpenses | currency: vm.currency+" "}}</span></h4>
         </div>
-        <div class="col-xs-12 col-sm-4 padding-bottom-20">
-          <div google-chart chart="chartObject"></div>
+        <div class="col-xs-12 col-sm-4 padding-bottom-20" data-ng-if="vm.currentBudget.expenses || vm.currentBudget.monthlyExpenses">
+            <div google-chart chart="chartObject"></div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12 padding-bottom-30 padding-top-20">
+           <p data-ng-if="!vm.currentBudget.expenses && !vm.currentBudget.monthlyExpenses">Add expenses to you budget</p>
             <div class="pull-left">
                 <a class="btn btn-blue-900" data-ng-click="vm.extraExpense = true; vm.monthlyExpense = false">Add extra expense</a>
                 <a class="btn btn-blue-900" data-ng-click="vm.monthlyExpense = true; vm.extraExpense = false">Add monthly expenses</a>
