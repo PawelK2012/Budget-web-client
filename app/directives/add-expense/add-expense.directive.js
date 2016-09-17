@@ -21,6 +21,8 @@
 
     function AddExpenseController() {
         var vm = this;
+        vm.expenseCategory = 'Food';
+        vm.allCategories = ['Food', 'Sport', 'Car', ' Entertainment', 'Rent', 'Bills' , 'Health', 'Other'];
     }
 
 })();

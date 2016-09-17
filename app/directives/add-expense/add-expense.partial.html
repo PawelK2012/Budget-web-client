@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-xs-2">
             <div class="pull-left">
                 <div class="group paper-input">
                     <input type="text" data-ng-model="vm.expenseName" required>
@@ -16,17 +16,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-2">
             <div class="pull-left">
-                <div class="group paper-input">
-                    <input type="text" data-ng-model="vm.expenseCategory" required>
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    <label>Category</label>
+                <div class="group paper-input padding-top-20">
+                    <select data-ng-model="vm.expenseCategory" ng-options="cat for cat in vm.allCategories"></select>
                 </div>
             </div>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-2">
             <div class="pull-left">
                 <div class="group paper-input">
                     <input type="number" data-ng-model="vm.expenseCost" required>

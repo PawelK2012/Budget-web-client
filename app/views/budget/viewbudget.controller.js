@@ -27,6 +27,7 @@
         var vm = this;
         vm.budgetId = $routeParams.itemId;
         vm.currentBudget = budgetService.getBudgetByKey(vm.budgetId);
+        vm.currency = '€';
 
         vm.updateBudgetTitle = function(id, title) {
             budgetService.updateBudgetTitle(id, title);

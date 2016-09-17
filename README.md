@@ -66,4 +66,5 @@ You can update the Angular dependencies by running:
 - [ ] <strong> Move charts to separate service/directive </strong>
 - [ ] <strong> Fix current issue with bootstrap-sass </strong>
 - [ ] Add fire base do dependencies
+- [ ] Add paper input to login and register forms
 
