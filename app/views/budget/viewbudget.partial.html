@@ -17,7 +17,7 @@
                 <li>Start date: <span class="label label-info">{{vm.currentBudget.budgetStartDate}}</span></li>
                 <li>End date: <span class="label label-info">{{vm.currentBudget.budgetEndDate}}</span></li>
                 <li>Start balance: <span class="label label-success"> {{vm.currentBudget.firstDayBalance | currency: vm.currency +" "}}</span></li>
-                <li>Current ballance: <span class="label label-warning label-big">{{vm.currentBudget.currentBalance | currency: vm.currency +" "}}</span></li>
+                <li>Current ballance: <span class="label label-warning">{{vm.currentBudget.currentBalance | currency: vm.currency +" "}}</span></li>
             </ul>
         </div>
     </div>
@@ -48,7 +48,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12 padding-bottom-30 padding-top-20">
-           <p data-ng-if="!vm.currentBudget.expenses && !vm.currentBudget.monthlyExpenses">Add expenses to you budget</p>
+           <p data-ng-if="!vm.currentBudget.expenses && !vm.currentBudget.monthlyExpenses"><strong>It look's like your budget is empty.</strong> Add expenses to you budget.</p>
             <div class="pull-left">
                 <a class="btn btn-blue-900" data-ng-click="vm.extraExpense = true; vm.monthlyExpense = false">Add extra expense</a>
                 <a class="btn btn-blue-900" data-ng-click="vm.monthlyExpense = true; vm.extraExpense = false">Add monthly expenses</a>
