@@ -10,7 +10,8 @@ angular.module('myApp', [
   'myApp.createbudget',
   'myApp.navMenu',
   'myApp.user',
-  'myApp.addExpense'
+  'myApp.addExpense',
+  'myApp.focus'
 ]).run(['$rootScope', '$location', function($rootScope, $location) {
   $rootScope.$on('$routeChangeError',
   function(event, next, previous, error) {
