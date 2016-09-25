@@ -28,6 +28,9 @@
         vm.budgetId = $routeParams.itemId;
         vm.currentBudget = budgetService.getBudgetByKey(vm.budgetId);
         vm.currency = $scope.currentUser.currency.alias;
+        vm.createChart = createChart;
+        vm.updateChart = updateChart;
+        createChart();
 
         vm.updateBudgetTitle = function(id, title) {
             budgetService.updateBudgetTitle(id, title);
@@ -37,48 +40,53 @@
             vm.expenseName = '';
             vm.expenseCategory = '';
             vm.expenseCost = '';
+            updateChart();
         }
         vm.deleteExpense = function(key, expenseType) {
-                budgetService.deleteExpense(key, expenseType, vm.budgetId);
-            }
-            // TO DO: Move chart to separate directive/service
-        $scope.chartObject = {};
+            budgetService.deleteExpense(key, expenseType, vm.budgetId);
+        }
 
-        $scope.chartObject.type = "PieChart";
+        function createChart() {
 
-        $scope.PieChartCurrentBalance = [
-            { v: "Current founds" },
-            { v: vm.currentBudget.currentBalance },
-        ];
+            $scope.chartObject = {};
 
-        $scope.chartObject.data = {
-            "cols": [
-                { id: "t", label: "Topping", type: "string" },
-                { id: "s", label: "Slices", type: "number" }
-            ],
-            "rows": [{
-                    c: [
-                        { v: "Extra expenses" },
-                        { v: vm.currentBudget.totalExpenses },
-                    ]
-                },
-                { c: $scope.PieChartCurrentBalance }, {
-                    c: [
-                        { v: "Planed expenses" },
-                        { v: vm.currentBudget.totalMonthlyExpenses },
+            $scope.chartObject.type = "PieChart";
 
-                    ]
-                }
-            ]
-        };
-        // Chart styles
-        $scope.chartObject.options = {
-            title: 'Start balance: ' + vm.currentBudget.firstDayBalance + " " + vm.currency,
-            titleTextStyle: { color: '#01579B', fontSize: 18 },
-            backgroundColor: '#E1F5FE',
-            chartArea: { left: 0, top: 32, width: '100%', height: '100%' }
-        };
+            $scope.PieChartCurrentBalance = [
+                { v: "Current founds" },
+                { v: vm.currentBudget.currentBalance },
+            ];
+            $scope.chartObject.options = {
+                title: 'Start balance: ' + vm.currentBudget.firstDayBalance + " " + vm.currency,
+                titleTextStyle: { color: '#01579B', fontSize: 18 },
+                backgroundColor: '#E1F5FE',
+                chartArea: { left: 0, top: 32, width: '100%', height: '100%' }
+            };
+            updateChart();
+        }
 
+        function updateChart() {
+            $scope.chartObject.data = {
+                "cols": [
+                    { id: "t", label: "Topping", type: "string" },
+                    { id: "s", label: "Slices", type: "number" }
+                ],
+                "rows": [{
+                        c: [
+                            { v: "Extra expenses" },
+                            { v: vm.currentBudget.totalExpenses },
+                        ]
+                    },
+                    { c: $scope.PieChartCurrentBalance }, {
+                        c: [
+                            { v: "Planed expenses" },
+                            { v: vm.currentBudget.totalMonthlyExpenses },
+
+                        ]
+                    }
+                ]
+            };
+        }
     };
 
 
