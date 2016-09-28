@@ -40,19 +40,22 @@
             </div>
         </div>
     </form>
-    <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="createBudgetForm.$invalid" ng-click="vm.createBudget(vm.budgetTitle, vm.startDate, vm.endDate, vm.startingBudget)">Create</button>
 </div>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 padding-bottom-30">
             <div class="pull-left">
-                <a class="btn btn-blue-900" ng-click="vm.extraExpense = true; vm.monthlyExpense = false">Add extra expense</a>
-                <a class="btn btn-blue-900" ng-click="vm.monthlyExpense = true; vm.extraExpense = false">Plan this month expenses</a>
+                <a class="btn btn-blue-900" data-ng-click="vm.extraExpense = true; vm.monthlyExpense = false">Add extra expense</a>
+                <a class="btn btn-blue-900" data-ng-click="vm.monthlyExpense = true; vm.extraExpense = false">Plan this month expenses</a>
+                <a class="btn" data-ng-if="vm.extraExpense || vm.monthlyExpense" data-ng-click="vm.monthlyExpense = false; vm.extraExpense = false">Close</a>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-blue-900" data-ng-if="!vm.extraExpense && !vm.monthlyExpense" data-ng-disabled="createBudgetForm.$invalid" data-ng-click="vm.createBudget(vm.budgetTitle, vm.startDate, vm.endDate, vm.startingBudget)">Create</a>
             </div>
         </div>
     </div>
 </div>
-<div class="container" ng-show="vm.extraExpense">
+<div class="container" data-ng-if="vm.extraExpense">
     <div class="row">
         <div class="col-xs-12 padding-bottom-20">
             <ul class="list-inline" ng-repeat="(key, value) in vm.expenses">
@@ -63,7 +66,7 @@
         </div>
     </div>
 </div>
-<div class="container" ng-show="vm.monthlyExpense">
+<div class="container" data-ng-if="vm.monthlyExpense">
     <div class="row">
         <div class="col-xs-12 padding-bottom-20">
             <ul class="list-inline" ng-repeat="(key, value) in vm.monthlyExpenses">
@@ -74,7 +77,7 @@
         </div>
     </div>
 </div>
-<div class="container extra-expense" ng-show="vm.extraExpense">
+<div class="container extra-expense" data-ng-if="vm.extraExpense">
     <div class="row">
         <div class="col-xs-12">
             <form name="createExpenseForm">
@@ -86,7 +89,7 @@
         </div>
     </div>
 </div>
-<div class="container monthly-expense" ng-show="vm.monthlyExpense">
+<div class="container monthly-expense" data-ng-if="vm.monthlyExpense">
     <div class="row">
         <div class="col-xs-12">
             <form name="createExtraExpenseForm">

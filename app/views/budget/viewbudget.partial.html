@@ -1,8 +1,8 @@
 <div class="container view-budget">
     <div class="row">
         <div class="col-xs-12 padding-bottom-20">
-            <h1 ng-show="!vm.editTitle" ng-mouseover="vm.editTitleIcon = true" ng-mouseleave="vm.editTitleIcon = false">{{vm.currentBudget.title}}<img class="svg-icon" ng-show="vm.editTitleIcon" data-ng-click="vm.editTitle = true" src="icons/pencil.svg"/></h1>
-            <div class="edit-input-container margin-bottom-10" ng-show="vm.editTitle">
+            <h1 data-ng-if="!vm.editTitle" ng-mouseover="vm.editTitleIcon = true" ng-mouseleave="vm.editTitleIcon = false">{{vm.currentBudget.title}}<img class="svg-icon" data-ng-if="vm.editTitleIcon" data-ng-click="vm.editTitle = true" src="icons/pencil.svg"/></h1>
+            <div class="edit-input-container margin-bottom-10" data-ng-if="vm.editTitle">
                 <form class="margin-top-20" ng-submit="vm.updateBudgetTitle(vm.budgetId, vm.budgetTitle); vm.editTitle = false">
                     <div class="group-no-margin paper-input">
                         <input type="text" data-ng-model="vm.budgetTitle" required>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <div class="row extra-expense" ng-show="vm.extraExpense">
+    <div class="row extra-expense" data-ng-if="vm.extraExpense">
         <div class="col-xs-12">
             <form name="expensesForm">
                 <add-expense extra-expense="vm.extraExpense" expense-name="vm.expenseName" expense-category="vm.expenseCategory" expense-cost="vm.expenseCost" />
@@ -65,7 +65,7 @@
             <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="expensesForm.$invalid" data-ng-click="vm.expenseType = 'extra'; vm.addExpense(vm.budgetId, vm.expenseName, vm.expenseCategory, vm.expenseCost, vm.expenseType)">Add extra expense</button>
         </div>
     </div>
-    <div class="row monthly-expense" ng-show="vm.monthlyExpense">
+    <div class="row monthly-expense" data-ng-if="vm.monthlyExpense">
         <div class="col-xs-12">
             <form name="monthlyExpensesForm">
                 <add-expense extra-expense="vm.extraExpense" expense-name="vm.monthlyExpenseName" expense-category="vm.monthlyExpenseCategory" expense-cost="vm.monthlyExpenseCost" /></add-expense>
