@@ -1,8 +1,8 @@
 <div class="container view-budget">
     <div class="row">
         <div class="col-xs-12 padding-bottom-20">
-            <h1 ng-show="!vm.editTitle" ng-mouseover="vm.editTitleIcon = true" ng-mouseleave="vm.editTitleIcon = false">{{vm.currentBudget.title}}<img class="svg-icon" ng-show="vm.editTitleIcon" data-ng-click="vm.editTitle = true" src="icons/pencil.svg"/></h1>
-            <div class="edit-input-container margin-bottom-10" ng-show="vm.editTitle">
+            <h1 data-ng-if="!vm.editTitle" ng-mouseover="vm.editTitleIcon = true" ng-mouseleave="vm.editTitleIcon = false">{{vm.currentBudget.title}}<img class="svg-icon" data-ng-if="vm.editTitleIcon" data-ng-click="vm.editTitle = true" src="icons/pencil.svg"/></h1>
+            <div class="edit-input-container margin-bottom-10" data-ng-if="vm.editTitle">
                 <form class="margin-top-20" ng-submit="vm.updateBudgetTitle(vm.budgetId, vm.budgetTitle); vm.editTitle = false">
                     <div class="group-no-margin paper-input">
                         <input type="text" data-ng-model="vm.budgetTitle" required>
@@ -50,12 +50,15 @@
         <div class="col-xs-12 padding-bottom-30 padding-top-20">
            <p data-ng-if="!vm.currentBudget.expenses && !vm.currentBudget.monthlyExpenses"><strong>It look's like your budget is empty.</strong> Add expenses to you budget.</p>
             <div class="pull-left">
-                <a class="btn btn-blue-900" data-ng-click="vm.extraExpense = true; vm.monthlyExpense = false">Add extra expense</a>
-                <a class="btn btn-blue-900" data-ng-click="vm.monthlyExpense = true; vm.extraExpense = false">Add monthly expenses</a>
+                <a class="btn btn-blue-900" data-ng-click="vm.extraExpense = true; vm.monthlyExpense = false; vm.addIncome = false">Add extra expense</a>
+                <a class="btn btn-blue-900" data-ng-click="vm.monthlyExpense = true; vm.extraExpense = false; vm.addIncome = false">Add monthly expenses</a>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-blue-900" data-ng-if="!vm.addIncome" data-ng-click="vm.extraExpense = false; vm.monthlyExpense = false ; vm.addIncome = true">Add income</a>
             </div>
         </div>
     </div>
-    <div class="row extra-expense" ng-show="vm.extraExpense">
+    <div class="row extra-expense" data-ng-if="vm.extraExpense">
         <div class="col-xs-12">
             <form name="expensesForm">
                 <add-expense extra-expense="vm.extraExpense" expense-name="vm.expenseName" expense-category="vm.expenseCategory" expense-cost="vm.expenseCost" />
@@ -65,7 +68,7 @@
             <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="expensesForm.$invalid" data-ng-click="vm.expenseType = 'extra'; vm.addExpense(vm.budgetId, vm.expenseName, vm.expenseCategory, vm.expenseCost, vm.expenseType)">Add extra expense</button>
         </div>
     </div>
-    <div class="row monthly-expense" ng-show="vm.monthlyExpense">
+    <div class="row monthly-expense" data-ng-if="vm.monthlyExpense">
         <div class="col-xs-12">
             <form name="monthlyExpensesForm">
                 <add-expense extra-expense="vm.extraExpense" expense-name="vm.monthlyExpenseName" expense-category="vm.monthlyExpenseCategory" expense-cost="vm.monthlyExpenseCost" /></add-expense>
@@ -73,6 +76,16 @@
         </div>
         <div class="btn-container">
             <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="monthlyExpensesForm.$invalid" data-ng-click="vm.expenseType = 'monthly'; vm.addExpense(vm.budgetId, vm.monthlyExpenseName, vm.monthlyExpenseCategory, vm.monthlyExpenseCost, vm.expenseType)">Add planed expense</button>
+        </div>
+    </div>
+    <div class="row add-income" data-ng-if="vm.addIncome">
+        <div class="col-xs-12">
+            <form name="addIncomeForm">
+                <add-income income-name="vm.incomeName" income-value="vm.incomeValue"/></add-income>
+            </form>
+        </div>
+        <div class="btn-container">
+            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="addIncomeForm.$invalid" data-ng-click="">Add income</button>
         </div>
     </div>
 </div>
