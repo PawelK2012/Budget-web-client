@@ -12,7 +12,8 @@
     "http-server": "^0.6.1"
   },
   "devDependencies": {
-    "gulp-uglify": "^1.5.3"
+    "gulp-uglify": "^1.5.3",
+    "protractor": "^4.0.9"
   },
   "scripts": {
     "prestart": "npm install",
