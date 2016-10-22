@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Budget Demo App', function() {
     var goButton = element(by.id('login'));
     var submitLoginBtn = element(by.css('.bnt-submit-login'));
@@ -28,14 +30,20 @@ describe('Budget Demo App', function() {
     });
 
     it('should should login to the app', function() {
+        //If wrong enail or pass test will fail with message
+        //// - Failed: Wait timed out after XXXms
         goButton.click();
         var email = element(by.css('.input-email'));
         var password = element(by.model('vm.pass'));
-
-        email.sendKeys("email@email.com");
-        password.sendKeys("xxx");
+        email.sendKeys("info@pemail.com");
+        password.sendKeys("******");
         submitLoginBtn.click();
         expect(browser.wait(urlChanged("http://localhost:8000/app/#/budget"), 3000));
+
+        browser.get('http://localhost:8000/app/#/budget');
+        browser.setLocation('createbudget');
+        expect(browser.getCurrentUrl())
+            .toBe('http://localhost:8000/app/#/createbudget');
     });
 
 });

@@ -61,6 +61,14 @@ You can update the Angular dependencies by running:
 
  <code> bower update  </code>
 
+#Running E2E test
+From e2e-tests dir: 
+
+Download webdriver <code>webdriver-manager update</code>
+
+Now start up a server with: <code>webdriver-manager start</code> 
+
+Run the test with <code>protractor conf.js</code>
 
 #TO DO:
 - [ ] <strong> Sorting asc/desc elements in budget view cause removing wrong budget while deleting elements form budgets list </strong>
