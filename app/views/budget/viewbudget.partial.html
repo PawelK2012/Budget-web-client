@@ -52,9 +52,7 @@
             <div class="pull-left">
                 <a class="btn btn-blue-900" data-ng-click="vm.extraExpense = true; vm.monthlyExpense = false; vm.addIncome = false">Add extra expense</a>
                 <a class="btn btn-blue-900" data-ng-click="vm.monthlyExpense = true; vm.extraExpense = false; vm.addIncome = false">Add monthly expenses</a>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-blue-900" data-ng-if="!vm.addIncome" data-ng-click="vm.extraExpense = false; vm.monthlyExpense = false ; vm.addIncome = true">Add income</a>
+                <a class="btn btn-blue-900" data-ng-click="vm.extraExpense = false; vm.monthlyExpense = false; vm.addIncome = true">Add income</a>
             </div>
         </div>
     </div>
@@ -85,7 +83,7 @@
             </form>
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="addIncomeForm.$invalid" data-ng-click="">Add income</button>
+            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="addIncomeForm.$invalid" data-ng-click="vm.addIncomeToBudget(vm.incomeName, vm.incomeValue, vm.budgetId)">Add income</button>
         </div>
     </div>
 </div>

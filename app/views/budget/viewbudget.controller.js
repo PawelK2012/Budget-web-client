@@ -28,22 +28,32 @@
         vm.budgetId = $routeParams.itemId;
         vm.currentBudget = budgetService.getBudgetByKey(vm.budgetId);
         vm.currency = $scope.currentUser.currency.alias;
+        vm.updateBudgetTitle = updateBudgetTitle;
+        vm.addExpense = addExpense;
+        vm.deleteExpense = deleteExpense;
+        vm.addIncomeToBudget = addIncomeToBudget;
         vm.createChart = createChart;
         vm.updateChart = updateChart;
         createChart();
 
-        vm.updateBudgetTitle = function(id, title) {
+        function updateBudgetTitle (id, title) {
             budgetService.updateBudgetTitle(id, title);
         }
-        vm.addExpense = function(id, expenseName, expenseCategory, expenseCost, expenseType) {
+
+        function addExpense(id, expenseName, expenseCategory, expenseCost, expenseType) {
             budgetService.addExpense(id, expenseName, expenseCategory, expenseCost, expenseType);
-            vm.expenseName = '';
-            vm.expenseCategory = '';
-            vm.expenseCost = '';
+            vm.expenseName = undefined;
+            vm.expenseCost = undefined;
             updateChart();
         }
-        vm.deleteExpense = function(key, expenseType) {
+
+        function deleteExpense(key, expenseType) {
             budgetService.deleteExpense(key, expenseType, vm.budgetId);
+        }
+
+        function addIncomeToBudget(incomeName, incomeAmout, budgetId) {        
+            vm.currentBudget.currentBalance = budgetService.addIncomeToCurrentBallance(incomeAmout, vm.currentBudget.currentBalance, budgetId, incomeName);
+            //$scope.addIncomeForm.$setPristine();
         }
 
         function createChart() {
