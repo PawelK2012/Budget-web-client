@@ -26,7 +26,8 @@
             deleteBudget: deleteBudget,
             deleteExpense: deleteExpense,
             calculateTotalExpenses: calculateTotalExpenses,
-            calculateCurrentBalance: calculateCurrentBalance
+            calculateCurrentBalance: calculateCurrentBalance,
+            addIncomeToCurrentBallance: addIncomeToCurrentBallance
         };
 
         return service;
@@ -63,7 +64,7 @@
             var udpdatedBudget = budgetsArray[id];
             var staBudget = udpdatedBudget.firstDayBalance;
             var totalMonExpe = udpdatedBudget.totalMonthlyExpenses;
-            var totalExpe = udpdatedBudget.totalExpenses;
+            var totalExtraExpe = udpdatedBudget.totalExpenses;
             // We need to check what type of expense to be added
             if (expenseType === "monthly") {
 
@@ -78,12 +79,12 @@
                     cost: expenseCost
                 };
                 expensesArray.push(expense);
-                calculateTotalExpenses(expensesArray);
-                calculateCurrentBalance(staBudget, totalExpe, totalMonExpe);
+                var newTotalmonthlyExpenses = calculateTotalExpenses(expensesArray);
+                var calcNewBallance = calculateCurrentBalance(staBudget, totalExtraExpe, newTotalmonthlyExpenses);
                 // Edit values
-                udpdatedBudget.totalMonthlyExpenses = totalExpenses;
+                udpdatedBudget.totalMonthlyExpenses = newTotalmonthlyExpenses;
                 udpdatedBudget.monthlyExpenses = expensesArray;
-                udpdatedBudget.currentBalance = currentBalance;
+                udpdatedBudget.currentBalance = calcNewBallance;
 
             } else if (expenseType === "extra") {
 
@@ -99,18 +100,38 @@
                     cost: expenseCost
                 };
                 expensesArray.push(expense);
-                calculateTotalExpenses(expensesArray);
-                calculateCurrentBalance(staBudget, totalExpenses, totalMonExpe);
+                var newTotalExtraExpenses = calculateTotalExpenses(expensesArray);
+                var newBallance = calculateCurrentBalance(staBudget, totalMonExpe, newTotalExtraExpenses);
                 // Edit values
-                udpdatedBudget.totalExpenses = totalExpenses;
+                udpdatedBudget.totalExpenses = newTotalExtraExpenses;
                 udpdatedBudget.expenses = expensesArray;
-                udpdatedBudget.currentBalance = currentBalance;
+                udpdatedBudget.currentBalance = newBallance;
 
             }
 
             budgetsArray.$save(udpdatedBudget).then(function(ref) {
                 // Do something
             });
+        }
+
+        function addIncomeToCurrentBallance(incomeAmout, ballance, budgetId, incomeName){
+            var budget = budgetsArray[budgetId];
+            var extraIncomes = budget.extraIncomes;
+            if (!extraIncomes) {
+                extraIncomes = [];
+            }
+            var income = {
+                name: incomeName,
+                amount: incomeAmout
+            }
+            extraIncomes.push(income);
+            budget.extraIncomes = extraIncomes;
+            budget.currentBalance = incomeAmout + ballance;
+            console.log(budget.currentBalance)
+            budgetsArray.$save(budget).then(function(ref) {
+                // Do something
+            });
+            //return newBallance;
         }
 
         function getAllBudgets() {
@@ -171,11 +192,10 @@
             return totalExpenses;
         }
 
-        function calculateCurrentBalance(staBudget, totalExpenses, totalMonExpe ){
-            var expenses = totalExpenses + totalMonExpe;
+        function calculateCurrentBalance(staBudget, totalExtraExpen, totalMonExpe ){
+            var expenses = totalExtraExpen + totalMonExpe;
             currentBalance = staBudget - expenses;
             return currentBalance;
         }
-
     }
 })();

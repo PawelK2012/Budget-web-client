@@ -12,13 +12,25 @@
             bindToController: true,
             scope: {
                 incomeName: '=incomeName',
-                incomeValue: '=incomeValue'
+                incomeValue: '=incomeValue',
+                currentBallance: '=currentBallance'
             }
         };
     });
 
-    function AddIncomeDirective() {
+    AddIncomeDirective.$inject = ['budgetService']
+
+    function AddIncomeDirective(budgetService) {
         var vm = this;
+        vm.addIncome = addIncome;
+
+        function addIncome(incomeValue, currentBallance){
+           console.log(vm.currentBallance)
+           var newBallance = budgetService.addIncomeToCurrentBallance(incomeValue, currentBallance);
+           vm.currentBallance = newBallance;
+           console.log(vm.currentBallance)
+        }
+
     }
 
 })();
