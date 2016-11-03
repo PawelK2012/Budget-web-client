@@ -76,5 +76,5 @@ Run the test with <code>protractor conf.js</code>
 - [ ] <strong> Move charts to separate service/directive </strong>
 - [ ] <strong> Fix current issue with bootstrap-sass </strong>
 - [ ] Add Firebase do dependencies
-- [ ] Add paper input to login and register forms
+- [ ] Add paper input to login and register forms or replace bootstrap with google paper framework
 
