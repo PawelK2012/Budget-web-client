@@ -115,8 +115,8 @@
         }
 
         function addIncomeToCurrentBallance(incomeAmout, ballance, budgetId, incomeName){
-            var budget = budgetsArray[budgetId];
-            var extraIncomes = budget.extraIncomes;
+            var budgetToBeUpdated = budgetsArray[budgetId];
+            var extraIncomes = budgetToBeUpdated.extraIncomes;
             if (!extraIncomes) {
                 extraIncomes = [];
             }
@@ -125,13 +125,9 @@
                 amount: incomeAmout
             }
             extraIncomes.push(income);
-            budget.extraIncomes = extraIncomes;
-            budget.currentBalance = incomeAmout + ballance;
-            console.log(budget.currentBalance)
-            budgetsArray.$save(budget).then(function(ref) {
-                // Do something
-            });
-            //return newBallance;
+            budgetToBeUpdated.extraIncomes = extraIncomes;
+            budgetToBeUpdated.currentBalance = incomeAmout + ballance;
+            budgetsArray.$save(budgetToBeUpdated);
         }
 
         function getAllBudgets() {

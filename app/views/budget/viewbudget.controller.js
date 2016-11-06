@@ -52,8 +52,7 @@
         }
 
         function addIncomeToBudget(incomeName, incomeAmout, budgetId) {        
-            vm.currentBudget.currentBalance = budgetService.addIncomeToCurrentBallance(incomeAmout, vm.currentBudget.currentBalance, budgetId, incomeName);
-            //$scope.addIncomeForm.$setPristine();
+            budgetService.addIncomeToCurrentBallance(incomeAmout, vm.currentBudget.currentBalance, budgetId, incomeName);
         }
 
         function createChart() {
