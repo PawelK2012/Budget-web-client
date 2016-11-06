@@ -71,6 +71,12 @@ Now start up a server with: <code>webdriver-manager start</code>
 Run the test with <code>protractor conf.js</code>
 
 #TO DO:
+- [ ] <strong> By default system should display list of budgets by last updated budget </strong>
+- [ ] <strong> Add more E2E tests </strong>
+- [ ] <strong> Add unit tests </strong>
+- [ ] <strong> Enable input directives to clear forms after submiting data </strong>
+- [ ] <strong> Add gulp task to minified JS files </strong>
+- [ ] <strong> Add social network logins </strong>
 - [ ] <strong> Move charts to separate service/directive </strong>
 - [ ] <strong> Fix current issue with bootstrap-sass </strong>
 - [ ] Add Firebase do dependencies
