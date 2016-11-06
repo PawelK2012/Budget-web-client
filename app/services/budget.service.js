@@ -27,7 +27,9 @@
             deleteExpense: deleteExpense,
             calculateTotalExpenses: calculateTotalExpenses,
             calculateCurrentBalance: calculateCurrentBalance,
-            addIncomeToCurrentBallance: addIncomeToCurrentBallance
+            addIncomeToCurrentBallance: addIncomeToCurrentBallance,
+            deleteIncome: deleteIncome,
+            calculateTotalExtraIncomes: calculateTotalExtraIncomes
         };
 
         return service;
@@ -44,6 +46,7 @@
                 totalMonthlyExpenses: totalMonthlyExpenses,
                 firstDayBalance: startingBudget,
                 lastDayBalance: 0,
+                totalIncomes: 0,
                 currentBalance: startingBudget - totalExpenses - totalMonthlyExpenses,
                 timestamp: Firebase.ServerValue.TIMESTAMP
             }).then(function(ref) {
@@ -125,6 +128,7 @@
                 amount: incomeAmout
             }
             extraIncomes.push(income);
+            budgetToBeUpdated.totalIncomes = calculateTotalExtraIncomes(extraIncomes);
             budgetToBeUpdated.extraIncomes = extraIncomes;
             budgetToBeUpdated.currentBalance = incomeAmout + ballance;
             budgetsArray.$save(budgetToBeUpdated);
@@ -179,13 +183,34 @@
             budgetsArray.$save(budget);
         }
 
-        function calculateTotalExpenses(expensesArray) {
-            totalExpenses = 0;
-            for (var i = 0; i < expensesArray.length; i++) {
-                var expense = expensesArray[i].cost;
+        function deleteIncome(key, budgetId){
+            var budget = budgetsArray[budgetId];
+            var currentBalance  = budget.currentBalance;
+            var extraIncomes  = budget.extraIncomes;
+            var deletedIncome = extraIncomes[key].amount;
+            extraIncomes.splice(key, 1);
+            budget.totalIncomes = calculateTotalExtraIncomes(extraIncomes);
+            budget.extraIncomes = extraIncomes;
+            budget.currentBalance = currentBalance - deletedIncome;
+            budgetsArray.$save(budget);
+        }
+
+        function calculateTotalExpenses(expenses) {
+            var totalExpenses = 0;
+            for (var i = 0; i < expenses.length; i++) {
+                var expense = expenses[i].cost;
                 totalExpenses = totalExpenses + expense;
             }
             return totalExpenses;
+        }
+
+        function calculateTotalExtraIncomes(incomes){
+            var totalIncomes = 0;
+            for (var i = 0; i < incomes.length; i++) {
+                var income = incomes[i].amount;
+                totalIncomes = totalIncomes + income;
+            }
+            return totalIncomes;
         }
 
         function calculateCurrentBalance(staBudget, totalExtraExpen, totalMonExpe ){

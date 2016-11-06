@@ -32,6 +32,7 @@
         vm.addExpense = addExpense;
         vm.deleteExpense = deleteExpense;
         vm.addIncomeToBudget = addIncomeToBudget;
+        vm.deleteIncome = deleteIncome;
         vm.createChart = createChart;
         vm.updateChart = updateChart;
         createChart();
@@ -53,6 +54,10 @@
 
         function addIncomeToBudget(incomeName, incomeAmout, budgetId) {        
             budgetService.addIncomeToCurrentBallance(incomeAmout, vm.currentBudget.currentBalance, budgetId, incomeName);
+        }
+
+        function deleteIncome(key){
+            budgetService.deleteIncome(key, vm.budgetId);
         }
 
         function createChart() {
