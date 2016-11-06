@@ -71,8 +71,6 @@ Now start up a server with: <code>webdriver-manager start</code>
 Run the test with <code>protractor conf.js</code>
 
 #TO DO:
-- [ ] <strong> Fix search in budget view </strong>
-- [ ] <strong> Sorting asc/desc elements in budget view is broken </strong>
 - [ ] <strong> Move charts to separate service/directive </strong>
 - [ ] <strong> Fix current issue with bootstrap-sass </strong>
 - [ ] Add Firebase do dependencies
