@@ -42,7 +42,17 @@
             </ul>
             <h4 data-ng-if="vm.currentBudget.monthlyExpenses.length > 0" class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalMonthlyExpenses | currency: vm.currency+" "}}</span></h4>
         </div>
-        <div class="col-xs-12 col-sm-4 padding-bottom-20" data-ng-if="vm.currentBudget.expenses || vm.currentBudget.monthlyExpenses">
+        <div class="col-xs-12 col-sm-4" data-ng-if="vm.currentBudget.extraIncomes">
+            <h4>Extra incomes: </h4>
+            <ul class="list-unstyled">
+                <li class="padding-bottom-10" ng-repeat="(key, value) in vm.currentBudget.extraIncomes">
+                    {{key+1}}. Name: <strong> {{value.name}}</strong>  Amount: <span class="label label-info">{{value.amount | currency: vm.currency+" "}}</span>
+                    <span class="glyphicon glyphicon-trash" data-ng-click="vm.deleteIncome(key)" aria-hidden="true"></span>
+                </li>
+            </ul>
+            <h4 data-ng-if="vm.currentBudget.extraIncomes.length > 0" class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalIncomes | currency: vm.currency+" "}}</span></h4>
+        </div>
+        <div class="col-xs-12 col-sm-4" data-ng-if="vm.currentBudget.expenses || vm.currentBudget.monthlyExpenses">
             <div google-chart chart="chartObject"></div>
         </div>
     </div>
