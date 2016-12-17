@@ -71,6 +71,8 @@ Now start up a server with: <code>webdriver-manager start</code>
 Run the test with <code>protractor conf.js</code>
 
 #TO DO:
+- [ ] <strong> Deleting income is adding income value to total budgets instead of removing it</strong>
+- [ ] <strong> Display message when no search record found (budget search)</strong>
 - [ ] <strong> By default system should display list of budgets by last updated budget </strong>
 - [ ] <strong> Add more E2E tests </strong>
 - [ ] <strong> Add unit tests </strong>

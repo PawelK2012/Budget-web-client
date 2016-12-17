@@ -45,6 +45,8 @@
             budgetService.addExpense(id, expenseName, expenseCategory, expenseCost, expenseType);
             vm.expenseName = undefined;
             vm.expenseCost = undefined;
+            vm.extraExpense = false;
+            vm.addExpenseSuccessMsg = true;
             updateChart();
         }
 

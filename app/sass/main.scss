@@ -4,20 +4,23 @@
     @import 'app/sass/utils.scss';
     @import 'app/sass/icons.scss';
     @import 'app/sass/paper-input.scss';
+    @import 'app/sass/animations.scss';
     // Views
     @import 'app/sass/budget.scss';
     @import 'app/sass/nav-menu.scss';
+    // Directives
+    @import 'app/sass/toast-msg.scss';
     body {
         background: $blue-50;
         color: $blue-900;
         font-weight: 300;
     }
-    .budget-container{
+    .budget-container {
         padding: 80px 0px 50px 0px;
     }
     @media (min-width: 1300px) {
         .container {
-            width: 1270px;
+            width: 1280px;
         }
     }
 }
