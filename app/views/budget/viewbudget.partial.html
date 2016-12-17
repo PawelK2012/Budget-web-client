@@ -1,7 +1,7 @@
 <div class="container view-budget">
     <div class="row">
         <div class="col-xs-12 padding-bottom-20">
-            <toast-msg class="pull-right" data-msg="vm.addExpenseSuccessMsg" data-ng-if="vm.addExpenseSuccessMsg"></toast-msg>
+            <toast-msg class="pull-right" data-hide-toast-msg="vm.hideToastMsg" data-msg="vm.addExpenseSuccessMsg" data-ng-if="vm.addExpenseSuccessMsg"></toast-msg>
             <h1 data-ng-if="!vm.editTitle" data-ng-mouseover="vm.editTitleIcon = true" data-ng-mouseleave="vm.editTitleIcon = false">{{vm.currentBudget.title}}<img class="svg-icon" data-ng-if="vm.editTitleIcon" data-ng-click="vm.editTitle = true" src="icons/pencil.svg"/></h1>
             <div class="edit-input-container margin-bottom-10" data-ng-if="vm.editTitle">
                 <form class="margin-top-20" ng-submit="vm.updateBudgetTitle(vm.budgetId, vm.budgetTitle); vm.editTitle = false">

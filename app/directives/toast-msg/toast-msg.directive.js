@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('myApp.toastMsg',  ['ngRoute'])
+    angular.module('myApp.toastMsg', ['ngRoute'])
 
     .directive('toastMsg', function() {
         return {
@@ -11,14 +11,20 @@
             controllerAs: 'vm',
             bindToController: true,
             scope: {
-                msg: '=msg'
+                msg: '=msg',
+                hideToastMsg: '='
             }
         };
     });
 
-    function ToastMsgDirective() {
+    ToastMsgDirective.$inject = ['$timeout']
+
+    function ToastMsgDirective($timeout) {
         var vm = this;
         vm.msg = "Successfully added to your budget!";
-    }
 
+        $timeout(function() {
+            vm.hideToastMsg = true;
+        }, 3000);
+    }
 })();
