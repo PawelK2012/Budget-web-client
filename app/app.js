@@ -12,6 +12,7 @@ angular.module('myApp', [
   'myApp.user',
   'myApp.addExpense',
   'myApp.addIncome',
+  'myApp.toastMsg',
   'myApp.focus'
 ]).run(['$rootScope', '$location', function($rootScope, $location) {
   $rootScope.$on('$routeChangeError',

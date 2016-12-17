@@ -18,7 +18,7 @@
 
     function ToastMsgDirective() {
         var vm = this;
-        vm.msg = "Successful added to your budget!";
+        vm.msg = "Successfully added to your budget!";
     }
 
 })();

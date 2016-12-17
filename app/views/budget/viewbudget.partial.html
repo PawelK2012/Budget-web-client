@@ -1,7 +1,8 @@
 <div class="container view-budget">
     <div class="row">
         <div class="col-xs-12 padding-bottom-20">
-            <h1 data-ng-if="!vm.editTitle" ng-mouseover="vm.editTitleIcon = true" ng-mouseleave="vm.editTitleIcon = false">{{vm.currentBudget.title}}<img class="svg-icon" data-ng-if="vm.editTitleIcon" data-ng-click="vm.editTitle = true" src="icons/pencil.svg"/></h1>
+            <toast-msg class="pull-right" data-msg="vm.addExpenseSuccessMsg" data-ng-if="vm.addExpenseSuccessMsg"></toast-msg>
+            <h1 data-ng-if="!vm.editTitle" data-ng-mouseover="vm.editTitleIcon = true" data-ng-mouseleave="vm.editTitleIcon = false">{{vm.currentBudget.title}}<img class="svg-icon" data-ng-if="vm.editTitleIcon" data-ng-click="vm.editTitle = true" src="icons/pencil.svg"/></h1>
             <div class="edit-input-container margin-bottom-10" data-ng-if="vm.editTitle">
                 <form class="margin-top-20" ng-submit="vm.updateBudgetTitle(vm.budgetId, vm.budgetTitle); vm.editTitle = false">
                     <div class="group-no-margin paper-input">
@@ -46,7 +47,7 @@
             <h4>Extra incomes: </h4>
             <ul class="list-unstyled">
                 <li class="padding-bottom-10" ng-repeat="(key, value) in vm.currentBudget.extraIncomes">
-                    {{key+1}}. Name: <strong> {{value.name}}</strong>  Amount: <span class="label label-info">{{value.amount | currency: vm.currency+" "}}</span>
+                    {{key+1}}. Name: <strong> {{value.name}}</strong> Amount: <span class="label label-info">{{value.amount | currency: vm.currency+" "}}</span>
                     <span class="glyphicon glyphicon-trash" data-ng-click="vm.deleteIncome(key)" aria-hidden="true"></span>
                 </li>
             </ul>
@@ -58,7 +59,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12 padding-bottom-30 padding-top-20">
-           <p data-ng-if="!vm.currentBudget.expenses && !vm.currentBudget.monthlyExpenses"><strong>It look's like your budget is empty.</strong> Add expenses to you budget.</p>
+            <p data-ng-if="!vm.currentBudget.expenses && !vm.currentBudget.monthlyExpenses"><strong>It look's like your budget is empty.</strong> Add expenses to you budget.</p>
             <div class="pull-left">
                 <a class="btn btn-blue-900" data-ng-click="vm.extraExpense = true; vm.monthlyExpense = false; vm.addIncome = false">Add extra expense</a>
                 <a class="btn btn-blue-900" data-ng-click="vm.monthlyExpense = true; vm.extraExpense = false; vm.addIncome = false">Add monthly expenses</a>
@@ -73,7 +74,7 @@
             </form>
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="expensesForm.$invalid" data-ng-click="vm.expenseType = 'extra'; vm.addExpense(vm.budgetId, vm.expenseName, vm.expenseCategory, vm.expenseCost, vm.expenseType)">Add extra expense</button>
+            <button type="button" class="btn btn-blue-900 pull-right" data-ng-disabled="expensesForm.$invalid" data-ng-click="vm.expenseType = 'extra'; vm.addExpense(vm.budgetId, vm.expenseName, vm.expenseCategory, vm.expenseCost, vm.expenseType)">Add extra expense</button>
         </div>
     </div>
     <div class="row monthly-expense" data-ng-if="vm.monthlyExpense">
@@ -83,17 +84,17 @@
             </form>
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="monthlyExpensesForm.$invalid" data-ng-click="vm.expenseType = 'monthly'; vm.addExpense(vm.budgetId, vm.monthlyExpenseName, vm.monthlyExpenseCategory, vm.monthlyExpenseCost, vm.expenseType)">Add planed expense</button>
+            <button type="button" class="btn btn-blue-900 pull-right" data-ng-disabled="monthlyExpensesForm.$invalid" data-ng-click="vm.expenseType = 'monthly'; vm.addExpense(vm.budgetId, vm.monthlyExpenseName, vm.monthlyExpenseCategory, vm.monthlyExpenseCost, vm.expenseType)">Add planed expense</button>
         </div>
     </div>
     <div class="row add-income" data-ng-if="vm.addIncome">
         <div class="col-xs-12">
             <form name="addIncomeForm">
-                <add-income income-name="vm.incomeName" income-value="vm.incomeValue"/></add-income>
+                <add-income income-name="vm.incomeName" income-value="vm.incomeValue" /></add-income>
             </form>
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-blue-900 pull-right" ng-disabled="addIncomeForm.$invalid" data-ng-click="vm.addIncomeToBudget(vm.incomeName, vm.incomeValue, vm.budgetId)">Add income</button>
+            <button type="button" class="btn btn-blue-900 pull-right" data-ng-disabled="addIncomeForm.$invalid" data-ng-click="vm.addIncomeToBudget(vm.incomeName, vm.incomeValue, vm.budgetId)">Add income</button>
         </div>
     </div>
 </div>
