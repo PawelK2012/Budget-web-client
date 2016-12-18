@@ -35,10 +35,9 @@
         vm.deleteIncome = deleteIncome;
         vm.createChart = createChart;
         vm.updateChart = updateChart;
-        vm.close = close;
         createChart();
 
-        function updateBudgetTitle (id, title) {
+        function updateBudgetTitle(id, title) {
             budgetService.updateBudgetTitle(id, title);
         }
 
@@ -52,13 +51,17 @@
 
         function deleteExpense(key, expenseType) {
             budgetService.deleteExpense(key, expenseType, vm.budgetId);
+            createChart();
         }
 
-        function addIncomeToBudget(incomeName, incomeAmout, budgetId) {        
+        function addIncomeToBudget(incomeName, incomeAmout, budgetId) {
             budgetService.addIncomeToCurrentBallance(incomeAmout, vm.currentBudget.currentBalance, budgetId, incomeName);
+            vm.addIncome = false;
+            vm.sucessfullyAddedMsg = true;
+            updateChart();
         }
 
-        function deleteIncome(key){
+        function deleteIncome(key) {
             budgetService.deleteIncome(key, vm.budgetId);
         }
 
@@ -74,8 +77,8 @@
             ];
             $scope.chartObject.options = {
                 title: 'Start balance: ' + vm.currentBudget.firstDayBalance + " " + vm.currency,
-                titleTextStyle: { color: '#01579B', fontSize: 18 },
-                backgroundColor: '#E1F5FE',
+                titleTextStyle: { color: '#9C27B0', fontSize: 18 },
+                backgroundColor: '#F5F5F5',
                 chartArea: { left: 0, top: 32, width: '100%', height: '100%' }
             };
             updateChart();

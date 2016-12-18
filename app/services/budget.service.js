@@ -167,7 +167,7 @@
                 var total = calculateTotalExpenses(tmpExpenses);
                 budget.monthlyExpenses = tmpExpenses;
                 budget.totalMonthlyExpenses = total;
-                budget.currentBalance = currentBalance + monthlyExpenseCost;
+                budget.currentBalance = currentBalance - monthlyExpenseCost;
 
             } else if (expenseType === "extra") {
 
@@ -177,7 +177,7 @@
                 var total = calculateTotalExpenses(tmpExpenses);
                 budget.expenses = tmpExpenses;
                 budget.totalExpenses = total;
-                budget.currentBalance = currentBalance + expenseCost;
+                budget.currentBalance = currentBalance - expenseCost;
 
             }
             budgetsArray.$save(budget);

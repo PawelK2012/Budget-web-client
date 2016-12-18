@@ -14,11 +14,8 @@
     display: block;
     width: 100%;
     border: none;
-    border-bottom: 1px solid $blue-300;
-}
-
-input {
-    background: $blue-50
+    border-bottom: 1px solid $purple-500;
+    background: $gray-100;
 }
 
 .paper-input input:focus {
@@ -26,7 +23,7 @@ input {
 }
 
 .paper-input label {
-    color: $blue-500;
+    color: $purple-500;
     font-size: 18px;
     font-weight: normal;
     position: absolute;
@@ -42,7 +39,7 @@ input {
 .paper-input input.ng-dirty ~ label {
     top: -20px;
     font-size: 14px;
-    color: #5264AE;
+    color: $purple-900;
 }
 
 .bar {
@@ -58,7 +55,7 @@ input {
     width: 0;
     bottom: 1px;
     position: absolute;
-    background: #5264AE;
+    background: $purple-900;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
@@ -222,25 +219,17 @@ input {
 }
 
 select {
-    color: $blue-500;
-    background: $blue-50;
+    color: $purple-500;
+    background: $gray-100;
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
     -webkit-border-radius: 0px;
     border-radius: 0px;
     border: none;
-    border-bottom: 1px solid $blue-300;
+    border-bottom: 1px solid $purple-500;
 }
 
 .select-no-border {
     border: none;
-}
-
-option {
-    background-color: red;
-}
-
-select > option {
-    background: green;
 }

@@ -1,0 +1,13 @@
+@import 'app/sass/colors.scss';
+a {
+	color: $purple-500;
+}
+a:hover {
+	color: $purple-900;
+}
+
+h1, h3, h3, h4, h5, h6{
+	padding: 0px;
+	margin: 0px;
+	color: $purple-500;
+}

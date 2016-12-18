@@ -53,7 +53,11 @@
 .margin-top-20 {
     margin-top: 20px;
 }
-.btn-blue-900 {
+.no-padding-margin{
+    padding: 0px;
+    margin: 0px;
+}
+.btn-blue-900 { 
     color: #fff;
     background-color: $blue-900;
     border-color: $blue-900;
@@ -63,6 +67,20 @@
 .btn-blue-900:hover {
     background-color: $blue-500;
     border-color: $blue-500;
+    will-change: box-shadow;
+    transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+}
+
+.btn-blue-900 { 
+    color: #fff;
+    background-color: $purple-900;
+    border-color: $purple-900;
+    border-radius: 0;
+}
+
+.btn-blue-900:hover {
+    background-color: $purple-500;
+    border-color: $purple-500;
     will-change: box-shadow;
     transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
 }
