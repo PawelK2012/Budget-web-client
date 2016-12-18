@@ -25,10 +25,8 @@
         vm.addIncome = addIncome;
 
         function addIncome(incomeValue, currentBallance){
-           console.log(vm.currentBallance)
            var newBallance = budgetService.addIncomeToCurrentBallance(incomeValue, currentBallance);
            vm.currentBallance = newBallance;
-           console.log(vm.currentBallance)
         }
 
     }

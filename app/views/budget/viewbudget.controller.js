@@ -35,6 +35,7 @@
         vm.deleteIncome = deleteIncome;
         vm.createChart = createChart;
         vm.updateChart = updateChart;
+        vm.close = close;
         createChart();
 
         function updateBudgetTitle (id, title) {
@@ -43,10 +44,9 @@
 
         function addExpense(id, expenseName, expenseCategory, expenseCost, expenseType) {
             budgetService.addExpense(id, expenseName, expenseCategory, expenseCost, expenseType);
-            vm.expenseName = undefined;
-            vm.expenseCost = undefined;
             vm.extraExpense = false;
-            vm.addExpenseSuccessMsg = true;
+            vm.monthlyExpense = false;
+            vm.sucessfullyAddedMsg = true;
             updateChart();
         }
 

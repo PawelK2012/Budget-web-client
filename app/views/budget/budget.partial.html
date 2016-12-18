@@ -28,7 +28,7 @@
         </div>
         <div class="row">
             <a href="#/createbudget" data-ng-if="vm.budgets.length === 0" class="btn btn-blue-900 pull-right">Create budget</a>
-            <div class="col-xs-12 col-sm-6 col-md-4 card" data-ng-repeat="(key, value) in vm.budgets | filter: query | orderBy: whyIamHere:direction">
+            <div class="col-xs-12 col-sm-6 col-md-6 card" data-ng-repeat="(key, value) in vm.budgets | filter: query | orderBy: whyIamHere:direction">
                 <h4>{{$index + 1}}. <a href="#/viewbudget/{{key}}">{{value.title}}</a></h4>
                 <span> <strong> Balance: </strong>{{value.currentBalance}} {{$parent.currentUser.currency.alias}}</span>
                 <span class="glyphicon glyphicon-trash pull-right" data-ng-click="vm.delete($index)" aria-hidden="true"></span>
