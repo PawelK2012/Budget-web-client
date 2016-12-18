@@ -5,14 +5,15 @@
     @import 'app/sass/icons.scss';
     @import 'app/sass/paper-input.scss';
     @import 'app/sass/animations.scss';
+    @import 'app/sass/typography.scss';
     // Views
     @import 'app/sass/budget.scss';
     @import 'app/sass/nav-menu.scss';
     // Directives
     @import 'app/sass/toast-msg.scss';
     body {
-        background: $blue-50;
-        color: $blue-900;
+        background: $gray-100;
+        color:  $purple-900;
         font-weight: 300;
     }
     .budget-container {

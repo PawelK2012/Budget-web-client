@@ -74,8 +74,8 @@
             ];
             $scope.chartObject.options = {
                 title: 'Start balance: ' + vm.currentBudget.firstDayBalance + " " + vm.currency,
-                titleTextStyle: { color: '#01579B', fontSize: 18 },
-                backgroundColor: '#E1F5FE',
+                titleTextStyle: { color: '#9C27B0', fontSize: 18 },
+                backgroundColor: '#F5F5F5',
                 chartArea: { left: 0, top: 32, width: '100%', height: '100%' }
             };
             updateChart();
