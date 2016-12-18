@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-4" data-ng-if="vm.currentBudget.expenses">
+        <div class="col-xs-12 col-sm-6 col-md-3 no-padding-margin" data-ng-if="vm.currentBudget.expenses">
             <h4>Extra expenses:</h4>
             <ul class="list-unstyled">
                 <li class="padding-bottom-10" ng-repeat="(key, value) in vm.currentBudget.expenses">
@@ -33,7 +33,7 @@
             </ul>
             <h4 data-ng-if="vm.currentBudget.expenses.length > 0" class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalExpenses | currency: vm.currency+" "}}</span></h4>
         </div>
-        <div class="col-xs-12 col-sm-4" data-ng-if="vm.currentBudget.monthlyExpenses">
+        <div class="col-xs-12 col-sm-6 col-md-3 no-padding-margin" data-ng-if="vm.currentBudget.monthlyExpenses">
             <h4>Planed expenses: </h4>
             <ul class="list-unstyled">
                 <li class="padding-bottom-10" ng-repeat="(key, value) in vm.currentBudget.monthlyExpenses">
@@ -43,7 +43,7 @@
             </ul>
             <h4 data-ng-if="vm.currentBudget.monthlyExpenses.length > 0" class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalMonthlyExpenses | currency: vm.currency+" "}}</span></h4>
         </div>
-        <div class="col-xs-12 col-sm-4" data-ng-if="vm.currentBudget.extraIncomes">
+        <div class="col-xs-12 col-sm-6 col-md-3 no-padding-margin" data-ng-if="vm.currentBudget.extraIncomes">
             <h4>Extra incomes: </h4>
             <ul class="list-unstyled">
                 <li class="padding-bottom-10" ng-repeat="(key, value) in vm.currentBudget.extraIncomes">
@@ -53,7 +53,7 @@
             </ul>
             <h4 data-ng-if="vm.currentBudget.extraIncomes.length > 0" class="padding-top-10">Total: <span class="label label-danger">{{vm.currentBudget.totalIncomes | currency: vm.currency+" "}}</span></h4>
         </div>
-        <div class="col-xs-12 col-sm-4" data-ng-if="vm.currentBudget.expenses || vm.currentBudget.monthlyExpenses">
+        <div class="col-xs-12 col-sm-6 col-md-3 no-padding-margin" data-ng-if="vm.currentBudget.expenses || vm.currentBudget.monthlyExpenses">
             <div google-chart chart="chartObject"></div>
         </div>
     </div>
