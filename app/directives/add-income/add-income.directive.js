@@ -13,14 +13,15 @@
             scope: {
                 incomeName: '=incomeName',
                 incomeValue: '=incomeValue',
-                currentBallance: '=currentBallance'
+                currentBallance: '=currentBallance',
+                submitForm: '='
             }
         };
     });
 
-    AddIncomeDirective.$inject = ['budgetService']
+    AddIncomeDirective.$inject = ['budgetService', '$scope']
 
-    function AddIncomeDirective(budgetService) {
+    function AddIncomeDirective(budgetService, $scope) {
         var vm = this;
         vm.addIncome = addIncome;
 
@@ -28,6 +29,12 @@
            var newBallance = budgetService.addIncomeToCurrentBallance(incomeValue, currentBallance);
            vm.currentBallance = newBallance;
         }
+
+        // Clear inputs if formName.$submitted true
+        $scope.$watch("vm.submitForm", function() {
+            vm.incomeName = undefined;
+            vm.incomeValue = undefined;
+        })
 
     }
 

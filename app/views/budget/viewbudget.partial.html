@@ -90,7 +90,7 @@
     <div class="row add-income" data-ng-if="vm.addIncome">
         <div class="col-xs-12">
             <form name="addIncomeForm">
-                <add-income income-name="vm.incomeName" income-value="vm.incomeValue" /></add-income>
+                <add-income income-name="vm.incomeName" income-value="vm.incomeValue" data-submit-form="addIncomeForm.$submitted"/></add-income>
             </form>
         </div>
         <div class="btn-container">

@@ -37,7 +37,7 @@
         vm.updateChart = updateChart;
         createChart();
 
-        function updateBudgetTitle (id, title) {
+        function updateBudgetTitle(id, title) {
             budgetService.updateBudgetTitle(id, title);
         }
 
@@ -54,11 +54,14 @@
             createChart();
         }
 
-        function addIncomeToBudget(incomeName, incomeAmout, budgetId) {        
+        function addIncomeToBudget(incomeName, incomeAmout, budgetId) {
             budgetService.addIncomeToCurrentBallance(incomeAmout, vm.currentBudget.currentBalance, budgetId, incomeName);
+            vm.addIncome = false;
+            vm.sucessfullyAddedMsg = true;
+            updateChart();
         }
 
-        function deleteIncome(key){
+        function deleteIncome(key) {
             budgetService.deleteIncome(key, vm.budgetId);
         }
 
