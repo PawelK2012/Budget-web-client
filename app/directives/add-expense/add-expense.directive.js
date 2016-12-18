@@ -14,15 +14,23 @@
                 extraExpense: '=extraExpense',
                 expenseName: '=expenseName',
                 expenseCategory: '=expenseCategory',
-                expenseCost: '=expenseCost'
+                expenseCost: '=expenseCost',
+                submitForm: '='
             }
         };
     });
 
-    function AddExpenseController() {
+    AddExpenseController.$inject = ['$scope']
+
+    function AddExpenseController($scope) {
         var vm = this;
         vm.expenseCategory = 'Food';
         vm.allCategories = ['Food', 'Sport', 'Car', ' Entertainment', 'Rent', 'Bills' , 'Health', 'Other'];
+        // Clear inputs if formName.$submitted true
+        $scope.$watch("vm.submitForm", function() {
+            vm.expenseName = undefined;
+            vm.expenseCost = undefined;
+        })
     }
 
 })();

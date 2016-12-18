@@ -11,8 +11,7 @@
             controllerAs: 'vm',
             bindToController: true,
             scope: {
-                msg: '=msg',
-                hideToastMsg: '='
+                showMsg: '=showMsg'
             }
         };
     });
@@ -21,10 +20,10 @@
 
     function ToastMsgDirective($timeout) {
         var vm = this;
-        vm.msg = "Successfully added to your budget!";
+        vm.successMsg = "Successfully added to your budget!";
 
         $timeout(function() {
-            vm.hideToastMsg = true;
+            vm.showMsg = false;
         }, 3000);
     }
 })();
