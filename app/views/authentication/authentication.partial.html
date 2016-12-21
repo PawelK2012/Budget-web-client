@@ -1,7 +1,7 @@
 <div class="container authentication">
     <div class="row" data-ng-if="!vm.logMe && !vm.regMe">
         <div class="col-xs-12">
-        <p class="text-center">{{message}}</p>
+            <p class="text-center">{{message}}</p>
             <h1 class="text-center">Budget-App</h1>
             <p class="text-center">Managing budget made easy!</p>
             <div class="center-block text-center">
@@ -11,65 +11,50 @@
             </div>
         </div>
     </div>
-    <div class="row login-container" data-ng-if="vm.logMe">
-        <div class="col-md-5 col-md-offset-3">
-            <p class="bg-danger" data-ng-if="errorMsg">{{errorMsg}}. Try again or <a data-ng-click="vm.regMe = true; vm.logMe = false;"><strong>register</strong></a></p>
-            <form name="loginForm" class="form-horizontal" ng-submit="vm.login(vm.email, vm.pass)" novalidate>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" name="email" class="form-control input-email" placeholder="Email" data-ng-model="vm.email" required>
-                        <span class="bg-danger margin-top-10 pull-left" data-ng-if="loginForm.email.$touched && loginForm.email.$invalid">The email is required.</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" name="pass" class="form-control" placeholder="Password" data-ng-model="vm.pass" required>
-                        <span class="bg-danger margin-top-10 pull-left" data-ng-if="loginForm.pass.$touched && loginForm.pass.$invalid">The password is required.</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-blue-900 pull-right bnt-submit-login" ng-disabled="loginForm.$invalid">Log in</button>
-                        <p data-ng-click="vm.logMe = false">Go back</p>
-                    </div>
-                </div>
-            </form>
+    <div class="login-container" data-ng-if="vm.logMe || vm.regMe">
+        <div class="row padding-bottom-30">
+            <div class="col-md-5 col-md-offset-3">
+                <h1 data-ng-if="vm.logMe">Login form</h1>
+                <h1 data-ng-if="vm.regMe">Registration form</h1>
+            </div>
         </div>
-    </div>
-    <div class="row regisrtation-container" data-ng-if="vm.regMe">
-        <div class="col-md-5 col-md-offset-3">
-            <p class="text-center" data-ng-if="errorMsg">{{errorMsg}}</p>
-            <form name="registerForm" class="form-horizontal" ng-submit="vm.register(vm.name, vm.email, vm.pass)">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Your name</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="name" class="form-control" placeholder="Your name..." data-ng-model="vm.name" required>
-                        <span class="bg-danger margin-top-10 pull-left" data-ng-if="registerForm.name.$touched && registerForm.name.$invalid">Your name is required.</span>
+        <div data-ng-if="errorMsg" class="row padding-bottom-30">
+            <div class="col-md-5 col-md-offset-3">
+                <p class="bg-danger">{{errorMsg}}. Try again<a data-ng-if="vm.regMe === true" data-ng-click="vm.regMe = true; vm.logMe = false;"><strong> or register</strong></a>.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-md-offset-3">
+                <form name="authenticationForm" data-ng-submit="vm.redirectAuthenctication(vm.email, vm.pass, vm.name)" novalidate>
+                    <div data-ng-if="vm.regMe === true" class="group paper-input">
+                        <input type="text" name="name" placeholder="Your name..." data-ng-model="vm.name" required focus>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Your name</label>
+                        <span class="bg-danger margin-top-10 pull-left" data-ng-if="authenticationForm.name.$touched && authenticationForm.name.$invalid">Your name is required.</span>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" name="email" class="form-control" placeholder="Email" data-ng-model="vm.email" required>
-                        <span class="bg-danger margin-top-10 pull-left" data-ng-if="registerForm.email.$touched && registerForm.email.$invalid">The email is required.</span>
+                    <div class="group paper-input">
+                        <input type="email" name="email" placeholder="Email" data-ng-model="vm.email" required focus>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Email</label>
+                        <span class="bg-danger margin-top-10 pull-left" data-ng-if="authenticationForm.email.$touched && authenticationForm.email.$invalid">Email is required.</span>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" name="pass" class="form-control" placeholder="Password" data-ng-model="vm.pass" required>
-                        <span class="bg-danger margin-top-10 pull-left" data-ng-if="registerForm.pass.$touched && registerForm.pass.$invalid">The password is required.</span>
+                    <div class="group paper-input">
+                        <input type="password" name="pass" placeholder="Password" data-ng-model="vm.pass" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Password</label>
+                        <span class="bg-danger margin-top-10 pull-left" data-ng-if="authenticationForm.pass.$touched && authenticationForm.pass.$invalid">Password is required.</span>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-blue-900 pull-right" ng-disabled="registerForm.$invalid">Sign in</button>
-                        <p data-ng-click="vm.regMe = false">Go back</p>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-blue-900 pull-right bnt-submit-login" data-ng-disabled="authenticationForm.$invalid">Log in</button>
+                            <button type="submit" class="btn pull-right btn-link" data-ng-click="vm.cancel()">Go back</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>

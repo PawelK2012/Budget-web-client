@@ -48,7 +48,7 @@
             return auth.$requireAuth();
         }
 
-        function getRegister(name, email, pass) {
+        function getRegister(email, pass, name) {
             auth.$createUser({
                 email: email,
                 password: pass
