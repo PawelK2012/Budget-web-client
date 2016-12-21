@@ -15,16 +15,26 @@
 
     .controller('AuthenticationCtrl', AuthenticationCtrl);
 
-    AuthenticationCtrl.$inject = ['authenticationService']
+    AuthenticationCtrl.$inject = ['authenticationService', '$scope']
 
-    function AuthenticationCtrl(authenticationService) {
+    function AuthenticationCtrl(authenticationService, $scope) {
 
         var vm = this;
-        vm.login = function(email, pass) {
-            authenticationService.getLogin(email, pass);
+        vm.redirectAuthenctication = redirectAuthenctication;
+        vm.cancel = cancel;
+
+        function redirectAuthenctication(email, pass, name) {
+            if (name) {
+                authenticationService.getRegister(email, pass, name);
+            } else {
+                authenticationService.getLogin(email, pass);
+            }
         }
-        vm.register = function(name, email, pass) {
-            authenticationService.getRegister(name, email, pass);
+
+        function cancel() {
+            vm.logMe = false;
+            vm.regMe = false;
+            $scope.$parent.errorMsg = '';
         }
     };
 })();
