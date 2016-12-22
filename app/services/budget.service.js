@@ -117,7 +117,7 @@
             });
         }
 
-        function addIncomeToCurrentBallance(incomeAmout, ballance, budgetId, incomeName){
+        function addIncomeToCurrentBallance(incomeAmout, ballance, budgetId, incomeName) {
             var budgetToBeUpdated = budgetsArray[budgetId];
             var extraIncomes = budgetToBeUpdated.extraIncomes;
             if (!extraIncomes) {
@@ -137,17 +137,26 @@
         function getAllBudgets() {
             // Download the data from a Firebase reference into a (pseudo read-only) array
             // all server changes are applied in realtime
-            return allBudgets = $firebaseArray(ref);
+            var allBudgets = $firebaseArray(ref);
+            allBudgets.$loaded()
+                .then(function(x) {
+                    x === allBudgets; // true
+                })
+                .catch(function(error) {
+                    console.log("Error:", error);
+                });
+
+            return allBudgets;
         }
 
-        function getBudgetById (id){
-           // Returns firebaseObject of selected budget
-           return currentBudgetById = budgetsObject[id];
+        function getBudgetById(id) {
+            // Returns firebaseObject of selected budget
+            return currentBudgetById = budgetsObject[id];
         }
 
-        function getBudgetByKey (id){
-           // Returns an single item from $FirebaseArray
-           return currentBudgetByKey = budgetsArray[id];
+        function getBudgetByKey(id) {
+            // Returns an single item from $FirebaseArray
+            return currentBudgetByKey = budgetsArray[id];
         }
 
         function deleteBudget(key) {
@@ -156,7 +165,7 @@
 
         function deleteExpense(key, expenseType, budgetId) {
             var budget = budgetsArray[budgetId];
-            var currentBalance  = budget.currentBalance;
+            var currentBalance = budget.currentBalance;
 
             // We need to check what type of expense to be deleted
             if (expenseType === "monthly") {
@@ -183,10 +192,10 @@
             budgetsArray.$save(budget);
         }
 
-        function deleteIncome(key, budgetId){
+        function deleteIncome(key, budgetId) {
             var budget = budgetsArray[budgetId];
-            var currentBalance  = budget.currentBalance;
-            var extraIncomes  = budget.extraIncomes;
+            var currentBalance = budget.currentBalance;
+            var extraIncomes = budget.extraIncomes;
             var deletedIncome = extraIncomes[key].amount;
             extraIncomes.splice(key, 1);
             budget.totalIncomes = calculateTotalExtraIncomes(extraIncomes);
@@ -204,7 +213,7 @@
             return totalExpenses;
         }
 
-        function calculateTotalExtraIncomes(incomes){
+        function calculateTotalExtraIncomes(incomes) {
             var totalIncomes = 0;
             for (var i = 0; i < incomes.length; i++) {
                 var income = incomes[i].amount;
@@ -213,7 +222,7 @@
             return totalIncomes;
         }
 
-        function calculateCurrentBalance(staBudget, totalExtraExpen, totalMonExpe ){
+        function calculateCurrentBalance(staBudget, totalExtraExpen, totalMonExpe) {
             var expenses = totalExtraExpen + totalMonExpe;
             currentBalance = staBudget - expenses;
             return currentBalance;
