@@ -16,10 +16,19 @@
         };
     });
 
-    function NavMenuController(authenticationService) {
+    NavMenuController.$inject = ['authenticationService', '$location'];
+
+    function NavMenuController(authenticationService, $location) {
         var vm = this;
-        vm.logOut = function() {
-           authenticationService.getLogout();
+        vm.logOut = logOut;
+        vm.isActive = isActive;
+
+        function logOut() {
+            authenticationService.getLogout();
+        }
+
+        function isActive (path) {
+            return ($location.path().substr(0, path.length) === path) ? 'active' : '';
         }
     }
 
