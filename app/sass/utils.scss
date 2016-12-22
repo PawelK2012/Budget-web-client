@@ -60,3 +60,11 @@
 .cursor-pointer {
     cursor:pointer;
 }
+.scrollable-container {
+    overflow: scroll;
+    height: 500px;
+}
+.scrollable-container-200 {
+    overflow: scroll;
+    height: 150px;
+}
