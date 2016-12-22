@@ -1,16 +1,17 @@
 @import 'app/sass/colors.scss';
 .budget {
     .glyphicon {
-        color: $blue-50;
+        cursor:pointer;
+        color: $purple-200;
     }
     .glyphicon:hover {
-        color: $blue-300!important;
+        color: $purple-500!important;
     }
     .items {
         padding: 10px;
     }
     .items:hover {
-        background: $blue-100;
+        background: $purple-200;
     }
     .border-btm {
         border-bottom: 1px solid white;
@@ -22,8 +23,9 @@
         border-right: 5px solid $gray-100;
     }
     .card:hover {
+        background: $gray-100;
         .glyphicon {
-            color: $blue-100;
+            color: $purple-200;
         }
     }
 }
@@ -33,12 +35,13 @@
         visibility: hidden;
     }
     .glyphicon:hover {
-        color: $blue-500!important;
+        cursor:pointer;
+        color: $purple-500!important;
     }
     li:hover {
         .glyphicon {
             visibility: visible;
-            color: $blue-300;
+            color: $purple-200;
         }
     }
 }
