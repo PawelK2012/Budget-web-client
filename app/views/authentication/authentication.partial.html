@@ -2,8 +2,12 @@
     <div class="row" data-ng-if="!vm.logMe && !vm.regMe">
         <div class="col-xs-12">
             <p class="text-center">{{message}}</p>
-            <h1 class="text-center">Budget-App</h1>
-            <p class="text-center">Managing budget made easy!</p>
+            <!-- <h1 class="text-center">Budget Buddy</h1> -->
+            <img class="budget-planing-main-screen " ng-src="icons/budgetLogo.svg" alt="Budget planing app">
+            <!-- <p class="text-center">Managing budget made easy!</p> -->
+            <article class="text-center">
+              <h4>Welcome to <strong>Budget Buddy!</strong> The best app to help you save money and budget for upcoming expenses.</h4><h4>  Finding a good budget is no small task, but with <strong>Budget Buddy</strong> this becomes an easy task!</h4>   
+            </article>  
             <div class="center-block text-center">
                 <button data-ng-if="!currentUser" type="button" class="btn btn-blue-900 btn-lg" id="login" data-ng-click="vm.logMe = true">Login</button>
                 <button data-ng-if="!currentUser" type="button" class="btn btn-blue-900 btn-lg" id="register" data-ng-click="vm.regMe = true">Register</button>
