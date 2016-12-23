@@ -2,6 +2,7 @@
 .row {
     margin: 0px;
 }
+
 .padding-bottom-10 {
     padding-bottom: 10px;
 }
@@ -11,7 +12,7 @@
 }
 
 .padding-bottom-30 {
-    padding-bottom: 30px;  
+    padding-bottom: 30px;
 }
 
 .padding-top-80 {
@@ -41,35 +42,46 @@
 .margin-top-10 {
     margin-top: 10px;
 }
+
 .margin-bottom-10 {
     margin-bottom: 10px;
 }
+
 .margin-bottom-20 {
     margin-bottom: 20px;
 }
+
 .margin-top-20 {
     margin-top: 20px;
 }
-.no-padding-margin{
+
+.no-padding-margin {
     padding: 0px;
     margin: 0px;
 }
-.edit-input-container{
+
+.edit-input-container {
     width: 50%;
 }
+
 .cursor-pointer {
-    cursor:pointer;
+    cursor: pointer;
 }
+
 .scrollable-container {
     overflow: scroll;
     height: 500px;
 }
+
 .scrollable-container-200 {
     overflow: scroll;
     height: 150px;
 }
-.budget-planing-main-screen {
-    padding: 20px 0px 20px 0px;
-    display: block;
-    width: 100%;
+
+@media (min-width: 900px) {
+    .budget-planing-main-screen {
+        display: block;
+        width: 70%;
+        margin: 20px auto;
+    }
 }
