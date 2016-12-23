@@ -25,6 +25,7 @@
             getBudgetByKey: getBudgetByKey,
             deleteBudget: deleteBudget,
             deleteExpense: deleteExpense,
+            duplicateBudget: duplicateBudget,
             calculateTotalExpenses: calculateTotalExpenses,
             calculateCurrentBalance: calculateCurrentBalance,
             addIncomeToCurrentBallance: addIncomeToCurrentBallance,
@@ -48,6 +49,33 @@
                 lastDayBalance: 0,
                 totalIncomes: 0,
                 currentBalance: startingBudget - totalExpenses - totalMonthlyExpenses,
+                timestamp: Firebase.ServerValue.TIMESTAMP
+            }).then(function(ref) {
+                var id = ref.key();
+                $location.path('/viewbudget/' + budgetsArray.$indexFor(id));
+            });
+        }
+
+        function duplicateBudget(id) {
+            console.log(id, "inside")
+            var budgetToBeDuplicated = getBudgetByKey(id);
+            console.log(budgetToBeDuplicated)
+
+            budgetsArray.$add({
+                from: $rootScope.currentUser.firstname,
+                title: budgetToBeDuplicated.title + " DUPLICATED",
+                budgetStartDate: budgetToBeDuplicated.budgetStartDate,
+                budgetEndDate: budgetToBeDuplicated.budgetEndDate,
+                expenses: budgetToBeDuplicated.expenses || [],
+                monthlyExpenses: budgetToBeDuplicated.monthlyExpenses || [],
+                extraIncomes: budgetToBeDuplicated.extraIncomes || [],
+                totalExpenses: budgetToBeDuplicated.totalExpenses,
+                totalMonthlyExpenses: budgetToBeDuplicated.totalMonthlyExpenses,
+                firstDayBalance: budgetToBeDuplicated.firstDayBalance,
+                lastDayBalance: budgetToBeDuplicated.lastDayBalance,
+                totalIncomes: budgetToBeDuplicated.totalIncomes || 0,
+                totalExpenses: budgetToBeDuplicated.totalExpenses,
+                currentBalance: budgetToBeDuplicated.currentBalance,
                 timestamp: Firebase.ServerValue.TIMESTAMP
             }).then(function(ref) {
                 var id = ref.key();
