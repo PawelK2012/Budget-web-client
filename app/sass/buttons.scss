@@ -2,6 +2,7 @@
 .btn {
     margin-bottom: 5px;
 }
+
 .btn-blue-900 {
     color: #fff;
     background-color: $blue-900;
@@ -46,7 +47,9 @@
     font-size: 14px;
     font-weight: 300;
 }
-
+.label-item{
+    margin-bottom: 5px;
+}
 .label-purple-200 {
     background-color: $purple-200;
 }

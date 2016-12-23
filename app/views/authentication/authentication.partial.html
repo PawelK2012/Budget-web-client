@@ -2,16 +2,20 @@
     <div class="row" data-ng-if="!vm.logMe && !vm.regMe">
         <div class="col-xs-12">
             <p class="text-center">{{message}}</p>
-            <img class="budget-planing-main-screen " ng-src="icons/budgetLogo.svg" alt="Budget planing app">
+            <img class="budget-planing-main-screen" ng-src="icons/budget-logo.svg" alt="Budget planing app">
             <article class="text-center">
-              <h4>Welcome to <strong>Budget Buddy!</strong> The best app to help you save money and budget for upcoming expenses.</h4><h4>  Finding a good budget is no small task, but with <strong>Budget Buddy</strong> this becomes an easy task!</h4>   
-            </article>  
+                <p class="lead">Welcome to <strong>Budget Buddy!</strong> The best app to help you save money and budget for upcoming expenses.
+                    <br> Finding a good budget is no small task, but with <strong>Budget Buddy</strong> this becomes an easy task!</p>
+            </article>
             <div class="center-block text-center">
                 <button data-ng-if="!currentUser" type="button" class="btn btn-blue-900 btn-lg" id="login" data-ng-click="vm.logMe = true">Login</button>
                 <button data-ng-if="!currentUser" type="button" class="btn btn-blue-900 btn-lg" id="register" data-ng-click="vm.regMe = true">Register</button>
                 <a href="#/budget" data-ng-if="currentUser" class="btn btn-blue-900 btn-lg">Start</a>
             </div>
         </div>
+    </div>
+    <div data-ng-if="!vm.logMe && !vm.regMe" class="row padding-top-20">
+        <testimonials></testimonials>
     </div>
     <div class="login-container" data-ng-if="vm.logMe || vm.regMe">
         <div class="row padding-bottom-30">
