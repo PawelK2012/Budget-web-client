@@ -1,0 +1,10 @@
+<p class="lead text-center">Ckeck what our happy customers have to say!</p>
+<div class="col-xs-12 col-md-4" data-ng-repeat="testimonial in vm.testimonialsData.testimonials">
+    <img ng-src="{{testimonial.img}}" alt="Budget app review Orla" class="img-circle testimonial-img">
+    <blockquote class="blockquote-reverse">
+        <p>{{testimonial.text}}</p>
+        <footer>{{testimonial.name}}
+            <cite title="Source Title"><strong class="purple-500">{{testimonial.company}}</strong></cite>
+        </footer>
+    </blockquote>
+</div>
