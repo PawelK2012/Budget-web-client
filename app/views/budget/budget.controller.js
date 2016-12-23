@@ -26,6 +26,7 @@
 
         var vm = this;
         vm.loading = false;
+        vm.duplicate= duplicate;
         vm.budgets = budgetService.getAllBudgets();
         vm.budgets.$loaded(
             function(x) {
@@ -36,6 +37,11 @@
             });
         vm.delete = function(key) {
             budgetService.deleteBudget(key);
+        }
+
+        function duplicate (id){
+           console.log(id);
+           budgetService.duplicateBudget(id);
         }
     };
 
