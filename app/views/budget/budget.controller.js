@@ -25,7 +25,15 @@
     function BudgetCtrl(budgetService) {
 
         var vm = this;
+        vm.loading = false;
         vm.budgets = budgetService.getAllBudgets();
+        vm.budgets.$loaded(
+            function(x) {
+                vm.loading = true;
+            },
+            function(error) {
+                console.error("Error:", error);
+            });
         vm.delete = function(key) {
             budgetService.deleteBudget(key);
         }

@@ -26,13 +26,14 @@
                 </label>
             </div>
         </div>
-        <div class="row scrollable-container">
+        <loader data-ng-if="!vm.loading"></loader>
+        <div data-ng-if="vm.loading" class="row scrollable-container">
             <a href="#/createbudget" data-ng-if="vm.budgets.length === 0" class="btn btn-blue-900 pull-right">Create budget</a>
             <div class="no-search-results" data-ng-if="results.length === 0">
                 <h3 class="text-center">No results found...</h3>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3 card" data-ng-repeat="(key, value) in vm.budgets | filter:query | orderBy: whyIamHere:direction as results">
-                <h4>{{$index + 1}}. <a href="#/viewbudget/{{key}}">{{value.title}}</a></h4>
+                <h4 class="truncate">{{$index + 1}}. <a href="#/viewbudget/{{key}}">{{value.title}}</a></h4>
                 <span>Balance: <strong>{{value.currentBalance}} </strong> {{$parent.currentUser.currency.alias}}</span>
                 <span class="glyphicon glyphicon-trash pull-right" data-ng-click="vm.delete($index)" aria-hidden="true"></span>
             </div>
