@@ -36,12 +36,19 @@
                 console.error("Error:", error);
             });
         vm.delete = function(key) {
-            budgetService.deleteBudget(key);
+            var confirmation = confirm("Are you sure you want to delete budget?");
+            if (confirmation) {
+               budgetService.deleteBudget(key); 
+               confirm("Successfully deleted");
+            }
+            
         }
 
         function duplicate (id){
-           console.log(id);
-           budgetService.duplicateBudget(id);
+           var confirmation = confirm("Are you sure you want to duplicate budget?");
+           if (confirmation === true) {
+            budgetService.duplicateBudget(id);
+           } 
         }
     };
 
