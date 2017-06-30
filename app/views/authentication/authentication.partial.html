@@ -26,13 +26,13 @@
         </div>
         <div data-ng-if="errorMsg" class="row padding-bottom-30">
             <div class="col-md-5 col-md-offset-3">
-                <p class="bg-danger">{{errorMsg}}. Try again<a data-ng-if="vm.regMe === true" data-ng-click="vm.regMe = true; vm.logMe = false;"><strong> or register</strong></a>.</p>
+                <p class="bg-danger">{{errorMsg}}. Try again<a data-ng-if="vm.regMe" data-ng-click="vm.regMe = true; vm.logMe = false;"><strong> or register</strong></a>.</p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-5 col-md-offset-3">
                 <form name="authenticationForm" data-ng-submit="vm.redirectAuthenctication(vm.email, vm.pass, vm.name)" novalidate>
-                    <div data-ng-if="vm.regMe === true" class="group paper-input">
+                    <div data-ng-if="vm.regMe" class="group paper-input">
                         <input type="text" name="name" placeholder="Your name..." data-ng-model="vm.name" required focus>
                         <span class="highlight"></span>
                         <span class="bar"></span>
@@ -44,14 +44,16 @@
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Email</label>
-                        <span class="bg-danger margin-top-10 pull-left" data-ng-if="authenticationForm.email.$touched && authenticationForm.email.$invalid">Email is required.</span>
+                        <span id="valid-email" class="bg-danger margin-top-10 pull-left" data-ng-if="authenticationForm.email.$touched && authenticationForm.email.$error.email">Enter valid email address.</span>
+                        <span id="required-email" class="bg-danger margin-top-10 pull-left" data-ng-if="authenticationForm.email.$touched && authenticationForm.email.$error.required">Email is required.</span>
+                       sss:: {{authenticationForm.email.$error.required}}
                     </div>
                     <div class="group paper-input">
                         <input type="password" name="pass" placeholder="Password" data-ng-model="vm.pass" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Password</label>
-                        <span class="bg-danger margin-top-10 pull-left" data-ng-if="authenticationForm.pass.$touched && authenticationForm.pass.$invalid">Password is required.</span>
+                        <span id="required-pass" class="bg-danger margin-top-10 pull-left" data-ng-if="authenticationForm.pass.$touched && authenticationForm.pass.$invalid">Password is required.</span>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
