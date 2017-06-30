@@ -14,8 +14,7 @@ angular.module('myApp', [
   'myApp.addIncome',
   'myApp.toastMsg',
   'myApp.focus',
-  'myApp.loader',
-  'myApp.testimonials'
+  'myApp.loader'
 ]).run(['$rootScope', '$location', function($rootScope, $location) {
   $rootScope.$on('$routeChangeError',
   function(event, next, previous, error) {

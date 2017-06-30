@@ -14,9 +14,6 @@
             </div>
         </div>
     </div>
-    <div data-ng-if="!vm.logMe && !vm.regMe" class="row padding-top-20">
-        <testimonials></testimonials>
-    </div>
     <div class="login-container" data-ng-if="vm.logMe || vm.regMe">
         <div class="row padding-bottom-30">
             <div class="col-md-5 col-md-offset-3">
@@ -46,7 +43,6 @@
                         <label>Email</label>
                         <span id="valid-email" class="bg-danger margin-top-10 pull-left" data-ng-if="authenticationForm.email.$touched && authenticationForm.email.$error.email">Enter valid email address.</span>
                         <span id="required-email" class="bg-danger margin-top-10 pull-left" data-ng-if="authenticationForm.email.$touched && authenticationForm.email.$error.required">Email is required.</span>
-                       sss:: {{authenticationForm.email.$error.required}}
                     </div>
                     <div class="group paper-input">
                         <input type="password" name="pass" placeholder="Password" data-ng-model="vm.pass" required>
