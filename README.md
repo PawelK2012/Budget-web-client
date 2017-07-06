@@ -45,6 +45,8 @@ We have preconfigured the project with a simple development web server. The simp
 
  <code> npm start  </code>
 
+Now you can access it from: <a href="http://localhost:8000/app/">http://localhost:8000/app/</a>
+
 #Compile SASS with Gulp
 
 Inside project directory run command <code> gulp </code>. This will run Gulp task to watch all SASS and concat them into one CSS file.
